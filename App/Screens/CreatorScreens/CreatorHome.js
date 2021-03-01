@@ -33,31 +33,68 @@ export default function CreatorHome({navigation}) {
 
     return(
         <SafeAreaView style={styles.container}> 
-            <View style={styles.top}> 
+            <View style={styles.topView}> 
                 <Text style={keyStyles.croissantHeader}> CREATOR HOME </Text> 
             </View>
 
 
-            <View style={styles.list}> 
+            <View style={styles.listView}> 
                 <StudioList fakeNewsfeedData={fakeNewsfeedData} />
             </View>
+
+            <View style={styles.bottomView}> 
+                <TouchableOpacity
+                    style={styles.plusButton} 
+                    onPress = { () => navigation.navigate('CreateStudio')}
+                >
+                    <Text style={styles.plusText}> + </Text>
+                </TouchableOpacity>
+            </View>
+
         </SafeAreaView>
     );
 }
 
 
+// uncomment ugly background colors to make it clear where the flexboxes for the views are
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#fff'
     },
-    top: {
-      height: '20%',
-      backgroundColor: '#fff',
+    topView: {
+      height: '10%',
+    //   backgroundColor: 'green',
       alignItems: 'center',
-      justifyContent: 'flex-end', 
+      justifyContent: 'center',
       margin: 6,
     },
+    listView: {
+        // backgroundColor: 'red',
+        height: '75%',
+    },
+    bottomView: {
+        height: '15%',
+        width: '80%',
+        // backgroundColor: 'yellow',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    plusButton: {
+        borderWidth: 15,
+        borderColor: 'grey',
+        width: '100%',
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 20,
+        borderStyle: 'dashed',
+    },
+    plusText: {
+        fontSize: 40,
+        fontWeight: 'bold',
+        color: 'grey',
+    }
   });
   

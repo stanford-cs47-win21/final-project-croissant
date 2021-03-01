@@ -7,6 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import ChooseFlow from './ChooseFlow';
 import CreatorHome from './CreatorScreens/CreatorHome';
 import FanHome from './FanScreens/FanHome';
+import CreateStudio from './CreatorScreens/CreateStudio';
 
 
 const Stack = createStackNavigator();
@@ -20,6 +21,7 @@ export default function Navigation() {
                 <Stack.Screen name='ChooseFlow' component={ChooseFlow}/>
                 <Stack.Screen name='CreatorHome' component={CreatorHome}/>
                 <Stack.Screen name='FanHome' component={FanHome}/>
+                <Stack.Screen name='CreateStudio' component={CreateStudio}/>
             </Stack.Navigator>
         </NavigationContainer>
     );
