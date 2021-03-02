@@ -20,8 +20,8 @@ export default function Navigation() {
     return(
         <NavigationContainer> 
             <Stack.Navigator> 
-                <Stack.Screen name='ChooseFlow' component={ChooseFlow}/>
-                <Stack.Screen name='CreatorHome' component={CreatorHome}/>
+                <Stack.Screen name='ChooseFlow' component={ChooseFlow} options={{headerShown: false}}/>
+                <Stack.Screen name='CreatorHome' component={CreatorHome} options={{headerShown: false}}/>
                 <Stack.Screen name='FanHome' component={FanHome}/>
                 <Stack.Screen name='CreateStudio' component={CreateStudio}/>
                 <Stack.Screen name='StudioResults' component={StudioResults}/>

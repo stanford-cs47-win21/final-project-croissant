@@ -26,10 +26,9 @@ export function PlusButton() {
 
 
 const styles = StyleSheet.create({
-    // copy pasted from the studiocard
     plusView: {
         width: Dimensions.get('window').width * .9,
-        height: Dimensions.get('window').height * .16, 
+        height: Dimensions.get('window').height * .14, 
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 20,

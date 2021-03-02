@@ -18,9 +18,9 @@ export function StudioCard({cardInfo}) {
             return styles.badgeBrainstorm;
         } else if (status === "Ranking") {
             return styles.badgeRanking;
-        } else {
+        } else if (status === "Results"){
             return styles.badgeResults;
-        }
+        } // else: if no status is passed in, we don't want to render any background style for it
     }
 
     const navigation = useNavigation();
@@ -35,9 +35,7 @@ export function StudioCard({cardInfo}) {
         > 
 
             <View style={styles.topRow}> 
-                
                 <Text > {username} </Text> 
-
                 <View style={determineStatus()}> 
                     <Text> {status}</Text>
                 </View>

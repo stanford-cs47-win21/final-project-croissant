@@ -9,6 +9,7 @@ import { StyleSheet,
 
 import keyStyles from '../../Styles/keyStyles';
 import {Title} from "../../Components/Title";
+import {StudioCard} from "../../Components/StudioCard";
 
 
 export default function StudioResults({route, navigation}) {
@@ -17,7 +18,16 @@ export default function StudioResults({route, navigation}) {
     return(
         <SafeAreaView style={styles.container}> 
             
-            <Title text="Studiooooo Results" />
+            <Title text="Studio Results" />
+
+            <StudioCard 
+                cardInfo={{
+                    username: "rachel_f",
+                    status: null,
+                    message: "I'm looking to do more vegan recipes! Would love to hear about your personal favorites.",
+                    timeLeft: null,
+                }}
+            />
 
             <Title text="Fan Favorites" />
 

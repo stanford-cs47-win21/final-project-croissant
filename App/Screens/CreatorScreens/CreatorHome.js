@@ -48,9 +48,15 @@ export default function CreatorHome({navigation}) {
         },
     ]
 
+
+
     return(
         <SafeAreaView style={styles.container}> 
             <View style={styles.topView}> 
+                {/* <Image 
+                    style={styles.logoImage}
+                    source={"../Images/full-croissant-logo.png"}
+                /> */}
                 <Text style={keyStyles.croissantHeader}> CREATOR HOME </Text> 
             </View>
 
@@ -85,5 +91,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         width: '100%',
     },
+    logoImage: {
+        resizeMode: 'contain',
+        backgroundColor: 'red',
+        width: '100%',
+    }
   });
   
