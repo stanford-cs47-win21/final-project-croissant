@@ -8,7 +8,7 @@ import ChooseFlow from './ChooseFlow';
 import CreatorHome from './CreatorScreens/CreatorHome';
 import FanHome from './FanScreens/FanHome';
 import CreateStudio from './CreatorScreens/CreateStudio';
-
+import StudioResults from './CreatorScreens/StudioResults';
 
 const Stack = createStackNavigator();
 
@@ -22,6 +22,7 @@ export default function Navigation() {
                 <Stack.Screen name='CreatorHome' component={CreatorHome}/>
                 <Stack.Screen name='FanHome' component={FanHome}/>
                 <Stack.Screen name='CreateStudio' component={CreateStudio}/>
+                <Stack.Screen name='StudioResults' component={StudioResults}/>
             </Stack.Navigator>
         </NavigationContainer>
     );

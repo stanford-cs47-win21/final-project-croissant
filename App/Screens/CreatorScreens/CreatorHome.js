@@ -29,6 +29,22 @@ export default function CreatorHome({navigation}) {
             message: "what is your favorite sandwich.",
             timeLeft: "4 hours remaining",
         },
+        {
+            username: "rachel_f",
+            status: "Results",
+            message: "hahahaahahhaah ",
+            timeLeft: "0:00 remaining",
+        },
+        // {
+        //     username: "rachel_f",
+        //     status: "Ranking",
+        //     message: "scrollinggggg",
+        //     timeLeft: "4 hours remaining",
+        // },
+        // last object will render into the plus button
+        {
+            username: "TEMPPP",
+        },
     ]
 
     return(
@@ -40,15 +56,6 @@ export default function CreatorHome({navigation}) {
 
             <View style={styles.listView}> 
                 <StudioList fakeNewsfeedData={fakeNewsfeedData} />
-            </View>
-
-            <View style={styles.bottomView}> 
-                <TouchableOpacity
-                    style={styles.plusButton} 
-                    onPress = { () => navigation.navigate('CreateStudio')}
-                >
-                    <Text style={styles.plusText}> + </Text>
-                </TouchableOpacity>
             </View>
 
         </SafeAreaView>
@@ -72,29 +79,10 @@ const styles = StyleSheet.create({
     },
     listView: {
         // backgroundColor: 'red',
-        height: '75%',
-    },
-    bottomView: {
-        height: '15%',
-        width: '80%',
-        // backgroundColor: 'yellow',
+        height: '90%',
         alignItems: 'center',
         justifyContent: 'center',
-    },
-    plusButton: {
-        borderWidth: 15,
-        borderColor: 'grey',
         width: '100%',
-        height: '100%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 20,
-        borderStyle: 'dashed',
     },
-    plusText: {
-        fontSize: 40,
-        fontWeight: 'bold',
-        color: 'grey',
-    }
   });
   

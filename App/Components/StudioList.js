@@ -9,6 +9,7 @@ import { StyleSheet,
 } from 'react-native';
 
 import {StudioCard} from "./StudioCard";
+import {PlusButton} from "./PlusButton";
 
 export function StudioList(props) {
 
@@ -16,7 +17,9 @@ export function StudioList(props) {
     console.log("DATA ", data);
 
     const renderStudioCard = ({index, item}) => {
-        return <StudioCard cardInfo={item}/>
+        if (index === data.length - 1) {
+            return <PlusButton/> 
+        } else return <StudioCard cardInfo={item}/>
     }
 
     return(
@@ -24,11 +27,14 @@ export function StudioList(props) {
             data={data}
             renderItem = {renderStudioCard}
             keyExtractor = { (item, index) => index.toString()}
+            style = {styles.flatlist}
         />
     );
 }
 
 
 const styles = StyleSheet.create({
-
+    flatlist: {
+        // backgroundColor: 'red',
+    }
   });
