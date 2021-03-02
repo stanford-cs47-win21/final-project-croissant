@@ -11,15 +11,16 @@ import { StyleSheet,
 
 import keyStyles from '../../Styles/keyStyles';
 
+import {Title} from '../../Components/Title';
+
 
 export default function CreateStudio({navigation}) {
     const [prompt, setPrompt] = useState("");
 
     return(
         <SafeAreaView style={styles.container}>
-            <View style={keyStyles.titleView}> 
-                <Text style={keyStyles.titleText1}> Create a Studio </Text>
-            </View>
+
+            <Title text="Create a Studio" />
 
             <View style={styles.promptView}> 
                 <View style={styles.subtitle}> 

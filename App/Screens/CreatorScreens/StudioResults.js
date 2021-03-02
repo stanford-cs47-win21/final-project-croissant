@@ -8,6 +8,7 @@ import { StyleSheet,
 } from 'react-native';
 
 import keyStyles from '../../Styles/keyStyles';
+import {Title} from "../../Components/Title";
 
 
 export default function StudioResults({route, navigation}) {
@@ -16,15 +17,9 @@ export default function StudioResults({route, navigation}) {
     return(
         <SafeAreaView style={styles.container}> 
             
-            {/* Make this a component since used so much */}
-            <View style={keyStyles.titleView}> 
-                <Text style={keyStyles.titleText1}> Studio Results </Text>
-            </View>
+            <Title text="Studiooooo Results" />
 
-            {/* Make this a component since used so much */}
-            <View style={keyStyles.titleView}> 
-                <Text style={keyStyles.titleText1}> Fan Favorites </Text>
-            </View>
+            <Title text="Fan Favorites" />
 
 
             {/* Button to create room */}
