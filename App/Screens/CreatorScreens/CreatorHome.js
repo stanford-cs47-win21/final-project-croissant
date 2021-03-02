@@ -41,9 +41,10 @@ export default function CreatorHome({navigation}) {
         //     message: "scrollinggggg",
         //     timeLeft: "4 hours remaining",
         // },
-        // last object will render into the plus button
+
+        // Last object will render into the plus button
         {
-            username: "TEMPPP",
+            username: "IM THE PLUS BUTTON",
         },
     ]
 

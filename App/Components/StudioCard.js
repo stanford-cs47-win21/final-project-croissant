@@ -12,7 +12,6 @@ import { useNavigation } from '@react-navigation/native';
 export function StudioCard({cardInfo}) {
 
     const {username, status, message, timeLeft} = cardInfo; 
-    // console.log("PRops ", props.cardInfo);
 
     const determineStatus = () => {
         if (status === "Brainstorming") {

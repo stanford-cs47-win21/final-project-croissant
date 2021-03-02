@@ -9,6 +9,8 @@ import CreatorHome from './CreatorScreens/CreatorHome';
 import FanHome from './FanScreens/FanHome';
 import CreateStudio from './CreatorScreens/CreateStudio';
 import StudioResults from './CreatorScreens/StudioResults';
+import CreateRoom from './CreatorScreens/CreateRoom';
+
 
 const Stack = createStackNavigator();
 
@@ -23,6 +25,7 @@ export default function Navigation() {
                 <Stack.Screen name='FanHome' component={FanHome}/>
                 <Stack.Screen name='CreateStudio' component={CreateStudio}/>
                 <Stack.Screen name='StudioResults' component={StudioResults}/>
+                <Stack.Screen name='CreateRoom' component={CreateRoom}/>
             </Stack.Navigator>
         </NavigationContainer>
     );

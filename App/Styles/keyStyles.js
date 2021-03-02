@@ -24,6 +24,14 @@ const keyStyles = {
         fontWeight: 'bold',
         // fontFamily: 'lato',
     },
+    titleView: {
+        height: '10%',
+        // backgroundColor: 'red',
+        flexDirection: 'row',
+        alignItems: 'center',
+        // justifyContent: 'center',
+        width: '90%',
+    },
     titleText1: {
         fontWeight: 'bold',
         fontSize: 16,

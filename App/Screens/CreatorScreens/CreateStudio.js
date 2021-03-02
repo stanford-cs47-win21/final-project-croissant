@@ -17,7 +17,7 @@ export default function CreateStudio({navigation}) {
 
     return(
         <SafeAreaView style={styles.container}>
-            <View style={styles.titleView}> 
+            <View style={keyStyles.titleView}> 
                 <Text style={keyStyles.titleText1}> Create a Studio </Text>
             </View>
 
@@ -66,14 +66,6 @@ const styles = StyleSheet.create({
         // justifyContent: 'center',
         backgroundColor: '#fff',
         height: '100%',
-    },
-    titleView: {
-        height: '10%',
-        // backgroundColor: 'red',
-        flexDirection: 'row',
-        alignItems: 'center',
-        // justifyContent: 'center',
-        width: '90%',
     },
     promptView: {
         height: '30%',
