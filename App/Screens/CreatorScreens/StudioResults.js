@@ -4,7 +4,8 @@ import { StyleSheet,
     SafeAreaView,
     TouchableOpacity,
     View,
-    Image
+    Image,
+    ScrollView
 } from 'react-native';
 
 import keyStyles from '../../Styles/keyStyles';

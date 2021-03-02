@@ -53,12 +53,19 @@ export default function CreatorHome({navigation}) {
     return(
         <SafeAreaView style={styles.container}> 
             <View style={styles.topView}> 
-                {/* <Image 
-                    style={styles.logoImage}
-                    source={"../Images/full-croissant-logo.png"}
-                /> */}
-                <Text style={keyStyles.croissantHeader}> CREATOR HOME </Text> 
-            </View>
+                <View style={styles.logoImage}> 
+                    <Image 
+                        source={require("../../Images/full-croissant-logo.png")}
+                        resizeMode="contain"
+                        style={{width: '50%'}}
+                    />
+                </View>
+
+                <TouchableOpacity 
+                    style={styles.profile}
+                    // onPress = {navigation.navigate('')}
+                /> 
+            </View> 
 
 
             <View style={styles.listView}> 
@@ -79,10 +86,12 @@ const styles = StyleSheet.create({
     },
     topView: {
       height: '10%',
-    //   backgroundColor: 'green',
+    //   backgroundColor: 'red',
       alignItems: 'center',
       justifyContent: 'center',
       margin: 6,
+      width: '90%',
+      flexDirection: 'row'
     },
     listView: {
         // backgroundColor: 'red',
@@ -92,9 +101,19 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     logoImage: {
-        resizeMode: 'contain',
-        backgroundColor: 'red',
-        width: '100%',
+        // resizeMode: 'contain',
+        alignItems: 'flex-start',
+        width: '85%',
+        flexDirection: 'row',
+        // backgroundColor: 'green',
+    },
+    profile: {
+        height: 50,
+        width: 50,
+        borderRadius: 25,
+        backgroundColor: '#e4e7eb',
+        justifyContent: 'center',
+        alignItems: 'center'
     }
   });
   

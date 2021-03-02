@@ -37,7 +37,7 @@ export function StudioCard({cardInfo}) {
             <View style={styles.topRow}> 
                 <Text > {username} </Text> 
                 <View style={determineStatus()}> 
-                    <Text> {status}</Text>
+                    <Text style={{color: 'white',}}> {status}</Text>
                 </View>
             </View>
 
@@ -97,9 +97,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     timeBox: {
-        justifyContent: "center",
         flexDirection: 'row',
-        alignContent: "center"
+        width: '90%',
+        justifyContent: 'flex-start',
     },
     timeText: {
         fontSize: 12,

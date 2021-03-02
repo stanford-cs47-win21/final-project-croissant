@@ -31,8 +31,7 @@ const styles = StyleSheet.create({
         height: Dimensions.get('window').height * .14, 
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 20,
-        marginTop: 10,
+        margin: 8,
     },
     plusButton: {
         borderWidth: 8,
