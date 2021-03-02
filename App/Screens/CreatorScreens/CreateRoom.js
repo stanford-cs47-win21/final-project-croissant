@@ -9,15 +9,28 @@ import { StyleSheet,
 
 import keyStyles from '../../Styles/keyStyles';
 
+import {Title} from "../../Components/Title";
 
-export default function CreateRoom() {
+
+export default function CreateRoom({navigation}) {
     // const {username, status, message, timeLeft} = route.params.cardInfo;
 
     return(
         <SafeAreaView style={styles.container}> 
             
-            <Text> HELLO CREATE ROOM </Text>
-            
+            {/* Modify this into the common component */}
+            <Text> RECOMMENDED INVITEES </Text> 
+
+            {/* Button to create room */}
+            <View style={keyStyles.centeredView}> 
+                <TouchableOpacity
+                    style={keyStyles.button1} 
+                    onPress = { () => navigation.navigate('CreatorHome')}   // TODO: this doesn't actually create a new item on Home screen yet. Do we want to just create a separate screen for this with a skip time button?
+                >
+                    <Text style={keyStyles.button1text}> SCHEDULE ROOM </Text>
+                </TouchableOpacity>
+            </View>
+
         </SafeAreaView>
     );
 }
