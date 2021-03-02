@@ -7,9 +7,7 @@ import { StyleSheet,
     Image
 } from 'react-native';
 
-import {StudioCard} from "../../Components/StudioCard";
 import {StudioList} from "../../Components/StudioList";
-
 
 import keyStyles from '../../Styles/keyStyles';
 
@@ -63,7 +61,7 @@ export default function CreatorHome({navigation}) {
 
                 <TouchableOpacity 
                     style={styles.profile}
-                    // onPress = {navigation.navigate('')}
+                    onPress = {() => navigation.navigate('Profile')}
                 /> 
             </View> 
 
