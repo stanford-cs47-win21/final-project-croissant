@@ -14,9 +14,11 @@ import keyStyles from '../../Styles/keyStyles';
 import {Title} from '../../Components/Title';
 
 
+// TODO: Weird serializable warning because you can't pass callback functions in the route params lmao
 export default function CreateStudio({navigation}) {
     const [prompt, setPrompt] = useState("");
 
+ 
     return(
         <SafeAreaView style={styles.container}>
 
@@ -50,7 +52,12 @@ export default function CreateStudio({navigation}) {
             <View style={keyStyles.centeredView}> 
                 <TouchableOpacity
                     style={keyStyles.button1} 
-                    onPress = { () => navigation.goBack()} // TODO: pass data
+                    onPress = { () => {
+                        navigation.navigate('CreatorHome', {newStudio: {
+                            prompt: prompt
+                            // TODO: pass brainstorming time limit here once implemented
+                        }})
+                    }}
                 >
                     <Text style={keyStyles.button1text}> START </Text>
                 </TouchableOpacity>

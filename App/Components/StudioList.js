@@ -12,19 +12,17 @@ import {StudioCard} from "./StudioCard";
 import {PlusButton} from "./PlusButton";
 
 export function StudioList(props) {
-
-    const data = props.fakeNewsfeedData;
-    console.log("DATA ", data);
+    const studios = props.studios;
 
     const renderStudioCard = ({index, item}) => {
-        if (index === data.length - 1) {
-            return <PlusButton/> 
+        if (index === studios.length - 1) {
+            return <PlusButton /> 
         } else return <StudioCard cardInfo={item}/>
-    }
+    } 
 
-    return(
+    return (
         <FlatList 
-            data={data}
+            data={studios}
             renderItem = {renderStudioCard}
             keyExtractor = { (item, index) => index.toString()}
             style = {styles.flatlist}

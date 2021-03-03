@@ -13,13 +13,13 @@ import {Title} from "../../Components/Title";
 import {StudioCard} from "../../Components/StudioCard";
 
 
-export default function StudioResults({route, navigation}) {
+export default function LiveRoom({route, navigation}) {
     const {username, status, message, timeLeft} = route.params.cardInfo;
 
     return(
         <SafeAreaView style={styles.container}> 
             
-            <Title text="Studio Results" />
+            <Title text="Live Room" />
 
             <StudioCard 
                 cardInfo={{
@@ -29,19 +29,6 @@ export default function StudioResults({route, navigation}) {
                     timeLeft: null,
                 }}
             />
-
-            <Title text="Fan Favorites" />
-
-
-            {/* Button to create room */}
-            <View style={keyStyles.centeredView}> 
-                <TouchableOpacity
-                    style={keyStyles.button1} 
-                    onPress = { () => navigation.navigate('CreateRoom')} // TODO: pass data
-                >
-                    <Text style={keyStyles.button1text}> CREATE ROOM </Text>
-                </TouchableOpacity>
-            </View>
 
         </SafeAreaView>
     );

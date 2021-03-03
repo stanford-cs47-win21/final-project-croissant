@@ -10,6 +10,7 @@ import { StyleSheet,
 import keyStyles from '../../Styles/keyStyles';
 
 import {Title} from "../../Components/Title";
+import {StudioCard} from "../../Components/StudioCard";
 
 
 export default function CreateRoom({navigation}) {
@@ -20,6 +21,15 @@ export default function CreateRoom({navigation}) {
             
             {/* Modify this into the common component */}
             <Text> RECOMMENDED INVITEES </Text> 
+
+            <StudioCard 
+                cardInfo={{
+                    username: "rachel_f",
+                    status: null,
+                    message: "I'm looking to do more vegan recipes! Would love to hear about your personal favorites.",
+                    timeLeft: null,
+                }}
+            />
 
             {/* Button to create room */}
             <View style={keyStyles.centeredView}> 

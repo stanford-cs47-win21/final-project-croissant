@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { StyleSheet, 
     Text, 
     SafeAreaView,
@@ -12,41 +12,68 @@ import {StudioList} from "../../Components/StudioList";
 import keyStyles from '../../Styles/keyStyles';
 
 
-export default function CreatorHome({navigation}) {
-
+export default function CreatorHome({route, navigation}) {
+    const [studios, setStudios] = useState([]);
+    
+    // the 5 different types of hardcoded cards on the homepage initially
     const fakeNewsfeedData = [
         {
             username: "rachel_f",
-            status: "Brainstorming",
+            status: "LIVE",
+            message: "Woooo we are going live",
+            timeLeft: "doesn't matter",
+        },
+        {
+            username: "rachel_f",
+            status: "BRAINSTORMING",
             message: "I'm looking to do more vegan recipes! Would love to hear about your personal favorites.",
             timeLeft: "6 hours remaining",
         },
         {
             username: "rachel_f",
-            status: "Ranking",
+            status: "RANKING",
             message: "what is your favorite sandwich.",
             timeLeft: "4 hours remaining",
         },
         {
             username: "rachel_f",
-            status: "Results",
+            status: "VIEW RESULTS",
             message: "hahahaahahhaah ",
             timeLeft: "0:00 remaining",
         },
-        // {
-        //     username: "rachel_f",
-        //     status: "Ranking",
-        //     message: "scrollinggggg",
-        //     timeLeft: "4 hours remaining",
-        // },
-
-        // Last object will render into the plus button
+        // Last object will render into the plus button, sort of jank
         {
             username: "IM THE PLUS BUTTON",
         },
     ]
 
+    // Initialize studios state upon component mounting
+    useEffect( () => {
+        setStudios(fakeNewsfeedData);
+    }, []);
 
+    // When route.params sends a new prompt, add a new prompt
+    useEffect( () => {
+        if (route.params && route.params.newStudio) {
+            addStudio(route.params.newStudio);
+        }
+    }, [route.params && route.params.newStudio])
+
+    
+    const addStudio = (newStudio) => {
+        const prompt = newStudio.prompt;
+        // TODO: const timeRemaining = info.brainstormTimeRemaining
+        let newStudioList = [];
+        newStudioList.push({
+            username: "rachel_f",
+            status: "BRAINSTORMING",
+            message: prompt,
+            timeLeft: "tbd Hrs. remaining",
+        });
+        newStudioList.push(...studios);
+        console.log("NEW STUDIO LIST after adding custom studio ", newStudioList);
+        setStudios(newStudioList);
+    }
 
     return(
         <SafeAreaView style={styles.container}> 
@@ -67,7 +94,9 @@ export default function CreatorHome({navigation}) {
 
 
             <View style={styles.listView}> 
-                <StudioList fakeNewsfeedData={fakeNewsfeedData} />
+                <StudioList 
+                    studios={studios} 
+                />
             </View>
 
         </SafeAreaView>

@@ -17,6 +17,7 @@ export function PlusButton() {
             <TouchableOpacity
                 style={styles.plusButton} 
                 onPress = { () => navigation.navigate('CreateStudio')}
+
             >
                 <Text style={styles.plusText}> + </Text>
             </TouchableOpacity>

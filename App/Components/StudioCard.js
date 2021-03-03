@@ -14,30 +14,38 @@ export function StudioCard({cardInfo}) {
     const {username, status, message, timeLeft} = cardInfo; 
 
     const determineStatus = () => {
-        if (status === "Brainstorming") {
+        if (status === "BRAINSTORMING") {
             return styles.badgeBrainstorm;
-        } else if (status === "Ranking") {
+        } else if (status === "RANKING") {
             return styles.badgeRanking;
-        } else if (status === "Results"){
+        } else if (status === "VIEW RESULTS"){
             return styles.badgeResults;
-        } // else: if no status is passed in, we don't want to render any background style for it
+        }
+        
+        // else: if no status is passed in, we don't want to render any background style for it
+    }
+
+    // what happens when  you click the studiocard, based on its status
+    const determineFlow = () => {
+        // Wrap in outer if based on if creator or fan / pass as param
+        if (status === "LIVE") {
+            navigation.navigate('LiveRoom', {cardInfo});
+        } else if (status === "VIEW RESULTS") {
+            navigation.navigate('StudioResults', {cardInfo});
+        }
     }
 
     const navigation = useNavigation();
     return(
         <TouchableOpacity 
             style={styles.outer}
-            onPress = { () => {
-                if (status === "Results") {
-                    navigation.navigate('StudioResults', {cardInfo});
-                }
-            }}
+            onPress = {determineFlow}
         > 
 
             <View style={styles.topRow}> 
                 <Text > {username} </Text> 
                 <View style={determineStatus()}> 
-                    <Text style={{color: 'white',}}> {status}</Text>
+                    <Text style={status === "LIVE" ? {color: 'red'} : {color: 'white'}}> {status}</Text>
                 </View>
             </View>
 
@@ -87,6 +95,9 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         padding: 3, 
         margin: 1,
+    },
+    badgeLive: {
+
     },
     middleBox: {
         backgroundColor: '#FFFEFA',
