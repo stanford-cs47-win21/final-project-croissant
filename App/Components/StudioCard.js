@@ -9,7 +9,7 @@ import { StyleSheet,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-export function StudioCard({cardInfo}) {
+export function StudioCard({cardInfo, staticCard = false}) {
 
     const {username, status, message, timeLeft} = cardInfo; 
 
@@ -36,28 +36,43 @@ export function StudioCard({cardInfo}) {
     }
 
     const navigation = useNavigation();
-    return(
-        <TouchableOpacity 
-            style={styles.outer}
-            onPress = {determineFlow}
-        > 
 
-            <View style={styles.topRow}> 
-                <Text > {username} </Text> 
-                <View style={determineStatus()}> 
-                    <Text style={status === "LIVE" ? {color: 'red'} : {color: 'white'}}> {status}</Text>
+    if (staticCard === true) {
+        return (
+            <View style={styles.outerStatic}> 
+                <View style={styles.topRow}> 
+                    <Text > {username} </Text> 
+                </View>
+
+                <View style={styles.middleBox}> 
+                    <Text > {message} </Text> 
                 </View>
             </View>
+        );
+    } else { 
+        return(
+            <TouchableOpacity 
+                style={styles.outer}
+                onPress = {determineFlow}
+            > 
 
-            <View style={styles.middleBox}> 
-                <Text > {message} </Text> 
-            </View>
+                <View style={styles.topRow}> 
+                    <Text > {username} </Text> 
+                    <View style={determineStatus()}> 
+                        <Text style={status === "LIVE" ? {color: 'red'} : {color: 'white'}}> {status}</Text>
+                    </View>
+                </View>
 
-            <View style={styles.timeBox}> 
-                <Text style={styles.timeText}> {timeLeft} </Text> 
-            </View>
-        </TouchableOpacity>
-    );
+                <View style={styles.middleBox}> 
+                    <Text > {message} </Text> 
+                </View>
+
+                <View style={styles.timeBox}> 
+                    <Text style={styles.timeText}> {timeLeft} </Text> 
+                </View>
+            </TouchableOpacity>
+        );
+    }
 }
 
 
@@ -67,7 +82,16 @@ const styles = StyleSheet.create({
         height: Dimensions.get('window').height * .16, 
         backgroundColor: '#FFF8E0',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
+        borderRadius: 20,
+        margin: 8,
+    },
+    outerStatic: {
+        width: Dimensions.get('window').width * .9,
+        height: Dimensions.get('window').height * .16, 
+        backgroundColor: '#F2F2F2',
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
         borderRadius: 20,
         margin: 8,
     },
@@ -75,7 +99,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignContent: 'space-between',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         width: '100%',
     },
     badgeBrainstorm: {
@@ -115,5 +139,6 @@ const styles = StyleSheet.create({
     timeText: {
         fontSize: 12,
         color: "#645F5C",
-    }
+    },
+    
   });

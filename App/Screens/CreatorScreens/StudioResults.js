@@ -106,8 +106,21 @@ export default function StudioResults({route, navigation}) {
                 }}
             />
 
+            <View style={styles.stats}> 
+                <View style={styles.box}> 
+                    <Text style={styles.bigNum}> 850 </Text>
+                    <Text style={styles.label}> Participants </Text>
+                </View> 
 
-            {/* TODO: SectionList, has some bugs to fix */}
+                <View style={styles.box}> 
+                    <Text style={styles.bigNum}> 1124 </Text>
+                    <Text style={styles.label}> Ideas </Text>
+                </View>
+
+            </View>
+
+
+            {/* TODO: SectionList, has some bugs to fix -- we could just hardcode each item if we want*/}
             <SectionList
                 sections={fanResults}
                 stickySectionHeadersEnabled={false}
@@ -119,7 +132,7 @@ export default function StudioResults({route, navigation}) {
                 }}
 
                 renderItem={({item}) => {
-                    return <StudioCard cardInfo={item} />
+                    return <StudioCard cardInfo={item} staticCard={true}/>
                 }}
             />
 
@@ -146,6 +159,23 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: '#fff',
         height: '100%',
+    },
+    stats: {
+        flexDirection: 'row',
+        margin: 8,
+        width: '100%',
+        justifyContent: 'space-evenly',
+    },
+    box: {
+        alignItems: 'center',
+        alignContent: 'center',
+        justifyContent: 'center',
+    },
+    bigNum: {
+        fontSize: 35,
+    },
+    label: {
+
     },
   });
   
