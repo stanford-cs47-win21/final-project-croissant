@@ -5,7 +5,8 @@ import { StyleSheet,
     TouchableOpacity,
     View,
     Image,
-    ScrollView
+    ScrollView,
+    SectionList
 } from 'react-native';
 
 import keyStyles from '../../Styles/keyStyles';
@@ -15,6 +16,81 @@ import {StudioCard} from "../../Components/StudioCard";
 
 export default function StudioResults({route, navigation}) {
     const {username, status, message, timeLeft} = route.params.cardInfo;
+
+    // hardcoding the data for the sectionlist
+    const fanResults = [
+        {
+            title: "Fan Favorites",
+            data: [
+                {
+                    username: 'john_winston',
+                    status: null,
+                    message: 'Suggest oil-based recipes',
+                    timeLeft: null,
+                },
+                {
+                    username: 'george_h',
+                    status: null,
+                    message: 'Egg-based recipes',
+                    timeLeft: null,
+                },
+                {
+                    username: 'paul_walrus',
+                    status: null,
+                    message: 'Milk chocolate alternatives pleaseee',
+                    timeLeft: null,
+                },
+            ]
+        },
+        {
+            title: "Fan Controversial",
+            data: [
+                {
+                    username: 'john_winston',
+                    status: null,
+                    message: 'wooo',
+                    timeLeft: null,
+                },
+                {
+                    username: 'george_h',
+                    status: null,
+                    message: 'hi',
+                    timeLeft: null,
+                },
+                {
+                    username: 'paul_walrus',
+                    status: null,
+                    message: 'lol',
+                    timeLeft: null,
+                },
+            ]
+
+        },
+        {
+            title: "Most Representative",
+            data: [
+                {
+                    username: 'john_winston',
+                    status: null,
+                    message: 'yes',
+                    timeLeft: null,
+                },
+                {
+                    username: 'george_h',
+                    status: null,
+                    message: 'no',
+                    timeLeft: null,
+                },
+                {
+                    username: 'paul_walrus',
+                    status: null,
+                    message: 'ofcccc',
+                    timeLeft: null,
+                },
+            ]
+
+        },
+    ]
 
     return(
         <SafeAreaView style={styles.container}> 
@@ -30,7 +106,22 @@ export default function StudioResults({route, navigation}) {
                 }}
             />
 
-            <Title text="Fan Favorites" />
+
+            {/* TODO: SectionList, has some bugs to fix */}
+            <SectionList
+                sections={fanResults}
+                stickySectionHeadersEnabled={false}
+                keyExtractor={(item, index) => index.toString()}
+
+                renderSectionHeader={({section}) => {
+                    // Weird bug where <Title text={section.title} /> doesn't work because the text is wrapped in a view
+                    return <Text style={keyStyles.titleText1}> {section.title} </Text>
+                }}
+
+                renderItem={({item}) => {
+                    return <StudioCard cardInfo={item} />
+                }}
+            />
 
 
             {/* Button to create room */}

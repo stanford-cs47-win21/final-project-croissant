@@ -35,6 +35,7 @@ const keyStyles = {
     titleText1: {
         fontWeight: 'bold',
         fontSize: 24,
+        color: 'black',
     },
     centeredView: {
         // don't add height
