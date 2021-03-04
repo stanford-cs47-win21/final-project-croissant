@@ -29,9 +29,11 @@ const styles = StyleSheet.create({
       paddingRight: 4, 
     },
     username: {
-        fontSize: 12,
+        fontSize: 14,
+        textAlign: 'center'
     },
     rowContainer: {
-        flexDirection: 'row' // align text next to icon
+        flexDirection: 'row', // align text next to icon
+        justifyContent: 'center'
     },
   });

@@ -101,7 +101,9 @@ const styles = StyleSheet.create({
         alignContent: 'space-between',
         alignItems: 'center',
         justifyContent: 'space-between',
-        width: '90%',
+        width: '100%',
+        paddingLeft: '3%',
+        paddingRight: '5%'
     },
     badgeBrainstorm: {
         backgroundColor: '#FAC738',
