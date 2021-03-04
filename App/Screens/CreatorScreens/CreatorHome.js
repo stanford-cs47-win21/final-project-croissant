@@ -1,15 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import { StyleSheet, 
-    Text, 
     SafeAreaView,
-    TouchableOpacity,
     View,
-    Image,
-    Modal,
-    TouchableHighlight,
 } from 'react-native';
 
 import {StudioList} from "../../Components/StudioList";
+import {Header} from "../../Components/Header";
 
 import keyStyles from '../../Styles/keyStyles';
 
@@ -24,7 +20,7 @@ export default function CreatorHome({route, navigation}) {
             username: "rachel_f",
             status: "LIVE",
             message: "Woooo we are going live",
-            timeLeft: "doesn't matter",
+            timeLeft: "Join now",
         },
         {
             username: "rachel_f",
@@ -80,22 +76,10 @@ export default function CreatorHome({route, navigation}) {
 
     return(
         <SafeAreaView style={styles.container}> 
-            <View style={styles.topView}> 
-                <View style={styles.logoImage}> 
-                    <Image 
-                        source={require("../../Images/full-croissant-logo.png")}
-                        resizeMode="contain"
-                        style={{width: '50%'}}
-                    />
-                </View>
+ 
+            <Header studios={studios}/>
 
-                <TouchableOpacity 
-                    style={styles.profile}
-                    onPress = {() => navigation.navigate('Profile', {numStudios: studios.length -1})}
-                /> 
-            </View> 
-
-            <View style={styles.listView}> 
+            <View style={keyStyles.listView}> 
                 <StudioList 
                     studios={studios} 
                 />
@@ -113,36 +97,5 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: '#fff'
     },
-    topView: {
-      height: '10%',
-    //   backgroundColor: 'red',
-      alignItems: 'center',
-      justifyContent: 'center',
-      margin: 6,
-      width: '90%',
-      flexDirection: 'row'
-    },
-    listView: {
-        // backgroundColor: 'red',
-        height: '90%',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '100%',
-    },
-    logoImage: {
-        // resizeMode: 'contain',
-        alignItems: 'flex-start',
-        width: '85%',
-        flexDirection: 'row',
-        // backgroundColor: 'green',
-    },
-    profile: {
-        height: 50,
-        width: 50,
-        borderRadius: 25,
-        backgroundColor: '#e4e7eb',
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
   });
   

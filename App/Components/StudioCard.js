@@ -9,7 +9,7 @@ import { StyleSheet,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-export function StudioCard({cardInfo, staticCard = false}) {
+export function StudioCard({cardInfo, staticCard = false, fan = false}) {
 
     const {username, status, message, timeLeft} = cardInfo; 
 

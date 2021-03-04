@@ -43,7 +43,14 @@ const keyStyles = {
         alignItems: 'center',
         justifyContent: 'center',
         // backgroundColor: 'red'
-    }
+    },
+    listView: {
+        // backgroundColor: 'red',
+        height: '90%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
+    },
 }
 
 export default keyStyles

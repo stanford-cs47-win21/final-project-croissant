@@ -11,7 +11,7 @@ import CreateStudio from './CreatorScreens/CreateStudio';
 import StudioResults from './CreatorScreens/StudioResults';
 import CreateRoom from './CreatorScreens/CreateRoom';
 import Profile from './CreatorScreens/Profile';
-import LiveRoom from './CreatorScreens/LiveRoom';
+import LiveRoom from './GeneralScreens/LiveRoom';
 
 
 const Stack = createStackNavigator();
@@ -24,7 +24,7 @@ export default function Navigation() {
             <Stack.Navigator> 
                 <Stack.Screen name='ChooseFlow' component={ChooseFlow} options={{headerShown: false}}/>
                 <Stack.Screen name='CreatorHome' component={CreatorHome} options={{headerShown: false}}/>
-                <Stack.Screen name='FanHome' component={FanHome}/>
+                <Stack.Screen name='FanHome' component={FanHome} options={{headerShown: false}} />
                 <Stack.Screen name='CreateStudio' component={CreateStudio}/>
                 <Stack.Screen name='StudioResults' component={StudioResults}/>
                 <Stack.Screen name='CreateRoom' component={CreateRoom}/>
