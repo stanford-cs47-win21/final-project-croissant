@@ -8,6 +8,7 @@ import { StyleSheet,
     Dimensions
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import {PicAndUsername} from "./PicAndUsername";
 
 export function StudioCard({cardInfo, staticCard = false, fan = false}) {
 
@@ -57,8 +58,7 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
             > 
 
                 <View style={styles.topRow}> 
-                    <View style={styles.circle} />
-                    <Text style={styles.username}> {username} </Text> 
+                    <PicAndUsername userInfo={username} />  
                     <View style={determineStatus()}> 
                         <Text style={status === "LIVE" ? {color: 'red'} : {color: 'white'}}> {status}</Text>
                     </View>
@@ -100,17 +100,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignContent: 'space-between',
         alignItems: 'center',
-        justifyContent: 'space-around',
-        width: '100%',
-    },
-    circle: {
-      width: 24,
-      height: 24,
-      borderRadius: 24/2,
-      backgroundColor: 'red',
-    },
-    username: {
-        justifyContent: 'flex-start',
+        justifyContent: 'space-between',
+        width: '90%',
     },
     badgeBrainstorm: {
         backgroundColor: '#FAC738',
