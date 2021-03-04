@@ -4,7 +4,9 @@ import { StyleSheet,
     SafeAreaView,
     TouchableOpacity,
     View,
-    Image
+    Image,
+    Modal,
+    TouchableHighlight,
 } from 'react-native';
 
 import {StudioList} from "../../Components/StudioList";
@@ -14,6 +16,7 @@ import keyStyles from '../../Styles/keyStyles';
 
 export default function CreatorHome({route, navigation}) {
     const [studios, setStudios] = useState([]);
+    const [modalVisible, setModalVisible] = useState(false);
     
     // the 5 different types of hardcoded cards on the homepage initially
     const fakeNewsfeedData = [
@@ -88,10 +91,9 @@ export default function CreatorHome({route, navigation}) {
 
                 <TouchableOpacity 
                     style={styles.profile}
-                    onPress = {() => navigation.navigate('Profile')}
+                    onPress = {() => navigation.navigate('Profile', {numStudios: studios.length -1})}
                 /> 
             </View> 
-
 
             <View style={styles.listView}> 
                 <StudioList 

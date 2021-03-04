@@ -10,7 +10,7 @@ import { StyleSheet,
 import keyStyles from '../../Styles/keyStyles';
 
 
-export default function Profile({navigation}) {
+export default function Profile({route, navigation}) {
 
 
     return(
@@ -18,6 +18,20 @@ export default function Profile({navigation}) {
 
             <View> 
                 <Text> Rachel Finn </Text>
+                <Text> @rachel_f </Text>
+            </View> 
+
+            <View> 
+                <View style={styles.profItem}> 
+                    <Text> Your Studios </Text>
+                    <Text> {route.params && route.params.numStudios} </Text>
+                </View>
+
+                <View style={styles.profItem}> 
+                    <Text> Followers </Text>
+                    <Text> 467 </Text>
+                </View>
+                
             </View> 
         
         </SafeAreaView>
@@ -33,5 +47,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         height: '100%',
     },
+    profItem: {
+        width: '80%',
+        height: 40,
+        justifyContent: 'space-evenly',
+        flexDirection: 'row',
+        // backgroundColor: 'red',
+        alignItems: 'center',
+    }
   });
   

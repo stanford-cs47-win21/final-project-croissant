@@ -7,6 +7,7 @@ import { StyleSheet,
     Image,
     TextInput,
     Keyboard,
+    // Picker
 } from 'react-native';
 
 import keyStyles from '../../Styles/keyStyles';
@@ -17,6 +18,7 @@ import {Title} from '../../Components/Title';
 // TODO: Weird serializable warning because you can't pass callback functions in the route params lmao
 export default function CreateStudio({navigation}) {
     const [prompt, setPrompt] = useState("");
+    const [brainstormTime, setBrainstormTime] = useState('1 hour');
 
  
     return(
@@ -43,10 +45,11 @@ export default function CreateStudio({navigation}) {
 
             <View style={styles.timeLimit}> 
                 <Text> Brainstorming Time limit </Text>
+                {/* Picker is broken so need to find alternative */}
             </View>
 
             <View style={styles.timeLimit}> 
-                <Text> Brainstorming Time limit </Text>
+                <Text> Ranking Time limit </Text>
             </View>
 
             <View style={keyStyles.centeredView}> 
