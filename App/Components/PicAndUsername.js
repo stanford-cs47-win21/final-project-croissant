@@ -8,13 +8,13 @@ import { StyleSheet,
     Dimensions
 } from 'react-native';
 
-export function PicAndUsername(userInfo) {
-    const username = userInfo; 
-
+export function PicAndUsername({userInfo}) {
+    // TODO: Add picture to userInfo
+    const username = userInfo; // to be able to use as prop
     return (
         <View style={styles.rowContainer}>
         <View style={styles.profileCircle} />
-        <Text style={styles.username}> username </Text> 
+        <Text style={styles.username}> {username} </Text> 
         </View>
     );
 }
