@@ -21,6 +21,13 @@ export default function FanHome({route, navigation}) {
         setStudios(fakeNewsfeedData);
     }, []);
 
+    // Initialize studios state upon component mounting
+    useEffect( () => {
+        if (route.params?.followedRachel) {
+            setIsFollowingRachel(route.params.followedRachel);
+        }
+    }, [route.params?.followedRachel]);
+
     const fakeNewsfeedData = [
         {
             username: "rachel_f",

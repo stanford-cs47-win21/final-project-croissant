@@ -26,7 +26,15 @@ export function Header({fan=false, studios=null}) {
             </View>
 
             <View style={styles.rightSide}> 
-                {fan ? <AntDesign name="search1" size={30} color="black" /> : null}
+                {fan ? 
+                    <TouchableOpacity
+                        onPress = {() => {navigation.navigate('FindRachel')}} 
+                    > 
+                        <AntDesign name="search1" size={30} color="black" /> 
+                    </TouchableOpacity>
+                : 
+                    null
+                }
 
                 <TouchableOpacity 
                     style={styles.profile}
@@ -63,7 +71,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'flex-start',
         // backgroundColor: 'green',
-        // height: '100%'
+        // height: '100%' // idk why this messes it up
     },
     profile: {
         height: 50,
