@@ -1,18 +1,21 @@
 import {Dimensions} from 'react-native';
 // TODO: import typography for lato?
 
-const DEFAULT_BORDER_RADIUS = 20;
-const PRIMARY_COLOR = "#FAC738"; 
-
 const keyStyles = {
+    DEFAULT_BORDER_RADIUS: 20,
+    PRIMARY_COLOR: "#FAC738",
+    SECONDARY_COLOR: "#FFF8E0",
+
+
     button1: {
         margin: 10,
-        borderRadius: DEFAULT_BORDER_RADIUS,
+        borderRadius: 20,
         width: Dimensions.get('window').width * .5,
-        backgroundColor: PRIMARY_COLOR,
+        backgroundColor: "#FAC738",
         width: 206,
         height: 53,
-        justifyContent: 'center'
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     button1text: {
         color: 'black',
