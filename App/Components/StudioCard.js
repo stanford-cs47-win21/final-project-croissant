@@ -57,7 +57,8 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
             > 
 
                 <View style={styles.topRow}> 
-                    <Text > {username} </Text> 
+                    <View style={styles.circle} />
+                    <Text style={styles.username}> {username} </Text> 
                     <View style={determineStatus()}> 
                         <Text style={status === "LIVE" ? {color: 'red'} : {color: 'white'}}> {status}</Text>
                     </View>
@@ -101,6 +102,15 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-around',
         width: '100%',
+    },
+    circle: {
+      width: 24,
+      height: 24,
+      borderRadius: 24/2,
+      backgroundColor: 'red',
+    },
+    username: {
+        justifyContent: 'flex-start',
     },
     badgeBrainstorm: {
         backgroundColor: '#FAC738',
