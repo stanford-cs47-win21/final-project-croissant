@@ -61,7 +61,7 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                 <View style={styles.topRow}> 
                     <PicAndUsername userInfo={username} />  
                     <View style={determineStatus()}> 
-                        {status === "LIVE" ? <LiveSymbol /> : <Text style={styles.badgeText}> {status}</Text>}
+                        {status != "LIVE" && <Text style={styles.badgeText}> {status}</Text>}
                     </View>
                 </View>
 
@@ -69,9 +69,16 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                     <Text > {message} </Text> 
                 </View>
 
-                <View style={styles.timeBox}> 
-                    <Text style={styles.timeText}> {timeLeft} </Text> 
-                </View>
+                    {status != "LIVE" && 
+                        <View style={[styles.bottomBox, {justifyContent: 'flex-start'}]}>
+                        <Text style={styles.timeText}> {timeLeft} </Text>
+                        </View>
+                    }
+                    {status == "LIVE" && 
+                            <View style={[styles.bottomBox, {justifyContent: 'flex-end'}]}>
+                            <LiveSymbol />
+                            </View>
+                    }
             </TouchableOpacity>
         );
     }
@@ -141,7 +148,7 @@ const styles = StyleSheet.create({
     badgeText: {
         color: 'white',
         fontWeight: 'bold',
-        fontSize: 11
+        fontSize: 12
     },
     middleBox: {
         backgroundColor: '#FFFEFA',
@@ -151,7 +158,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         flexDirection: 'row'
     },
-    timeBox: {
+    bottomBox: {
         flexDirection: 'row',
         width: '90%',
         justifyContent: 'flex-start',
