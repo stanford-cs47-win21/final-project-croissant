@@ -47,7 +47,7 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                 </View>
 
                 <View style={styles.middleBox}> 
-                    <Text > {message} </Text> 
+                    <Text >{message}</Text> 
                 </View>
             </View>
         );
@@ -66,7 +66,7 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                 </View>
 
                 <View style={styles.middleBox}> 
-                    <Text > {message} </Text> 
+                    <Text style={styles.messageText}>{message}</Text> 
                 </View>
 
                     {status != "LIVE" && 
@@ -155,20 +155,22 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFEFA',
         width: '93.7%',
         height: '60%',
-        alignItems: 'center',
         justifyContent: 'flex-start',
         flexDirection: 'row',
         padding: 10
     },
     bottomBox: {
         flexDirection: 'row',
-        width: '90%',
+        width: '93.7%',
         justifyContent: 'flex-start',
     },
     timeText: {
         fontSize: 12,
         color: "#645F5C",
         textTransform: 'uppercase'
+    },
+    messageText: {
+        fontSize: 14,
     },
     
   });
