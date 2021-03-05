@@ -60,7 +60,7 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                 <View style={styles.topRow}> 
                     <PicAndUsername userInfo={username} />  
                     <View style={determineStatus()}> 
-                        <Text style={status === "LIVE" ? {color: 'red'} : {color: 'white'}}> {status}</Text>
+                        <Text style={status === "LIVE" ? styles.liveText : styles.badgeText}> {status}</Text>
                     </View>
                 </View>
 
@@ -131,6 +131,16 @@ const styles = StyleSheet.create({
     },
     badgeLive: {
 
+    },
+    liveText: {
+        color: 'red',
+        fontWeight: 'bold',
+        fontSize: 11
+    },
+    badgeText: {
+        color: 'white',
+        fontWeight: 'bold',
+        fontSize: 11
     },
     middleBox: {
         backgroundColor: '#FFFEFA',
