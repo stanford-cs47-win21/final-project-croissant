@@ -9,6 +9,7 @@ import { StyleSheet,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {PicAndUsername} from "./PicAndUsername";
+import { LiveSymbol } from "./LiveSymbol";
 
 export function StudioCard({cardInfo, staticCard = false, fan = false}) {
 
@@ -60,7 +61,7 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                 <View style={styles.topRow}> 
                     <PicAndUsername userInfo={username} />  
                     <View style={determineStatus()}> 
-                        <Text style={status === "LIVE" ? {color: 'red'} : {color: 'white'}}> {status}</Text>
+                        {status != "LIVE" && <Text style={styles.badgeText}> {status}</Text>}
                     </View>
                 </View>
 
@@ -68,9 +69,16 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                     <Text > {message} </Text> 
                 </View>
 
-                <View style={styles.timeBox}> 
-                    <Text style={styles.timeText}> {timeLeft} </Text> 
-                </View>
+                    {status != "LIVE" && 
+                        <View style={[styles.bottomBox, {justifyContent: 'flex-start'}]}>
+                        <Text style={styles.timeText}> {timeLeft} </Text>
+                        </View>
+                    }
+                    {status == "LIVE" && 
+                            <View style={[styles.bottomBox, {justifyContent: 'flex-end'}]}>
+                            <LiveSymbol />
+                            </View>
+                    }
             </TouchableOpacity>
         );
     }
@@ -110,31 +118,49 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         padding: 3, 
         margin: 1,
+        width: 130,
+        alignItems: 'center'
     },
     badgeRanking: {
         backgroundColor: "#F9900E",
         borderRadius: 50,
         padding: 3, 
         margin: 1,
+        width: 130,
+        alignItems: 'center'
     },
     badgeResults: {
         backgroundColor: "#B9480B",
         borderRadius: 50,
         padding: 3, 
         margin: 1,
+        width: 130,
+        alignItems: 'center'
     },
     badgeLive: {
 
     },
+    liveText: {
+        color: 'red',
+        fontWeight: 'bold',
+        fontSize: 11
+    },
+    badgeText: {
+        color: 'white',
+        fontWeight: 'bold',
+        fontSize: 12,
+        textTransform: 'uppercase'
+    },
     middleBox: {
         backgroundColor: '#FFFEFA',
-        width: '90%',
+        width: '93.7%',
         height: '60%',
         alignItems: 'center',
         justifyContent: 'flex-start',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        padding: 10
     },
-    timeBox: {
+    bottomBox: {
         flexDirection: 'row',
         width: '90%',
         justifyContent: 'flex-start',
@@ -142,6 +168,7 @@ const styles = StyleSheet.create({
     timeText: {
         fontSize: 12,
         color: "#645F5C",
+        textTransform: 'uppercase'
     },
     
   });
