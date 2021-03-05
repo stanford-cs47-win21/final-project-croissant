@@ -110,8 +110,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         width: '100%',
-        paddingLeft: '3%',
-        paddingRight: '5%'
+        paddingLeft: '2%',
+        paddingRight: '3.15%'
     },
     badgeBrainstorm: {
         backgroundColor: '#FAC738',
