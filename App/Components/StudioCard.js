@@ -110,18 +110,24 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         padding: 3, 
         margin: 1,
+        width: 130,
+        alignItems: 'center'
     },
     badgeRanking: {
         backgroundColor: "#F9900E",
         borderRadius: 50,
         padding: 3, 
         margin: 1,
+        width: 130,
+        alignItems: 'center'
     },
     badgeResults: {
         backgroundColor: "#B9480B",
         borderRadius: 50,
         padding: 3, 
         margin: 1,
+        width: 130,
+        alignItems: 'center'
     },
     badgeLive: {
 
