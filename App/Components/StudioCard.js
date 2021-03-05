@@ -148,15 +148,17 @@ const styles = StyleSheet.create({
     badgeText: {
         color: 'white',
         fontWeight: 'bold',
-        fontSize: 12
+        fontSize: 12,
+        textTransform: 'uppercase'
     },
     middleBox: {
         backgroundColor: '#FFFEFA',
-        width: '90%',
+        width: '93.7%',
         height: '60%',
         alignItems: 'center',
         justifyContent: 'flex-start',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        padding: 10
     },
     bottomBox: {
         flexDirection: 'row',
@@ -166,6 +168,7 @@ const styles = StyleSheet.create({
     timeText: {
         fontSize: 12,
         color: "#645F5C",
+        textTransform: 'uppercase'
     },
     
   });
