@@ -88,7 +88,6 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
 const styles = StyleSheet.create({
     outer: {
         width: Dimensions.get('window').width * .9,
-        height: Dimensions.get('window').height * .16, 
         backgroundColor: '#FFF8E0',
         alignItems: 'center',
         justifyContent: 'space-evenly',
@@ -97,7 +96,6 @@ const styles = StyleSheet.create({
     },
     outerStatic: {
         width: Dimensions.get('window').width * .9,
-        height: Dimensions.get('window').height * .16, 
         backgroundColor: '#F2F2F2',
         alignItems: 'center',
         justifyContent: 'space-evenly',
@@ -111,13 +109,13 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         width: '100%',
         paddingLeft: '2%',
-        paddingRight: '3.15%'
+        paddingRight: '3.15%',
+        height: 35
     },
     badgeBrainstorm: {
         backgroundColor: '#FAC738',
         borderRadius: 50,
         padding: 3, 
-        margin: 1,
         width: 130,
         alignItems: 'center'
     },
@@ -125,7 +123,6 @@ const styles = StyleSheet.create({
         backgroundColor: "#F9900E",
         borderRadius: 50,
         padding: 3, 
-        margin: 1,
         width: 130,
         alignItems: 'center'
     },
@@ -133,7 +130,6 @@ const styles = StyleSheet.create({
         backgroundColor: "#B9480B",
         borderRadius: 50,
         padding: 3, 
-        margin: 1,
         width: 130,
         alignItems: 'center'
     },
@@ -154,15 +150,17 @@ const styles = StyleSheet.create({
     middleBox: {
         backgroundColor: '#FFFEFA',
         width: '93.7%',
-        height: '60%',
         justifyContent: 'flex-start',
+        alignItems: 'center',
         flexDirection: 'row',
         padding: 10
     },
     bottomBox: {
         flexDirection: 'row',
         width: '93.7%',
+        height: 30,
         justifyContent: 'flex-start',
+        alignItems: 'center'
     },
     timeText: {
         fontSize: 12,
@@ -170,7 +168,9 @@ const styles = StyleSheet.create({
         textTransform: 'uppercase'
     },
     messageText: {
-        fontSize: 14,
+        fontSize: 16,
+        paddingTop: 10,
+        paddingBottom: 10,
     },
     
   });
