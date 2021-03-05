@@ -9,6 +9,7 @@ import { StyleSheet,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {PicAndUsername} from "./PicAndUsername";
+import { LiveSymbol } from "./LiveSymbol";
 
 export function StudioCard({cardInfo, staticCard = false, fan = false}) {
 
@@ -60,7 +61,7 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                 <View style={styles.topRow}> 
                     <PicAndUsername userInfo={username} />  
                     <View style={determineStatus()}> 
-                        <Text style={status === "LIVE" ? styles.liveText : styles.badgeText}> {status}</Text>
+                        {status === "LIVE" ? <LiveSymbol /> : <Text style={styles.badgeText}> {status}</Text>}
                     </View>
                 </View>
 

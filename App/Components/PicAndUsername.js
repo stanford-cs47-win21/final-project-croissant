@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
       height: 20,
       borderRadius: 20/2,
       backgroundColor: '#979797',
-      paddingRight: 4, 
     },
     username: {
         fontSize: 14,
