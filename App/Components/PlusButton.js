@@ -29,7 +29,7 @@ export function PlusButton() {
 const styles = StyleSheet.create({
     plusView: {
         width: Dimensions.get('window').width * .9,
-        height: Dimensions.get('window').height * .14, 
+        height: 118, 
         alignItems: 'center',
         justifyContent: 'center',
         margin: 8,
