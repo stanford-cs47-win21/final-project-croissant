@@ -11,6 +11,8 @@ import StudioResults from './CreatorScreens/StudioResults';
 import CreateRoom from './CreatorScreens/CreateRoom';
 import Profile from './CreatorScreens/Profile';
 import LiveRoom from './GeneralScreens/LiveRoom';
+import CreatorOnboarding from './CreatorScreens/CreatorOnboarding';
+import Welcome from './Welcome';
 
 import FanHome from './FanScreens/FanHome';
 import FindRachel from './FanScreens/FindRachel';
@@ -25,6 +27,8 @@ export default function Navigation() {
         <NavigationContainer> 
             <Stack.Navigator> 
                 <Stack.Screen name='ChooseFlow' component={ChooseFlow} options={{headerShown: false}}/>
+                <Stack.Screen name='Welcome' component={Welcome}/>
+                <Stack.Screen name='CreatorOnboarding' component={CreatorOnboarding}/>
                 <Stack.Screen name='CreatorHome' component={CreatorHome} options={{headerShown: false}}/>
                 <Stack.Screen name='FanHome' component={FanHome} options={{headerShown: false}} />
                 <Stack.Screen name='CreateStudio' component={CreateStudio}/>
