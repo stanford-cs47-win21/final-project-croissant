@@ -14,10 +14,10 @@ const FONT_SIZE = 16;
 
 export function UpcomingStudio({alertInfo}) {
 
-    const {username, time, date} = alertInfo; 
+    const {numParticipants, time, date} = alertInfo; 
     return(
         <View style={styles.outer}> 
-            <Text style={styles.reminderText}>Upcoming room with {username}</Text> 
+            <Text style={styles.reminderText}>Upcoming room with {numParticipants} fans</Text> 
             <View style={styles.bottomBox}>
                 <View style={styles.iconTextContainer}>
                     <Image 

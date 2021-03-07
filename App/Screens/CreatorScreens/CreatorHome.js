@@ -81,7 +81,7 @@ export default function CreatorHome({route, navigation}) {
             <Header studios={studios}/>
 
             <View style={keyStyles.listView}> 
-                <UpcomingStudio alertInfo={{username:"rachel_f", time:"9:30 PM PT", date:"Feb 29"}}/>
+                <UpcomingStudio alertInfo={{numParticipants:2, time:"9:30 PM PT", date:"Feb 29"}}/>
                 <StudioList 
                     studios={studios} 
                 />
