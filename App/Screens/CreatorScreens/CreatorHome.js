@@ -8,6 +8,7 @@ import {StudioList} from "../../Components/StudioList";
 import {Header} from "../../Components/Header";
 
 import keyStyles from '../../Styles/keyStyles';
+import {UpcomingStudio} from "../../Components/UpcomingStudio"
 
 
 export default function CreatorHome({route, navigation}) {
@@ -80,6 +81,7 @@ export default function CreatorHome({route, navigation}) {
             <Header studios={studios}/>
 
             <View style={keyStyles.listView}> 
+                <UpcomingStudio alertInfo={{numParticipants:2, time:"9:30 PM PT", date:"Feb 29"}}/>
                 <StudioList 
                     studios={studios} 
                 />
