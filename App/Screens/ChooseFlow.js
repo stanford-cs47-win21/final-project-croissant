@@ -21,7 +21,7 @@ export default function ChooseFlow({navigation}) {
             <View style={styles.loginButtons}> 
                 <TouchableOpacity
                     style={keyStyles.button1} 
-                    onPress = { () => navigation.navigate('CreatorHome')}
+                    onPress = { () => navigation.navigate('Welcome')}
                 >
                     <Text style={keyStyles.button1text}> Login As Creator </Text>
                 </TouchableOpacity>
