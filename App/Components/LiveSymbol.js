@@ -11,8 +11,8 @@ import { StyleSheet,
 export function LiveSymbol() {
     return (
         <View style={styles.rowContainer}>
-        <View style={styles.liveCircle} />
-        <Text style={styles.liveText}>LIVE</Text> 
+            <View style={styles.liveCircle} />
+            <Text style={styles.liveText}>LIVE</Text> 
         </View>
     );
 }
