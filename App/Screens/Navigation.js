@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -22,10 +22,30 @@ const Stack = createStackNavigator();
 
 // TODO: Fix Navigation / Chooose Flow interactions to store creator vs. user in the route. 
 // TODO: Create Nested Navigation / conditional navigation based on creator vs. user in order to disable access (but not super imp for prototype)
+//
+//
+
+function LogoTitle() {
+    return(
+        <Image
+            style={{ width: 47, resizeMode: 'contain'}}
+            source={require("../Images/croissant-only.png")}
+        />
+    );
+}
+
 export default function Navigation() {
     return(
         <NavigationContainer> 
-            <Stack.Navigator> 
+            <Stack.Navigator
+                screenOptions={{
+                    headerTintColor: '#828282',
+                    headerTitle: props => <LogoTitle {...props} />,
+                    headerStyle: {
+                        shadowColor: 'transparent'
+                    }
+                }}
+            > 
                 <Stack.Screen name='ChooseFlow' component={ChooseFlow} options={{headerShown: false}}/>
                 <Stack.Screen name='Welcome' component={Welcome}/>
                 <Stack.Screen name='CreatorOnboarding' component={CreatorOnboarding}/>
