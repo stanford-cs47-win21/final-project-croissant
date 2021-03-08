@@ -5,7 +5,7 @@ import { StyleSheet,
     TouchableOpacity,
     View,
     Image,
-    ScrollView
+    Dimensions
 } from 'react-native';
 
 import keyStyles from '../../Styles/keyStyles';
@@ -19,6 +19,7 @@ import {LivePicUsername} from "../../Components/LivePicUsername";
 export default function LiveRoom({route, navigation}) {
     const {username, status, message, timeLeft} = route.params.cardInfo;
     const [isMuted, setMuted] = useState(false);
+    const [isLive, setLive] = useState(false);
 
     return(
         <SafeAreaView style={styles.container}> 
@@ -35,9 +36,16 @@ export default function LiveRoom({route, navigation}) {
             </View>
 
             {/* Live symbol */}
-            <View style={styles.liveSymb}> 
-                <LiveSymbol/>
-            </View>
+            {
+                !isLive ? 
+                <Title text="Your Guests"/> 
+                : 
+                <View style={styles.liveSymb}> 
+                    <LiveSymbol/>
+                </View>
+
+            }
+            
 
             {/* Users */}
             <View style={styles.sixUsers}> 
@@ -56,6 +64,7 @@ export default function LiveRoom({route, navigation}) {
 
 
             {/* Row of icons. TODO: REPLACE ICONS idk where they are from */}
+            { isLive ? 
             <View style={styles.configRow}>
                 <View style={styles.iconTextContainer}>
                     <Image 
@@ -94,14 +103,20 @@ export default function LiveRoom({route, navigation}) {
                 </View>
             </View>
 
+            : <View style={styles.configRow} />}
+
 
             {/* Button at bottom */}
-            <View style={styles.button}> 
+            <View style={styles.buttonView}> 
                 <TouchableOpacity
-                    style={keyStyles.button1} 
-                    onPress = { () => navigation.goBack()}
+                    style={styles.buttonStyle} 
+                    onPress = { () => {
+                        setLive(!isLive);
+                        // if (isLive) navigation.goBack();
+                        // else setLive(true);
+                    }}
                 >
-                    <Text style={keyStyles.button1text}> END ROOM </Text>
+                    <Text style={keyStyles.button1text}> {isLive ? 'END ROOM' : 'BEGIN LIVE ROOM' } </Text>
                 </TouchableOpacity>
             </View>
 
@@ -130,7 +145,7 @@ const styles = StyleSheet.create({
     liveSymb: {
         alignItems: 'flex-start', 
         width: '80%', 
-        height: '5%', 
+        height: '10%', 
         justifyContent: 'center',
         // backgroundColor: "red"
     },
@@ -146,14 +161,14 @@ const styles = StyleSheet.create({
     },
     configRow: {
         flexDirection: 'row',
-        width: '90%',
+        width: '100%',
         height: '20%',
         justifyContent: 'space-around',
         alignItems: 'center',
         marginTop: 10,
         // backgroundColor: 'red',
     },
-    button: {
+    buttonView: {
         // don't add height
         height: '10%',
         width: '90%',
@@ -161,19 +176,31 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
         // backgroundColor: 'red'
     },
+    buttonStyle: {
+        margin: 10,
+        borderRadius: 20,
+        width: Dimensions.get('window').width * .5,
+        backgroundColor: "#FAC738",
+        width: '90%',
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
     iconTextContainer: {
         flexDirection: 'column',
         alignItems: 'center',
+        width: '33%',
     },
     icon: {
         resizeMode: 'contain',
-        width: 40,
+        width: '40%',
         aspectRatio: 1,
         height: undefined,
+        // backgroundColor: 'red'
     },
     mutedIcon: {
         resizeMode: 'contain',
-        width: 40,
+        width: '40%',
         aspectRatio: 1,
         height: undefined,
         borderRadius: 10,
