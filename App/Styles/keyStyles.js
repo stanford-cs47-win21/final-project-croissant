@@ -5,6 +5,7 @@ const keyStyles = {
     DEFAULT_BORDER_RADIUS: 20,
     PRIMARY_COLOR: "#FAC738",
     SECONDARY_COLOR: "#FFF8E0",
+    // const ICON_SIZE: 24,
 
 
     button1: {
