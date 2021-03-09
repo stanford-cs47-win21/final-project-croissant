@@ -40,7 +40,7 @@ export function Header({fan=false, studios=null}) {
                     style={styles.profile}
                     onPress = {() => {
                         if (!fan) navigation.navigate('Profile', {numStudios: studios.length -1});
-                        else navigation.navigate('FanProfile')
+                        else navigation.navigate('FanProfile');
                     }}
                 /> 
             </View> 

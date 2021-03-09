@@ -9,6 +9,11 @@ import { StyleSheet,
 
 import keyStyles from '../../Styles/keyStyles';
 import {FollowerItem} from "../../Components/FollowerItem";
+import { Ionicons } from '@expo/vector-icons';
+
+import firestore from '../../../firebase';
+import firebase from 'firebase';
+
 
 
 export default function FanProfile({route, navigation}) {
@@ -36,6 +41,19 @@ export default function FanProfile({route, navigation}) {
                 <FollowerItem username="rachel_f" genre="BAKING"/>
                 
             </View> 
+
+            <TouchableOpacity style={keyStyles.button1}
+                onPress={() => {
+                    firebase.auth().signOut()
+                    .then(() => navigation.navigate('ChooseFlow'))
+                    .catch(console.err);
+                }}
+            >
+                <View style={{flexDirection: 'row', alignItems: 'center'}} > 
+                    <Ionicons name='exit-outline' size={24} color='white' style={{marginRight: 10}} />
+                    <Text style={keyStyles.button1text}>Log out</Text>
+                </View>
+            </TouchableOpacity>
         
         </SafeAreaView>
     );

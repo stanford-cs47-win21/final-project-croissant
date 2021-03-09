@@ -61,7 +61,6 @@ export default function SignUp({route, navigation, ...props}) {
             <TextInput
                 style={styles.input}
                 value={signUpUsername}
-                secureTextEntry={true}
                 onChangeText={(signUpUsername) => setSignUpUsername(signUpUsername)}
                 placeholder="USERNAME" 
             />

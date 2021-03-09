@@ -19,6 +19,7 @@ import FindRachel from './FanScreens/FindRachel';
 import SignUp from './FanScreens/SignUp';
 import FanRanking from './FanScreens/FanRanking';
 import FanProfile from './FanScreens/FanProfile';
+import Login from './FanScreens/Login';
 
 
 
@@ -64,7 +65,7 @@ export default function Navigation() {
                 <Stack.Screen name='SignUp' component={SignUp}/>
                 <Stack.Screen name='FanRanking' component={FanRanking}/>
                 <Stack.Screen name='FanProfile' component={FanProfile}/>
-
+                <Stack.Screen name='Login' component={Login}/>
 
             </Stack.Navigator>
         </NavigationContainer>
