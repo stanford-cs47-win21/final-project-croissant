@@ -14,6 +14,8 @@ import keyStyles from '../../Styles/keyStyles';
 import {Header} from '../../Components/Header';
 import {FollowerItem} from '../../Components/FollowerItem';
 
+import firestore from '../../../firebase';
+import firebase from 'firebase';
 
 export default function FindRachel({route, navigation}) {
     const [searchText, setSearchText] = useState("");
@@ -33,7 +35,7 @@ export default function FindRachel({route, navigation}) {
     ];
 
     // Filter FlatList data by searchtext
-    const searchCreatorList = () => {
+    const searchCreatorList = () => {  
         if (searchText) {
             var filtered = creatorList.filter(function (creator) {
                 return (creator.username.toLowerCase().includes(searchText.toLowerCase()));
@@ -54,7 +56,6 @@ export default function FindRachel({route, navigation}) {
                     placeholderTextColor='grey'
                     style={styles.searchField}
                     onSubmitEditing={ () => {
-                        Keyboard.dismiss(); 
                         searchCreatorList(); 
                         setSearchText('');}
                     }
@@ -72,7 +73,7 @@ export default function FindRachel({route, navigation}) {
                                 <FollowerItem
                                     username={item.username}
                                     genre={item.genre} 
-                                    followButton={true}
+                                    // followButton={true}
                                     setFollowedRachel={setFollowedRachel}
                                 />
                             );

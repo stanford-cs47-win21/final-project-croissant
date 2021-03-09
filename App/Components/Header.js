@@ -39,7 +39,8 @@ export function Header({fan=false, studios=null}) {
                 <TouchableOpacity 
                     style={styles.profile}
                     onPress = {() => {
-                        if (!fan) navigation.navigate('Profile', {numStudios: studios.length -1})
+                        if (!fan) navigation.navigate('Profile', {numStudios: studios.length -1});
+                        else navigation.navigate('FanProfile')
                     }}
                 /> 
             </View> 
