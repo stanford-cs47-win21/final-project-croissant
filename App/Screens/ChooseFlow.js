@@ -18,7 +18,7 @@ export default function ChooseFlow({navigation}) {
                 <Text style={keyStyles.croissantHeader}> croissant </Text> 
             </View>
             
-            <View style={styles.loginButtons}> 
+            <View style={{alignItems: 'center'}}> 
                 <TouchableOpacity
                     style={keyStyles.button1} 
                     onPress = { () => navigation.navigate('Welcome')}
@@ -32,6 +32,13 @@ export default function ChooseFlow({navigation}) {
                 >
                     <Text style={keyStyles.button1text}> Login As Fan </Text>
                 </TouchableOpacity>
+
+                <TouchableOpacity
+                    onPress = { () => navigation.navigate('SignUp')}
+                >
+                    <Text style={{textDecorationLine: 'underline', marginTop: 15}}> Create an Account </Text>
+                </TouchableOpacity>
+
             </View>
         </SafeAreaView>
     );
