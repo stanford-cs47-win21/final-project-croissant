@@ -16,6 +16,11 @@ import Welcome from './Welcome';
 
 import FanHome from './FanScreens/FanHome';
 import FindRachel from './FanScreens/FindRachel';
+import SignUp from './FanScreens/SignUp';
+import FanRanking from './FanScreens/FanRanking';
+import FanProfile from './FanScreens/FanProfile';
+import Login from './FanScreens/Login';
+
 
 
 const Stack = createStackNavigator();
@@ -57,6 +62,11 @@ export default function Navigation() {
                 <Stack.Screen name='Profile' component={Profile}/>
                 <Stack.Screen name='LiveRoom' component={LiveRoom}/>
                 <Stack.Screen name='FindRachel' component={FindRachel}/>
+                <Stack.Screen name='SignUp' component={SignUp}/>
+                <Stack.Screen name='FanRanking' component={FanRanking}/>
+                <Stack.Screen name='FanProfile' component={FanProfile}/>
+                <Stack.Screen name='Login' component={Login}/>
+
             </Stack.Navigator>
         </NavigationContainer>
     );
