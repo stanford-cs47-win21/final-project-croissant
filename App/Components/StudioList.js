@@ -11,13 +11,13 @@ import { StyleSheet,
 import {StudioCard} from "./StudioCard";
 import {PlusButton} from "./PlusButton";
 
-export function StudioList(props) {
+export function StudioList({fan=false, ...props}) {
     const studios = props.studios;
 
     const renderStudioCard = ({index, item}) => {
         if (index === studios.length - 1) {
             return <PlusButton /> 
-        } else return <StudioCard cardInfo={item}/>
+        } else return <StudioCard cardInfo={item} fan={fan}/>
     } 
 
     return (

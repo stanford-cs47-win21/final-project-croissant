@@ -11,22 +11,61 @@ import keyStyles from '../../Styles/keyStyles';
 import {Header} from '../../Components/Header';
 import {StudioList} from '../../Components/StudioList';
 
+import firestore from '../../../firebase';
+import firebase from 'firebase';
+
 
 export default function FanHome({route, navigation}) {
     const [studios, setStudios] = useState([]);
     const [isFollowingRachel, setIsFollowingRachel] = useState(false);
 
-    // Initialize studios state upon component mounting
-    useEffect( () => {
-        setStudios(fakeNewsfeedData);
-    }, []);
+     // get changes to user state from firebase
+     const reloadUser = async () => {
+        try {
+            const user = firebase.auth().currentUser;
+            let userRef = firestore.doc('users/' + user.uid);
+            let userSnapshot = await userRef.get();  
+            let userdata = userSnapshot.data();
+            setIsFollowingRachel(userdata.isFollowingRachel);
+        } catch (error) {
+            console.log(error);
+        }
+        return ([]);
+    }
 
     // Initialize studios state upon component mounting
     useEffect( () => {
-        if (route.params?.followedRachel) {
-            setIsFollowingRachel(route.params.followedRachel);
-        }
-    }, [route.params?.followedRachel]);
+        setStudios(fakeNewsfeedData);
+
+        // Display studios based on if Following Rachel
+        const user = firebase.auth().currentUser;
+        let userRef = firestore.doc('users/' + user.uid);
+        reloadUser();
+
+        // listen for changes to if user's following rachel
+        let unsubscribe = userRef.onSnapshot(() => {
+            reloadUser();
+        });
+
+        return () => { unsubscribe()}
+
+    }, []);
+
+   
+
+
+
+    // Change state when we start following rachel
+    // useEffect( () => {
+    //     if (route.params?.followedRachel) {
+    //         setIsFollowingRachel(route.params.followedRachel);
+    //     }
+    // }, [route.params?.followedRachel]);
+    // useEffect( () => {
+    //     if (route.params?.followedRachel) {
+    //         setIsFollowingRachel(route.params.followedRachel);
+    //     }
+    // }, [route.params?.followedRachel]);
 
     const fakeNewsfeedData = [
         {
@@ -65,7 +104,7 @@ export default function FanHome({route, navigation}) {
 
             <View style={keyStyles.listView}> 
                 {isFollowingRachel ? 
-                    <StudioList studios={studios}/>
+                    <StudioList studios={studios} fan={true}/>
                 :
                     <Text> Press search </Text>
                 }

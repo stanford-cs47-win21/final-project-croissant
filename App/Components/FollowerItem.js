@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { StyleSheet, 
     Text, 
     SafeAreaView,
@@ -11,10 +11,38 @@ import { StyleSheet,
 import keyStyles from '../Styles/keyStyles';
 import { useNavigation } from '@react-navigation/native';
 
+import firestore from '../../firebase';
+import firebase from 'firebase';
 
 export function FollowerItem({username, genre=null, followButton=null, ...props}) {
     const navigation = useNavigation();
     const [followButtonPressed, setFollowedButtonPressed] = useState(false);
+
+    
+
+    // Determine should the rachel_f follower item be pressed?
+    useEffect( () => {
+        const user = firebase.auth().currentUser;
+        let userRef = firestore.doc('users/' + user.uid);
+        const getUserDoc = async(userRef) => {
+            let userDoc = await userRef.get();
+            if (userDoc.exists) setFollowedButtonPressed(userDoc.data().isFollowingRachel);
+        }
+        getUserDoc(userRef);    
+    }, [])
+
+
+    useEffect( () => {
+        const user = firebase.auth().currentUser;
+        let userRef = firestore.doc('users/' + user.uid);
+        const updateUser = async (userRef) => {
+            await userRef.update({
+                isFollowingRachel: followButtonPressed,
+            });
+        }
+        updateUser(userRef);
+
+    }, [followButtonPressed])
 
     return(
         <View style={styles.outer}> 
@@ -25,7 +53,7 @@ export function FollowerItem({username, genre=null, followButton=null, ...props}
                 style={followButtonPressed ? styles.pressed : styles.unpressed}
                 onPress={ () => {
                     if (username==='rachel_f') {
-                        props.setFollowedRachel(!followButtonPressed);
+                        // props.setFollowedRachel(!followButtonPressed);
                         setFollowedButtonPressed(!followButtonPressed);
                     } 
                 }}

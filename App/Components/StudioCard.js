@@ -11,6 +11,7 @@ import { useNavigation } from '@react-navigation/native';
 import {PicAndUsername} from "./PicAndUsername";
 import { LiveSymbol } from "./LiveSymbol";
 
+
 export function StudioCard({cardInfo, staticCard = false, fan = false}) {
 
     const {username, status, message, timeLeft} = cardInfo; 
@@ -30,10 +31,20 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
     // what happens when  you click the studiocard, based on its status
     const determineFlow = () => {
         // Wrap in outer if based on if creator or fan / pass as param
-        if (status === "LIVE") {
-            navigation.navigate('LiveRoom', {cardInfo});
-        } else if (status === "VIEW RESULTS") {
-            navigation.navigate('StudioResults', {cardInfo});
+        if (fan) {
+            if (status === "LIVE") {
+                navigation.navigate('LiveRoom', {cardInfo});
+            } else if (status === "VIEW RESULTS") {
+                navigation.navigate('StudioResults', {cardInfo});
+            } else if (status === "RANKING") {
+                navigation.navigate('FanRanking', {cardInfo});
+            }
+        } else {
+            if (status === "LIVE") {
+                navigation.navigate('LiveRoom', {cardInfo});
+            } else if (status === "VIEW RESULTS") {
+                navigation.navigate('StudioResults', {cardInfo});
+            }
         }
     }
 
