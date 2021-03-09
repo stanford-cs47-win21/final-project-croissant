@@ -9,9 +9,9 @@ import { StyleSheet,
     Keyboard,
     // Picker
 } from 'react-native';
+import DropDownPicker from 'react-native-dropdown-picker';
 
 import keyStyles from '../../Styles/keyStyles';
-
 import {Title} from '../../Components/Title';
 
 
@@ -45,7 +45,26 @@ export default function CreateStudio({navigation}) {
 
             <View style={styles.timeLimit}> 
                 <Text> Brainstorming Time limit </Text>
-                {/* Picker is broken so need to find alternative */}
+                <View style={{width: '30%'}}>
+                    {/* We may want to modify our Figma if this constrains us. Not sure how to fix the overlap issue.
+                    Link to styling documentation: https://www.npmjs.com/package/react-native-dropdown-picker#styling-the-component  */}
+                    <DropDownPicker 
+                        items={[
+                            {label: '1 hour', value: '1 HOUR REMAINING' },
+                            {label: '12 hours', value: '12 HOURS REMAINING' },
+                        ]}
+                        placeholder="Select"
+                        containerStyle={{height: 40, width: '100%'}}
+                        style={{backgroundColor: '#F3F1F1'}}
+                        itemStyle={{justifyContent: 'flex-start'}}
+                        // arrowStyle={{backgroundColor: '#C4C4C4', justifyContent: 'center' }}
+                        arrowColor='black'
+                        onChangeItem={item => {
+                            setBrainstormTime(item.value)
+                        }}
+                        dropDownStyle={{marginTop: 2}}
+                    />
+                </View>   
             </View>
 
             <View style={styles.timeLimit}> 
@@ -57,8 +76,8 @@ export default function CreateStudio({navigation}) {
                     style={keyStyles.button1} 
                     onPress = { () => {
                         navigation.navigate('CreatorHome', {newStudio: {
-                            prompt: prompt
-                            // TODO: pass brainstorming time limit here once implemented
+                            prompt: prompt,
+                            brainstormTime: brainstormTime
                         }})
                     }}
                 >
@@ -87,6 +106,7 @@ const styles = StyleSheet.create({
         height: '10%',
         // backgroundColor: 'grey',
         width: '90%',
+        margin: 20,
     },
     
     // Prompt View styles
