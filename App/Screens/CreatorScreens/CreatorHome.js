@@ -62,13 +62,13 @@ export default function CreatorHome({route, navigation}) {
     
     const addStudio = (newStudio) => {
         const prompt = newStudio.prompt;
-        // TODO: const timeRemaining = info.brainstormTimeRemaining
+        const timeRemaining = newStudio.brainstormTime;
         let newStudioList = [];
         newStudioList.push({
             username: "rachel_f",
             status: "BRAINSTORMING",
             message: prompt,
-            timeLeft: "tbd Hrs. remaining",
+            timeLeft: timeRemaining,
         });
         newStudioList.push(...studios);
         console.log("NEW STUDIO LIST after adding custom studio ", newStudioList);
