@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { StyleSheet, 
     Text, 
     SafeAreaView,
@@ -17,14 +17,33 @@ import firebase from 'firebase';
 
 
 export default function FanProfile({route, navigation}) {
+    const [name, setName] = useState('');
+    const [username, setUsername] = useState('');
+    const [isFollowingRachel, setIsFollowingRachel] = useState(false);
+
+    // load user data
+    useEffect( () => {
+        const user = firebase.auth().currentUser;
+        let userRef = firestore.doc('users/' + user.uid);
+        const getUserDoc = async(userRef) => {
+            let userDoc = await userRef.get();
+            if (userDoc.exists) {
+                const userData = userDoc.data();
+                setName(userData.name);
+                setUsername(userData.username);
+                setIsFollowingRachel(userData.isFollowingRachel);
+            }
+        }
+        getUserDoc(userRef);    
+    }, [])
 
 
     return(
         <SafeAreaView style={styles.container}> 
 
             <View> 
-                <Text> Your name -- Pull from firebase </Text>
-                <Text> @your_username -- Pull from firebase</Text>
+                <Text> {name} </Text>
+                <Text> @{username}</Text>
             </View> 
 
             <View> 
@@ -35,10 +54,10 @@ export default function FanProfile({route, navigation}) {
 
                 <View style={styles.profItem}> 
                     <Text> Following </Text>
-                    <Text> 1 </Text>
+                    <Text> {isFollowingRachel ? 1 : 0 } </Text>
                 </View>
 
-                <FollowerItem username="rachel_f" genre="BAKING"/>
+                {isFollowingRachel && <FollowerItem username="rachel_f" genre="BAKING"/> }
                 
             </View> 
 

@@ -20,7 +20,7 @@ export function FollowerItem({username, genre=null, followButton=null, ...props}
 
     
 
-    // Should the rachel_f follower item be pressed?
+    // Determine should the rachel_f follower item be pressed?
     useEffect( () => {
         const user = firebase.auth().currentUser;
         let userRef = firestore.doc('users/' + user.uid);
