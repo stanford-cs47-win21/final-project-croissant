@@ -26,10 +26,7 @@ const keyStyles = {
     },
     croissantHeader: {
         fontSize: 36,
-        fontWeight: 'bold',
-        fontFamily: 'Lato_400Bold'}}>
-          Lato Bold
-        // fontFamily: 'lato',
+        fontFamily: 'Lato_700Bold',
     },
     titleView: {
         height: '10%',

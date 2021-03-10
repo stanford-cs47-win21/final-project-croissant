@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import { StyleSheet, 
-    Text, 
+import { StyleSheet,
+    Text,
     SafeAreaView,
     TouchableOpacity,
     View,
@@ -93,37 +93,14 @@ export default function StudioResults({route, navigation}) {
     ]
 
     return(
-        <SafeAreaView style={styles.container}> 
-            
-            <Title text="Studio Results" />
-
-            <StudioCard 
-                cardInfo={{
-                    username: username,
-                    status: null,
-                    message: message,
-                    timeLeft: null,
-                }}
-            />
-
-            <View style={styles.stats}> 
-                <View style={styles.box}> 
-                    <Text style={styles.bigNum}> 850 </Text>
-                    <Text style={styles.label}> Participants </Text>
-                </View> 
-
-                <View style={styles.box}> 
-                    <Text style={styles.bigNum}> 1124 </Text>
-                    <Text style={styles.label}> Ideas </Text>
-                </View>
-
-            </View>
+        <SafeAreaView style={styles.container}>
 
 
             {/* TODO: SectionList, has some bugs to fix -- we could just hardcode each item if we want*/}
             <SectionList
                 sections={fanResults}
                 stickySectionHeadersEnabled={false}
+                directionalLockEnabled={true}
                 keyExtractor={(item, index) => index.toString()}
 
                 renderSectionHeader={({section}) => {
@@ -131,21 +108,51 @@ export default function StudioResults({route, navigation}) {
                     return <Text style={keyStyles.titleText1}> {section.title} </Text>
                 }}
 
+                ListHeaderComponent={
+                  <View style={styles.header}>
+                    <StudioCard
+                        cardInfo={{
+                            username: username,
+                            status: null,
+                            message: message,
+                            timeLeft: null,
+                        }}
+                    />
+
+                    <View style={styles.stats}>
+                        <View style={styles.box}>
+                            <Text style={styles.bigNum}> 850 </Text>
+                            <Text style={styles.label}> Participants </Text>
+                        </View>
+
+                        <View style={styles.box}>
+                            <Text style={styles.bigNum}> 1124 </Text>
+                            <Text style={styles.label}> Ideas </Text>
+                        </View>
+
+                    </View>
+                </View>
+                }
+
                 renderItem={({item}) => {
-                    return <StudioCard cardInfo={item} staticCard={true}/>
+                  return (
+                  <View style={styles.item}>
+                     <StudioCard cardInfo={item} staticCard={true}/>
+                  </View>
+                )
                 }}
+
+                ListFooterComponent={
+                  <View style={keyStyles.centeredView}>
+                      <TouchableOpacity
+                          style={keyStyles.button1}
+                          onPress = { () => navigation.navigate('CreateRoom')} // TODO: pass data
+                      >
+                          <Text style={keyStyles.button1text}> CREATE ROOM </Text>
+                      </TouchableOpacity>
+                  </View>
+                }
             />
-
-
-            {/* Button to create room */}
-            <View style={keyStyles.centeredView}> 
-                <TouchableOpacity
-                    style={keyStyles.button1} 
-                    onPress = { () => navigation.navigate('CreateRoom')} // TODO: pass data
-                >
-                    <Text style={keyStyles.button1text}> CREATE ROOM </Text>
-                </TouchableOpacity>
-            </View>
 
         </SafeAreaView>
     );
@@ -162,9 +169,10 @@ const styles = StyleSheet.create({
     },
     stats: {
         flexDirection: 'row',
-        margin: 8,
         width: '100%',
         justifyContent: 'space-evenly',
+        marginTop: 12,
+        marginBottom: 12,
     },
     box: {
         alignItems: 'center',
@@ -177,5 +185,15 @@ const styles = StyleSheet.create({
     label: {
 
     },
+    item: {
+      marginTop: 8,
+      marginBottom: 8,
+    },
+    header: {
+      marginTop: 8,
+      marginBottom: 8,
+      alignItems: 'center',
+      alignContent: 'center',
+      justifyContent: 'center',
+    }
   });
-  
