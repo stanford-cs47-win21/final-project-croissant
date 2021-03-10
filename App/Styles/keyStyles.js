@@ -1,5 +1,6 @@
 import {Dimensions} from 'react-native';
-
+// TODO: import typography for lato?
+import { useFonts, Lato_400Regular, Lato_400Bold } from '@expo-google-fonts/lato';
 
 const keyStyles = {
     DEFAULT_BORDER_RADIUS: 20,
