@@ -7,6 +7,9 @@ import ChooseFlow from './App/Screens/ChooseFlow';
 import { useFonts, Lato_400Regular, Lato_700Bold } from '@expo-google-fonts/lato';
 import AppLoading from 'expo-app-loading';
 
+import {Text, TextInput} from 'react-native'
+
+
 
 export default function App() {
 
@@ -17,6 +20,8 @@ export default function App() {
   if (!fontsLoaded) {
     return <AppLoading />;
   } else {
+    Text.defaultProps = Text.defaultProps || {}
+    Text.defaultProps.style =  { fontFamily: 'Lato_400Regular' }
     return (
       <Navigation />
     );
