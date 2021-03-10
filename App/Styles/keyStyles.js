@@ -1,5 +1,5 @@
 import {Dimensions} from 'react-native';
-// TODO: import typography for lato?
+
 
 const keyStyles = {
     DEFAULT_BORDER_RADIUS: 20,
@@ -25,8 +25,7 @@ const keyStyles = {
     },
     croissantHeader: {
         fontSize: 36,
-        fontWeight: 'bold',
-        // fontFamily: 'lato',
+        fontFamily: 'Lato_700Bold',
     },
     titleView: {
         height: '10%',
