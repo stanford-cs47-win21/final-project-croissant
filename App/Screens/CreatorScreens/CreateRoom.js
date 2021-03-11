@@ -10,7 +10,8 @@ import { StyleSheet,
 import keyStyles from '../../Styles/keyStyles';
 
 import {Title} from "../../Components/Title";
-import {StudioCard} from "../../Components/StudioCard";
+import {CommentCard} from "../../Components/CommentCard";
+
 
 
 export default function CreateRoom({navigation}) {
@@ -22,12 +23,10 @@ export default function CreateRoom({navigation}) {
             {/* Modify this into the common component */}
             <Text> RECOMMENDED INVITEES </Text> 
 
-            <StudioCard 
+            <CommentCard 
                 cardInfo={{
                     username: "rachel_f",
-                    status: null,
-                    message: "I'm looking to do more vegan recipes! Would love to hear about your personal favorites.",
-                    timeLeft: null,
+                    comment: "I'm looking to do more vegan recipes! Would love to hear about your personal favorites.",
                 }}
             />
 
