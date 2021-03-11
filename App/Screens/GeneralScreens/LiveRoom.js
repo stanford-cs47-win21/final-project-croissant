@@ -14,6 +14,9 @@ import {StudioCard} from "../../Components/StudioCard";
 import {LiveSymbol} from "../../Components/LiveSymbol";
 import {LivePicUsername} from "../../Components/LivePicUsername";
 
+import { Feather } from '@expo/vector-icons'; 
+
+
 
 
 export default function LiveRoom({route, navigation}) {
@@ -36,15 +39,20 @@ export default function LiveRoom({route, navigation}) {
             </View>
 
             {/* Live symbol */}
+            <View style={styles.liveSymb}> 
             {
                 !isLive ? 
-                <Title text="Your Guests"/> 
+                <Text style={keyStyles.titleText1}>Your Guests </Text> 
+
                 : 
-                <View style={styles.liveSymb}> 
-                    <LiveSymbol/>
-                </View>
+                    <View style={styles.rowContainer}>
+                        <View style={styles.liveCircle} />
+                        <Text style={styles.liveText}>LIVE</Text> 
+                    </View>
 
             }
+            </View>
+
             
 
             {/* Users */}
@@ -67,10 +75,11 @@ export default function LiveRoom({route, navigation}) {
             { isLive ? 
             <View style={styles.configRow}>
                 <View style={styles.iconTextContainer}>
-                    <Image 
+                    {/* <Image 
                         source={require("../../Images/Users.png")}
                         style={styles.icon}
-                    />
+                    /> */}
+                    <Feather name="users" size={44} color="black" />
                     <Text style={styles.dateTimeText}> 1969 </Text>
                 </View>
 
@@ -79,26 +88,24 @@ export default function LiveRoom({route, navigation}) {
                     onPress={() => setMuted(!isMuted)}
                 >
                 {isMuted ? 
-                    <Image 
-                        source={require("../../Images/MicrophoneSlash.png")}
-                        style={styles.mutedIcon}
-                    />
-
+                    <View style={styles.iconTextContainer}>
+                        <Feather name="mic" size={44} color="black" />
+                    </View>
                     : 
-                    <Image 
-                        source={require("../../Images/Mike-on.png")}
-                        style={styles.icon}
-                    />
+                    <View style={styles.iconTextContainer}>
+                        <Feather name="mic-off" size={44} color="black" />
+                    </View>
                 }
-                    <Text style={styles.dateTimeText}> 47:03 </Text>
+                    <Text style={styles.dateTimeText}>  </Text>
                 </TouchableOpacity>
 
 
                 <View style={styles.iconTextContainer}>
-                    <Image 
+                    {/* <Image 
                         source={require("../../Images/Clock.png")}
                         style={styles.icon}
-                    />
+                    /> */}
+                    <Feather name="clock" size={44} color="black" />
                     <Text style={styles.dateTimeText}> 47:03 </Text>
                 </View>
             </View>
@@ -144,8 +151,8 @@ const styles = StyleSheet.create({
     },
     liveSymb: {
         alignItems: 'flex-start', 
-        width: '80%', 
-        height: '10%', 
+        width: '90%', 
+        height: '7%', 
         justifyContent: 'center',
         // backgroundColor: "red"
     },
@@ -170,7 +177,7 @@ const styles = StyleSheet.create({
     },
     buttonView: {
         // don't add height
-        height: '10%',
+        height: '13%',
         width: '90%',
         alignItems: 'center',
         justifyContent: 'flex-end',
@@ -182,7 +189,7 @@ const styles = StyleSheet.create({
         width: Dimensions.get('window').width * .5,
         backgroundColor: "#FAC738",
         width: '90%',
-        height: '100%',
+        height: '90%',
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -190,26 +197,49 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center',
         width: '33%',
+        // backgroundColor: 'red',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
-    icon: {
-        resizeMode: 'contain',
-        width: '40%',
-        aspectRatio: 1,
-        height: undefined,
-        // backgroundColor: 'red'
-    },
-    mutedIcon: {
-        resizeMode: 'contain',
-        width: '40%',
-        aspectRatio: 1,
-        height: undefined,
-        borderRadius: 10,
-        backgroundColor: "#f2f2f2"
-    },
+    // icon: {
+    //     resizeMode: 'contain',
+    //     width: '40%',
+    //     aspectRatio: 1,
+    //     height: undefined,
+    //     // backgroundColor: 'red'
+    // },
+    // mutedIcon: {
+    //     // resizeMode: 'contain',
+    //     width: '100%',
+    //     aspectRatio: 1,
+    //     height: undefined,
+    //     borderRadius: 10,
+    //     backgroundColor: "#f2f2f2",
+    //     justifyContent: 'center', 
+    // },
     dateTimeText: {
         fontSize: 14,
         textTransform: 'uppercase',
         padding: 5,
     },
+
+    // LIVE SYMBOL BIGGER
+    liveCircle: {
+        width: 12,
+        height: 12,
+        borderRadius: 12/2,
+        backgroundColor: 'red',
+        marginRight: 4, 
+      },
+      liveText: {
+          color: 'red',
+          fontWeight: 'bold',
+          fontSize: 15
+      },
+      rowContainer: {
+          flexDirection: 'row', // align text next to icon
+          justifyContent: 'center',
+          alignItems: 'center',
+      },
   });
   

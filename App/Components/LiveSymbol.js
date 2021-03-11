@@ -34,6 +34,6 @@ const styles = StyleSheet.create({
     rowContainer: {
         flexDirection: 'row', // align text next to icon
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
   });

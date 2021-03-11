@@ -30,7 +30,6 @@ const keyStyles = {
     },
     titleView: {
         height: '10%',
-        // backgroundColor: 'red',
         flexDirection: 'row',
         alignItems: 'center',
         // justifyContent: 'center',
