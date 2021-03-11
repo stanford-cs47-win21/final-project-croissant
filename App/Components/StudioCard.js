@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, 
     Text, 
     SafeAreaView,
@@ -10,9 +10,24 @@ import { StyleSheet,
 import { useNavigation } from '@react-navigation/native';
 import {PicAndUsername} from "./PicAndUsername";
 import { LiveSymbol } from "./LiveSymbol";
+import { Title } from "./Title";
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+import { AntDesign } from '@expo/vector-icons'; 
+import { Ionicons } from '@expo/vector-icons'; 
+
+
+
+
+import {Overlay} from 'react-native-elements';
+import keyStyles from '../Styles/keyStyles';
+
 
 
 export function StudioCard({cardInfo, staticCard = false, fan = false}) {
+    const [visible, setVisible] = useState(false);
+    const toggleOverlay = () => {
+        setVisible(!visible);
+    };
 
     const {username, status, message, timeLeft} = cardInfo; 
 
@@ -44,6 +59,8 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                 navigation.navigate('LiveRoom', {cardInfo});
             } else if (status === "VIEW RESULTS") {
                 navigation.navigate('StudioResults', {cardInfo});
+            } else if (status === "RANKING" | status === 'BRAINSTORMING') {
+                toggleOverlay();
             }
         }
     }
@@ -90,6 +107,35 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                             <LiveSymbol />
                             </View>
                     }
+
+                    {/* This can be placed anywhere i guess */}
+                    <Overlay 
+                        isVisible={visible} 
+                        onBackdropPress={toggleOverlay}
+                        animationType={'fade'}
+                        overlayStyle={{height: '30%', width: '70%', justifyContent: 'center', alignItems: 'center'}}
+                    >
+                        <View style={{height: '40%', alignItems: 'center', justifyContent: 'center'}}> 
+                            <Text style={keyStyles.titleText1}> Studio in Progress </Text>
+                            {/* <AntDesign name="hourglass" size={24} color="black" /> */}
+                            <MaterialCommunityIcons name="progress-clock" size={36} color="black" />
+                            {/* <Ionicons name="hourglass" size={24} color="black" /> */}
+                        </View>
+
+                        <View style={{ height: '30%', width: '90%'}}>    
+                            <Text style={{textAlign: 'center'}}> Your fans still have time to {status==='RANKING' ? 'rank' : 'brainstorm'} ideas. We'll let you know when the results are ready to view! </Text>
+                        </View>
+
+                            <View style={{height: '30%'}}> 
+                                <TouchableOpacity 
+                                    style={keyStyles.button1}
+                                    onPress={toggleOverlay}
+                                > 
+                                    <Text style={keyStyles.button1text}> OK </Text>
+                                </TouchableOpacity>
+                            </View> 
+                    </Overlay>
+
             </TouchableOpacity>
         );
     }
