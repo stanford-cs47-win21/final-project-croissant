@@ -12,7 +12,7 @@ import {PicAndUsername} from "./PicAndUsername";
 import { LiveSymbol } from "./LiveSymbol";
 
 
-export function StudioCard({cardInfo, staticCard = false, fan = false}) {
+export function StudioCard({cardInfo, fan = false}) {
 
     const {username, status, message, timeLeft} = cardInfo; 
 
@@ -50,49 +50,35 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
 
     const navigation = useNavigation();
 
-    if (staticCard === true) {
-        return (
-            <View style={styles.outerStatic}> 
-                <View style={styles.topRow}> 
-                    <Text > {username} </Text> 
-                </View>
+    return(
+        <TouchableOpacity 
+            style={styles.outer}
+            onPress = {determineFlow}
+        > 
 
-                <View style={styles.middleBox}> 
-                    <Text >{message}</Text> 
+            <View style={styles.topRow}> 
+                <PicAndUsername userInfo={username} />  
+                <View style={determineStatus()}> 
+                    {status != "LIVE" && <Text style={styles.badgeText}> {status}</Text>}
                 </View>
             </View>
-        );
-    } else { 
-        return(
-            <TouchableOpacity 
-                style={styles.outer}
-                onPress = {determineFlow}
-            > 
 
-                <View style={styles.topRow}> 
-                    <PicAndUsername userInfo={username} />  
-                    <View style={determineStatus()}> 
-                        {status != "LIVE" && <Text style={styles.badgeText}> {status}</Text>}
+            <View style={styles.middleBox}> 
+                <Text style={styles.messageText}>{message}</Text> 
+            </View>
+
+                {status != "LIVE" && 
+                    <View style={[styles.bottomBox, {justifyContent: 'flex-start'}]}>
+                    <Text style={styles.timeText}> {timeLeft} </Text>
                     </View>
-                </View>
-
-                <View style={styles.middleBox}> 
-                    <Text style={styles.messageText}>{message}</Text> 
-                </View>
-
-                    {status != "LIVE" && 
-                        <View style={[styles.bottomBox, {justifyContent: 'flex-start'}]}>
-                        <Text style={styles.timeText}> {timeLeft} </Text>
+                }
+                {status == "LIVE" && 
+                        <View style={[styles.bottomBox, {justifyContent: 'flex-end'}]}>
+                        <LiveSymbol />
                         </View>
-                    }
-                    {status == "LIVE" && 
-                            <View style={[styles.bottomBox, {justifyContent: 'flex-end'}]}>
-                            <LiveSymbol />
-                            </View>
-                    }
-            </TouchableOpacity>
-        );
-    }
+                }
+        </TouchableOpacity>
+    );
 }
 
 
@@ -100,14 +86,6 @@ const styles = StyleSheet.create({
     outer: {
         width: Dimensions.get('window').width * .9,
         backgroundColor: '#FFF8E0',
-        alignItems: 'center',
-        justifyContent: 'space-evenly',
-        borderRadius: 20,
-        margin: 8,
-    },
-    outerStatic: {
-        width: Dimensions.get('window').width * .9,
-        backgroundColor: '#F2F2F2',
         alignItems: 'center',
         justifyContent: 'space-evenly',
         borderRadius: 20,
