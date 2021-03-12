@@ -39,7 +39,8 @@ export default function Welcome({navigation}) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+      flex: 1,
+      backgroundColor: '#fff'
   },
     textContainer: {
       marginTop: 50,
