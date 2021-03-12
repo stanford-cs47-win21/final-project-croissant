@@ -4,13 +4,17 @@ import { StyleSheet,
     SafeAreaView,
     TouchableOpacity,
     View,
-    Image
+    Image,
+    Switch
 } from 'react-native';
 
 import keyStyles from '../../Styles/keyStyles';
 
 
 export default function Profile({route, navigation}) {
+    // switch setup
+    const [isEnabled, setIsEnabled] = useState(false);
+    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
 
     return(
@@ -32,6 +36,15 @@ export default function Profile({route, navigation}) {
                     <Text> 467 </Text>
                 </View>
                 
+                <View style={styles.profItem}> 
+                    <Text> Creator Mode </Text>
+                    <Switch
+            trackColor={{ false: "#767577", true: '#53d769' }}
+            ios_backgroundColor="#3e3e3e"
+            onValueChange={toggleSwitch}
+            value={isEnabled}
+      />
+                </View>
             </View> 
         
         </SafeAreaView>
