@@ -9,19 +9,16 @@ import { StyleSheet,
 } from 'react-native';
 
 import keyStyles from '../../Styles/keyStyles';
+import { Ionicons } from '@expo/vector-icons';
+
 
 let PIC_SIZE = 90;
 let FONT_SIZE = 17;
 
 export default function Profile({route, navigation}) {
-    // switch setup
-    const [isEnabled, setIsEnabled] = useState(true);
-    const toggleSwitch = () => navigation.navigate('ChooseFlow');
 
-
-    return(
+    return (
         <SafeAreaView style={styles.container}> 
-
             <View style={styles.userInfo}> 
 
                 <Image 
@@ -43,15 +40,18 @@ export default function Profile({route, navigation}) {
                     <Text style={styles.infoText}> Followers </Text>
                     <Text style={styles.infoText}> 467 </Text>
                 </View>
-                
-                <View style={styles.profItem}> 
-                    <Text style={styles.infoText}> Creator Mode </Text>
-                    <Switch
-            trackColor={{ false: "#767577", true: '#53d769' }}
-            ios_backgroundColor="#3e3e3e"
-            onValueChange={toggleSwitch}
-            value={isEnabled}
-      />
+
+                {/* Log out Button */}
+                <View style={{height: '50%', justifyContent: 'flex-end'}}> 
+                    <TouchableOpacity 
+                        style={keyStyles.button1}
+                        onPress={() => navigation.navigate('ChooseFlow')}
+                    >
+                        <View style={{flexDirection: 'row', alignItems: 'center'}} > 
+                            <Ionicons name='exit-outline' size={24} color='black' style={{marginRight: 10}} />
+                            <Text style={keyStyles.button1text}>Log out</Text>
+                        </View>
+                    </TouchableOpacity>
                 </View>
             </View> 
         
@@ -87,10 +87,12 @@ const styles = StyleSheet.create({
         marginBottom: 25,
         marginTop: '20%',
         alignItems: 'center',
+        height: '40%',
     },
     infoAbout: {
         alignContent: 'center',
-        width: '60%'
+        width: '60%',
+        height: '60%',
     },
     profItem: {
         width: '100%',
