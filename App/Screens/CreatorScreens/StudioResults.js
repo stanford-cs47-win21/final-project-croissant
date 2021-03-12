@@ -98,7 +98,7 @@ export default function StudioResults({route, navigation}) {
                             comment: message,
                         }}
                     />
-
+ 
                     <View style={styles.stats}>
                         <View style={styles.box}>
                             <Text style={styles.bigNum}> 850 </Text>
@@ -117,7 +117,7 @@ export default function StudioResults({route, navigation}) {
                 renderItem={({item}) => {
                   return (
                   <View style={styles.item}>
-                     <CommentCard cardInfo={item}/>
+                     <CommentCard cardInfo={item} commentColor={true}/>
                   </View>
                 )
                 }}

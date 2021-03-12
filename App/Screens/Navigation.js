@@ -59,12 +59,12 @@ export default function Navigation() {
                 <Stack.Screen name='CreateStudio' component={CreateStudio} options={{headerBackTitle: 'Studios'}}/>
                 <Stack.Screen name='StudioResults' component={StudioResults} options={{headerBackTitle: 'Studios'}}/>
                 <Stack.Screen name='CreateRoom' component={CreateRoom} options={{headerBackTitle: 'Results'}}/>
-                <Stack.Screen name='Profile' component={Profile}/>
+                <Stack.Screen name='Profile' component={Profile} options={{headerBackTitle: 'Studios'}}/>
                 <Stack.Screen name='LiveRoom' component={LiveRoom} options={{headerBackTitle: 'Studios'}}/>
                 <Stack.Screen name='FindRachel' component={FindRachel}/>
                 <Stack.Screen name='SignUp' component={SignUp}/>
                 <Stack.Screen name='FanRanking' component={FanRanking}/>
-                <Stack.Screen name='FanProfile' component={FanProfile}/>
+                <Stack.Screen name='FanProfile' component={FanProfile} options={{headerBackTitle: 'Studios'}}/>
                 <Stack.Screen name='Login' component={Login}/>
 
             </Stack.Navigator>

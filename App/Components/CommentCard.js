@@ -11,19 +11,19 @@ import { useNavigation } from '@react-navigation/native';
 import {PicAndUsername} from "./PicAndUsername";
 
 
-export function CommentCard({cardInfo}) {
+export function CommentCard({cardInfo, commentColor=false}) {
 
     const {username, comment} = cardInfo; 
 
     const navigation = useNavigation();
 
     return (
-        <View style={styles.outerStatic}> 
+        <View style={commentColor ? styles.outerStaticComment : styles.outerStatic}> 
             <View style={styles.topRow}> 
                 <PicAndUsername userInfo = {username} /> 
             </View>
 
-            <View style={styles.middleBox}> 
+            <View style={commentColor ? styles.middleBoxComment : styles.middleBox}> 
                 <Text style={styles.commentText}>{comment}</Text> 
             </View>
         </View>
@@ -41,6 +41,15 @@ const styles = StyleSheet.create({
         margin: 8,
         paddingBottom: 20
     },
+    outerStaticComment: {
+        width: Dimensions.get('window').width * .9,
+        backgroundColor: '#F2F2F2',
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
+        borderRadius: 20,
+        margin: 8,
+        paddingBottom: 20
+    },
     topRow: {
         flexDirection: 'row',
         alignContent: 'space-between',
@@ -52,6 +61,14 @@ const styles = StyleSheet.create({
         height: 35
     },
     middleBox: {
+        backgroundColor: '#FFFEFA',
+        width: '93.7%',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        flexDirection: 'row',
+        padding: 10
+    },
+    middleBoxComment: {
         backgroundColor: '#FFFEFA',
         width: '93.7%',
         justifyContent: 'flex-start',

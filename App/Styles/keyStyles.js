@@ -42,9 +42,11 @@ const keyStyles = {
     },
     centeredView: {
         // don't add height
-        width: '90%',
         alignItems: 'center',
         justifyContent: 'center',
+        alignContent: 'center',
+        width: '100%',
+
         // backgroundColor: 'red'
     },
     listView: {
