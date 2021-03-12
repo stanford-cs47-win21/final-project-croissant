@@ -105,11 +105,11 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                         <View style={{height: '40%', alignItems: 'center', justifyContent: 'center'}}> 
                             <Text style={keyStyles.titleText1}> Studio in Progress </Text>
                             {/* <AntDesign name="hourglass" size={24} color="black" /> */}
-                            <MaterialCommunityIcons name="progress-clock" size={36} color="black" />
+                            <MaterialCommunityIcons name="progress-clock" size={36} color="black" style={{marginTop: 10}}/>
                             {/* <Ionicons name="hourglass" size={24} color="black" /> */}
                         </View>
 
-                        <View style={{ height: '30%', width: '90%'}}>    
+                        <View style={{ height: '30%', width: '90%', justifyContent: 'center'}}>    
                             <Text style={{textAlign: 'center'}}> Your fans still have time to {status==='RANKING' ? 'rank' : 'brainstorm'} ideas. We'll let you know when the results are ready to view! </Text>
                         </View>
 
