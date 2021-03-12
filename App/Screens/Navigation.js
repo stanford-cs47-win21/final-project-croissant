@@ -52,15 +52,15 @@ export default function Navigation() {
                 }}
             > 
                 <Stack.Screen name='ChooseFlow' component={ChooseFlow} options={{headerShown: false}}/>
-                <Stack.Screen name='Welcome' component={Welcome}/>
-                <Stack.Screen name='CreatorOnboarding' component={CreatorOnboarding}/>
+                <Stack.Screen name='Welcome' component={Welcome} options={{headerBackTitle: ''}}/>
+                <Stack.Screen name='CreatorOnboarding' component={CreatorOnboarding} options={{headerBackTitle: ''}}/>
                 <Stack.Screen name='CreatorHome' component={CreatorHome} options={{headerShown: false}}/>
                 <Stack.Screen name='FanHome' component={FanHome} options={{headerShown: false}} />
-                <Stack.Screen name='CreateStudio' component={CreateStudio}/>
-                <Stack.Screen name='StudioResults' component={StudioResults}/>
-                <Stack.Screen name='CreateRoom' component={CreateRoom}/>
+                <Stack.Screen name='CreateStudio' component={CreateStudio} options={{headerBackTitle: 'Studios'}}/>
+                <Stack.Screen name='StudioResults' component={StudioResults} options={{headerBackTitle: 'Studios'}}/>
+                <Stack.Screen name='CreateRoom' component={CreateRoom} options={{headerBackTitle: 'Results'}}/>
                 <Stack.Screen name='Profile' component={Profile}/>
-                <Stack.Screen name='LiveRoom' component={LiveRoom}/>
+                <Stack.Screen name='LiveRoom' component={LiveRoom} options={{headerBackTitle: 'Studios'}}/>
                 <Stack.Screen name='FindRachel' component={FindRachel}/>
                 <Stack.Screen name='SignUp' component={SignUp}/>
                 <Stack.Screen name='FanRanking' component={FanRanking}/>
