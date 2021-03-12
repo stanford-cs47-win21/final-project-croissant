@@ -37,12 +37,25 @@ export function Header({fan=false, studios=null}) {
                 }
 
                 <TouchableOpacity 
-                    style={styles.profile}
+                    
                     onPress = {() => {
                         if (!fan) navigation.navigate('Profile', {numStudios: studios.length -1});
                         else navigation.navigate('FanProfile');
                     }}
-                /> 
+                >
+                {fan ? 
+                    <Image 
+                        source={require("../Images/John.png")}
+                        style={styles.pictureStyle}
+                    />
+
+                : <Image 
+                        source={require("../Images/Rachel.png")}
+                        style={styles.pictureStyle}
+                    />
+                } 
+                    
+                </TouchableOpacity>
             </View> 
         </View> 
     );
@@ -73,6 +86,10 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         // backgroundColor: 'green',
         // height: '100%' // idk why this messes it up
+    },
+    pictureStyle: {
+        resizeMode: 'contain',
+        width: 40
     },
     profile: {
         height: 50,

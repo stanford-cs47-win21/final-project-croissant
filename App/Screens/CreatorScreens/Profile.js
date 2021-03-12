@@ -23,7 +23,12 @@ export default function Profile({route, navigation}) {
         <SafeAreaView style={styles.container}> 
 
             <View style={styles.userInfo}> 
-                <View style={styles.profileCircle} />         
+
+                <Image 
+                    source={require("../../Images/Rachel.png")}
+                    style={styles.pictureStyle}
+                />
+
                 <Text style={styles.realName}> Rachel Finn </Text>
                 <Text style={styles.username}> @rachel_f </Text>
             </View> 
@@ -98,6 +103,10 @@ const styles = StyleSheet.create({
     },
     infoText: {
         fontSize: FONT_SIZE,
+    },
+    pictureStyle: {
+        resizeMode: 'contain',
+        width: PIC_SIZE
     }
   });
   
