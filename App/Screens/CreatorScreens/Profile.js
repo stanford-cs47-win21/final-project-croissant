@@ -15,13 +15,12 @@ let FONT_SIZE = 17;
 
 export default function Profile({route, navigation}) {
     // switch setup
-    const [isEnabled, setIsEnabled] = useState(false);
-    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+    const [isEnabled, setIsEnabled] = useState(true);
+    const toggleSwitch = () => navigation.navigate('ChooseFlow');
 
 
     return(
         <SafeAreaView style={styles.container}> 
-
 
             <View style={styles.userInfo}> 
                 <View style={styles.profileCircle} />         
