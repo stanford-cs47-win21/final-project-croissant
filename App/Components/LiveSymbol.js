@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     liveText: {
         color: 'red',
         fontWeight: 'bold',
-        fontSize: 11
+        fontSize: 12
     },
     rowContainer: {
         flexDirection: 'row', // align text next to icon

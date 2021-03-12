@@ -168,14 +168,6 @@ const styles = StyleSheet.create({
         width: 130,
         alignItems: 'center'
     },
-    badgeLive: {
-
-    },
-    liveText: {
-        color: 'red',
-        fontWeight: 'bold',
-        fontSize: 11
-    },
     badgeText: {
         color: 'white',
         fontWeight: 'bold',
@@ -188,7 +180,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'center',
         flexDirection: 'row',
-        padding: 10
+        padding: 6
     },
     bottomBox: {
         flexDirection: 'row',
@@ -203,7 +195,7 @@ const styles = StyleSheet.create({
         textTransform: 'uppercase'
     },
     messageText: {
-        fontSize: 16,
+        fontSize: 18,
         paddingTop: 10,
         paddingBottom: 10,
     },
