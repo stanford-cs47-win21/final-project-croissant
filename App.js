@@ -7,21 +7,22 @@ import ChooseFlow from './App/Screens/ChooseFlow';
 import { useFonts, Lato_400Regular, Lato_700Bold } from '@expo-google-fonts/lato';
 import AppLoading from 'expo-app-loading';
 
-import {Text, TextInput} from 'react-native'
-
+import GlobalFont from 'react-native-global-font'
 
 
 export default function App() {
-
   let [fontsLoaded] = useFonts({
     Lato_400Regular,
     Lato_700Bold
-  });
+  })
+
   if (!fontsLoaded) {
     return <AppLoading />;
   } else {
-    Text.defaultProps = Text.defaultProps || {}
-    Text.defaultProps.style =  { fontFamily: 'Lato_400Regular' }
+
+    let lato = 'Lato_400Regular'
+    GlobalFont.applyGlobal(lato)
+
     return (
       <Navigation />
     );
