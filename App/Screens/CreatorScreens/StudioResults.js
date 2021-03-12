@@ -12,7 +12,7 @@ import { StyleSheet,
 import keyStyles from '../../Styles/keyStyles';
 import {Title} from "../../Components/Title";
 import {StudioCard} from "../../Components/StudioCard";
-
+import {CommentCard} from "../../Components/CommentCard";
 
 export default function StudioResults({route, navigation}) {
     const {username, status, message, timeLeft} = route.params.cardInfo;
@@ -24,21 +24,15 @@ export default function StudioResults({route, navigation}) {
             data: [
                 {
                     username: 'john_winston',
-                    status: null,
-                    message: 'Suggest oil-based recipes',
-                    timeLeft: null,
+                    comment: 'Suggest oil-based recipes',
                 },
                 {
                     username: 'george_h',
-                    status: null,
-                    message: 'Egg-based recipes',
-                    timeLeft: null,
+                    comment: 'Egg-based recipes',
                 },
                 {
                     username: 'paul_walrus',
-                    status: null,
-                    message: 'Milk chocolate alternatives pleaseee',
-                    timeLeft: null,
+                    comment: 'Milk chocolate alternatives pleaseee',
                 },
             ]
         },
@@ -47,21 +41,15 @@ export default function StudioResults({route, navigation}) {
             data: [
                 {
                     username: 'john_winston',
-                    status: null,
-                    message: 'wooo',
-                    timeLeft: null,
+                    comment: 'wooo',
                 },
                 {
                     username: 'george_h',
-                    status: null,
-                    message: 'hi',
-                    timeLeft: null,
+                    comment: 'hi',
                 },
                 {
                     username: 'paul_walrus',
-                    status: null,
-                    message: 'lol',
-                    timeLeft: null,
+                    comment: 'lol',
                 },
             ]
 
@@ -71,21 +59,15 @@ export default function StudioResults({route, navigation}) {
             data: [
                 {
                     username: 'john_winston',
-                    status: null,
-                    message: 'yes',
-                    timeLeft: null,
+                    comment: 'yes',
                 },
                 {
                     username: 'george_h',
-                    status: null,
-                    message: 'no',
-                    timeLeft: null,
+                    comment: 'no',
                 },
                 {
                     username: 'paul_walrus',
-                    status: null,
-                    message: 'ofcccc',
-                    timeLeft: null,
+                    comment: 'ofcccc',
                 },
             ]
 
@@ -105,17 +87,15 @@ export default function StudioResults({route, navigation}) {
 
                 renderSectionHeader={({section}) => {
                     // Weird bug where <Title text={section.title} /> doesn't work because the text is wrapped in a view
-                    return <Text style={keyStyles.titleText1}> {section.title} </Text>
+                    return <Text style={styles.sectionText}> {section.title} </Text>
                 }}
 
                 ListHeaderComponent={
                   <View style={styles.header}>
-                    <StudioCard
+                    <CommentCard
                         cardInfo={{
                             username: username,
-                            status: null,
-                            message: message,
-                            timeLeft: null,
+                            comment: message,
                         }}
                     />
 
@@ -137,7 +117,7 @@ export default function StudioResults({route, navigation}) {
                 renderItem={({item}) => {
                   return (
                   <View style={styles.item}>
-                     <StudioCard cardInfo={item} staticCard={true}/>
+                     <CommentCard cardInfo={item}/>
                   </View>
                 )
                 }}
@@ -182,12 +162,16 @@ const styles = StyleSheet.create({
     bigNum: {
         fontSize: 35,
     },
-    label: {
-
+    sectionText: {
+        fontWeight: 'bold',
+        fontSize: 24,
+        color: 'black',
+        marginLeft: 8,
+        marginTop: 8
     },
     item: {
-      marginTop: 8,
-      marginBottom: 8,
+      flexDirection: 'row',
+      justifyContent: 'center'
     },
     header: {
       marginTop: 8,

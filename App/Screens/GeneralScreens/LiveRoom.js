@@ -10,7 +10,7 @@ import { StyleSheet,
 
 import keyStyles from '../../Styles/keyStyles';
 import {Title} from "../../Components/Title";
-import {StudioCard} from "../../Components/StudioCard";
+import {CommentCard} from "../../Components/CommentCard";
 import {LiveSymbol} from "../../Components/LiveSymbol";
 import {LivePicUsername} from "../../Components/LivePicUsername";
 
@@ -28,12 +28,10 @@ export default function LiveRoom({route, navigation}) {
         <SafeAreaView style={styles.container}> 
 
             <View style={styles.topCard}> 
-                <StudioCard 
+                <CommentCard 
                     cardInfo={{
                         username: username,
-                        status: null,
-                        message: message,
-                        timeLeft: null,
+                        comment: message,
                     }}
                 />
             </View>
