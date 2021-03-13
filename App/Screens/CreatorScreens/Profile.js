@@ -12,7 +12,7 @@ import keyStyles from '../../Styles/keyStyles';
 import { Ionicons } from '@expo/vector-icons';
 
 
-let PIC_SIZE = 90;
+let PIC_SIZE = 110;
 let FONT_SIZE = 17;
 
 export default function Profile({route, navigation}) {
@@ -41,18 +41,17 @@ export default function Profile({route, navigation}) {
                     <Text style={styles.infoText}> 467 </Text>
                 </View>
 
-                {/* Log out Button */}
-                <View style={{height: '50%', justifyContent: 'flex-end'}}> 
                     <TouchableOpacity 
-                        style={keyStyles.button1}
+                        style={[styles.profItem, {backgroundColor: '#F2F2F2'}]}
+        
                         onPress={() => navigation.navigate('ChooseFlow')}
                     >
-                        <View style={{flexDirection: 'row', alignItems: 'center'}} > 
-                            <Ionicons name='exit-outline' size={24} color='black' style={{marginRight: 10}} />
-                            <Text style={keyStyles.button1text}>Log out</Text>
-                        </View>
+                    <Text style={[styles.infoText, {color:'black'}]}> Log Out </Text>
+                    <Ionicons name='exit-outline' size={36} color='black'/>
                     </TouchableOpacity>
-                </View>
+                        
+
+
             </View> 
         
         </SafeAreaView>
@@ -70,41 +69,41 @@ const styles = StyleSheet.create({
       margin: 3,
     },
     realName: {
-        marginTop: 8,
         marginBottom: 5,
-        fontSize: FONT_SIZE
+        fontSize: FONT_SIZE * 1.5
     },
     username: {
         color: '#645F5C',
-        fontSize: FONT_SIZE
+        fontSize: FONT_SIZE * 1.2 
     },
     container: {
-        alignItems: 'center',
         backgroundColor: '#fff',
         height: '100%'
     },
     userInfo: {
-        marginBottom: 25,
-        marginTop: '20%',
-        alignItems: 'center',
-        height: '40%',
+        marginBottom: 50,
+        alignItems: 'center'
     },
     infoAbout: {
-        alignContent: 'center',
-        width: '60%',
-        height: '60%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
     },
     profItem: {
-        width: '100%',
-        height: 20,
+        width: '90%',
         margin: 8,
         justifyContent: 'space-between',
         alignContent: 'center',
         flexDirection: 'row',
         alignItems: 'center',
+        backgroundColor: keyStyles.SALMON_COLOR,
+        padding: 20,
+        borderRadius: 20
     },
     infoText: {
-        fontSize: FONT_SIZE,
+        fontSize: 24,
+        fontFamily: 'Lato_700Bold',
+        color: 'white',
     },
     pictureStyle: {
         resizeMode: 'contain',
