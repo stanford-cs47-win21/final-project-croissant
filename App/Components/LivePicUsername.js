@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
       margin: 3,
     },
     username: {
-        fontSize: 14,
+        fontSize: 16,
         textAlign: 'center',
         fontWeight: '500',
     },

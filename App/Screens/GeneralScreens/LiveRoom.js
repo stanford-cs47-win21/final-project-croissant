@@ -86,13 +86,13 @@ export default function LiveRoom({route, navigation}) {
                     onPress={() => setMuted(!isMuted)}
                 >
                 {isMuted ? 
-                    <View style={styles.iconTextContainer}>
+                        <View style={[styles.buttonView, {backgroundColor: keyStyles.LIGHT_GRAY}]}>
                         <Feather name="mic" size={44} color="black" />
-                    </View>
+                        </View>
                     : 
-                    <View style={styles.iconTextContainer}>
-                        <Feather name="mic-off" size={44} color="black" />
-                    </View>
+                        <View style={[styles.buttonView, {backgroundColor: keyStyles.SALMON_COLOR}]}>
+                        <Feather name="mic-off" size={44} color="white" />
+                            </View>
                 }
                     <Text style={styles.dateTimeText}>  </Text>
                 </TouchableOpacity>
@@ -135,11 +135,10 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     topCard: {
-        height: '20%',
         justifyContent: 'center',
+        marginBottom: 70
     },
     sixUsers: {
-        height: '30%', 
         justifyContent: 'center',
         //backgroundColor: 'green',
     },
@@ -158,62 +157,37 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         width: '100%',
         // backgroundColor: "yellow"
-
     },
     configRow: {
         flexDirection: 'row',
+        height: '25%',
         width: '100%',
-        height: '20%',
         justifyContent: 'space-around',
         alignItems: 'center',
         marginTop: 10,
         // backgroundColor: 'red',
     },
-    buttonView: {
-        // don't add height
-        height: '13%',
-        width: '90%',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        // backgroundColor: 'red'
-    },
-    buttonStyle: {
-        margin: 10,
-        borderRadius: 20,
-        width: Dimensions.get('window').width * .5,
-        backgroundColor: "#FAC738",
-        width: '90%',
-        height: '90%',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
     iconTextContainer: {
         flexDirection: 'column',
         alignItems: 'center',
         width: '33%',
-        // backgroundColor: 'red',
         justifyContent: 'center',
         alignItems: 'center',
     },
-    // icon: {
-    //     resizeMode: 'contain',
-    //     width: '40%',
-    //     aspectRatio: 1,
-    //     height: undefined,
-    //     // backgroundColor: 'red'
-    // },
-    // mutedIcon: {
-    //     // resizeMode: 'contain',
-    //     width: '100%',
-    //     aspectRatio: 1,
-    //     height: undefined,
-    //     borderRadius: 10,
-    //     backgroundColor: "#f2f2f2",
-    //     justifyContent: 'center', 
-    // },
+    buttonView: {
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 10,
+        borderRadius: 20,
+        height: 100,
+        width: 100
+    },
     dateTimeText: {
-        fontSize: 14,
+        fontSize: 16,
         textTransform: 'uppercase',
+        fontFamily: 'Lato_700Bold',
         padding: 5,
     },
 
