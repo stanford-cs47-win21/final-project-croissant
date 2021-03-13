@@ -15,6 +15,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons'; 
 import { Ionicons } from '@expo/vector-icons'; 
 import { CloseButton } from "./CloseButton";
+import { ActionButton } from "./ActionButton";
 
 
 
@@ -112,7 +113,7 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                         isVisible={visible} 
                         onBackdropPress={toggleOverlay}
                         animationType={'fade'}
-                        overlayStyle={{height: '30%', width: '70%', justifyContent: 'center', alignItems: 'center', borderRadius: 20}}
+                        overlayStyle={{height: '30%', width: '90%', justifyContent: 'center', alignItems: 'center', borderRadius: 20}}
                     >
                         <View style={{height: '40%', alignItems: 'center', justifyContent: 'center'}}> 
                             <Text style={keyStyles.titleText1}> Studio in Progress </Text>
@@ -121,18 +122,10 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                             {/* <Ionicons name="hourglass" size={24} color="black" /> */}
                         </View>
 
-                        <View style={{ height: '30%', width: '90%', justifyContent: 'center'}}>    
-                            <Text style={{textAlign: 'center'}}> Your fans still have time to {status==='RANKING' ? 'rank' : 'brainstorm'} ideas. We'll let you know when the results are ready to view! </Text>
+                        <View style={{ width: '90%', justifyContent: 'center'}}>    
+                            <Text style={[styles.messageText, {marginBottom: 8}]}>Your fans still have time to {status==='RANKING' ? 'rank' : 'brainstorm'} ideas. We'll let you know when the results are ready to view! </Text>
                         </View>
-
-                            <View style={{height: '30%'}}> 
-                                <TouchableOpacity 
-                                    style={keyStyles.button1}
-                                    onPress={toggleOverlay}
-                                > 
-                                    <Text style={keyStyles.button1text}> OK </Text>
-                                </TouchableOpacity>
-                            </View> 
+                            <ActionButton onPress={toggleOverlay} text="OK" style={{height:"10%"}}/>
                     </Overlay>
 
                     {/* FAN OVERLAY */}
@@ -148,7 +141,7 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                         </View>
 
                         <View style={{ height: '30%', width: '90%', justifyContent: 'center'}}>    
-                            <Text style={{textAlign: 'center'}}> You have already {status==='RANKED' ? 'rank' : 'brainstorm'}ed ideas for this studio. We'll let you know when the 
+                            <Text style={styles.messageText}> You have already {status==='RANKED' ? 'rank' : 'brainstorm'}ed ideas for this studio. We'll let you know when the 
                             other fans are done! </Text>
                         </View>
 
