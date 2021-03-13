@@ -65,7 +65,9 @@ export default function FanProfile({route, navigation}) {
                     <Text style={styles.infoText}> {isFollowingRachel ? 1 : 0 } </Text>
                 </View>
 
-                {isFollowingRachel && <FollowerItem username="rachel_f" genre="BAKING"/> }
+                <View style={{height: '16%'}}> 
+                    {isFollowingRachel && <FollowerItem username="rachel_f" genre="BAKING"/> }
+                </View>
 
                 {/* Log out button */}
                 <View style={{height: '50%', justifyContent: 'flex-end'}}> 
@@ -131,7 +133,7 @@ const styles = StyleSheet.create({
     // },
     profItem: {
         width: '100%',
-        height: 20,
+        // height: 20,
         margin: 8,
         justifyContent: 'space-between',
         alignContent: 'center',

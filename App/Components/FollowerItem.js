@@ -77,7 +77,7 @@ export function FollowerItem({username, genre=null, followButton=null, ...props}
 const styles = StyleSheet.create({
     outer: {
         width:  Dimensions.get('window').width * .9,
-        height: Dimensions.get('window').height * .08, 
+        height: '80%', // Dimensions.get('window').height * .18, 
         backgroundColor: '#FFF8E0',
         alignItems: 'center',
         justifyContent: 'space-evenly',

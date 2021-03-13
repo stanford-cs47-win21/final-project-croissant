@@ -73,7 +73,6 @@ export default function FindRachel({route, navigation}) {
                                 <FollowerItem
                                     username={item.username}
                                     genre={item.genre} 
-                                    // followButton={true}
                                     setFollowedRachel={setFollowedRachel}
                                 />
                             );
