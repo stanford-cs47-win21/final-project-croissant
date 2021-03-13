@@ -47,7 +47,9 @@ const styles = StyleSheet.create({
         color: 'black',
         fontSize: 24,
         textAlign: 'center',
-        letterSpacing: .3
+        letterSpacing: 1,
+        fontFamily: 'Lato_700Bold'
+
     },
 });
 

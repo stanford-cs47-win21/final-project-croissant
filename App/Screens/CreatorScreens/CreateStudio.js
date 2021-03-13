@@ -15,6 +15,8 @@ import keyStyles from '../../Styles/keyStyles';
 import {Title} from '../../Components/Title';
 import {ActionButton} from '../../Components/ActionButton';
 
+let BODY_TEXT_SIZE = 16;
+let LINE_HEIGHT_MULT = 1.5; 
 
 // TODO: Weird serializable warning because you can't pass callback functions in the route params lmao
 export default function CreateStudio({navigation}) {
@@ -256,8 +258,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#F3F1F1',
         height: '100%',
         padding: 15,
-        paddingTop: 15,
-        borderRadius: 10
+        borderRadius: 10,
+        fontSize: BODY_TEXT_SIZE,
+        lineHeight: BODY_TEXT_SIZE * LINE_HEIGHT_MULT
     },
 
 
