@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         margin: 8,
     },
     plusButton: {
-        borderWidth: 8,
+        borderWidth: 4,
         borderColor: 'grey',
         width: '100%',
         height: '100%',
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
         borderStyle: 'dashed',
     },
     plusText: {
-        fontSize: 40,
+        fontSize: 50,
         fontWeight: 'bold',
         color: 'grey',
     }
