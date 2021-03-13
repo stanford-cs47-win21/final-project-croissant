@@ -8,6 +8,7 @@ import { StyleSheet,
     Dimensions
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+let BUTTON_COLOR = '#979797';
 
 export function PlusButton() {
 
@@ -35,8 +36,8 @@ const styles = StyleSheet.create({
         margin: 8,
     },
     plusButton: {
-        borderWidth: 8,
-        borderColor: 'grey',
+        borderWidth: 4,
+        borderColor: BUTTON_COLOR,
         width: '100%',
         height: '100%',
         justifyContent: 'center',
@@ -45,8 +46,8 @@ const styles = StyleSheet.create({
         borderStyle: 'dashed',
     },
     plusText: {
-        fontSize: 40,
+        fontSize: 50,
         fontWeight: 'bold',
-        color: 'grey',
+        color: BUTTON_COLOR,
     }
   });
