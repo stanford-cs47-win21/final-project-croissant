@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'center',
         flexDirection: 'row',
-        padding: 6
+        padding: 10
     },
     bottomBox: {
         flexDirection: 'row',
@@ -195,9 +195,8 @@ const styles = StyleSheet.create({
         textTransform: 'uppercase'
     },
     messageText: {
-        fontSize: 18,
-        paddingTop: 10,
-        paddingBottom: 10,
+        fontSize: keyStyles.BODY_TEXT_SIZE,
+        lineHeight: keyStyles.BODY_TEXT_SIZE * keyStyles.LINE_HEIGHT_MULT
     },
     
   });

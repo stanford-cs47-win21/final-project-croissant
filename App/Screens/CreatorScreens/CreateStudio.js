@@ -13,7 +13,10 @@ import DropDownPicker from 'react-native-dropdown-picker';
 
 import keyStyles from '../../Styles/keyStyles';
 import {Title} from '../../Components/Title';
+import {ActionButton} from '../../Components/ActionButton';
 
+let BODY_TEXT_SIZE = 16;
+let LINE_HEIGHT_MULT = 1.5; 
 
 // TODO: Weird serializable warning because you can't pass callback functions in the route params lmao
 export default function CreateStudio({navigation}) {
@@ -46,7 +49,6 @@ export default function CreateStudio({navigation}) {
  
     return(
         <SafeAreaView style={styles.container}>
-
   
             <View style={styles.headerContainer}>
             <Text style={styles.headerStyle}>Create a Studio</Text>
@@ -79,7 +81,7 @@ export default function CreateStudio({navigation}) {
                         defaultValue = '1 DAY'
                         containerStyle={{height: 40, width: '100%'}}
                         style={{backgroundColor: '#F3F1F1'}}
-                        itemStyle={{justifyContent: 'flex-start'}}
+                        itemStyle={styles.pickerItemStyle}
                         arrowColor='black'
                         onChangeItem={item => {
                             setBrainstormTimeDays(item.value)
@@ -94,7 +96,7 @@ export default function CreateStudio({navigation}) {
                         defaultValue = '0 HOURS'
                         containerStyle={{height: 40, width: '100%'}}
                         style={{backgroundColor: '#F3F1F1'}}
-                        itemStyle={{justifyContent: 'flex-start'}}
+                        itemStyle={styles.pickerItemStyle}
                         arrowColor='black'
                         onChangeItem={item => {
                             setBrainstormTimeHours(item.value)
@@ -109,7 +111,7 @@ export default function CreateStudio({navigation}) {
                         defaultValue = '0 MIN'
                         containerStyle={{height: 40, width: '100%'}}
                         style={{backgroundColor: '#F3F1F1'}}
-                        itemStyle={{justifyContent: 'flex-start'}}
+                        itemStyle={styles.pickerItemStyle}
                         arrowColor='black'
                         //onChangeItem={item => {
                         //    setBrainstormTime(item.value)
@@ -130,7 +132,7 @@ export default function CreateStudio({navigation}) {
                         defaultValue = '1 DAY'
                         containerStyle={{height: 40, width: '100%'}}
                         style={{backgroundColor: '#F3F1F1'}}
-                        itemStyle={{justifyContent: 'flex-start'}}
+                        itemStyle={styles.pickerItemStyle}
                         arrowColor='black'
                         //onChangeItem={item => {
                         //    setBrainstormTime(item.value)
@@ -145,7 +147,7 @@ export default function CreateStudio({navigation}) {
                         defaultValue = '0 HOURS'
                         containerStyle={{height: 40, width: '100%'}}
                         style={{backgroundColor: '#F3F1F1'}}
-                        itemStyle={{justifyContent: 'flex-start'}}
+                        itemStyle={styles.pickerItemStyle}
                         arrowColor='black'
                         //onChangeItem={item => {
                         //    setBrainstormTime(item.value)
@@ -160,7 +162,7 @@ export default function CreateStudio({navigation}) {
                         defaultValue = '0 MIN'
                         containerStyle={{height: 40, width: '100%'}}
                         style={{backgroundColor: '#F3F1F1'}}
-                        itemStyle={{justifyContent: 'flex-start'}}
+                        itemStyle={styles.pickerItemStyle}
                         arrowColor='black'
                         //onChangeItem={item => {
                         //    setBrainstormTime(item.value)
@@ -172,20 +174,11 @@ export default function CreateStudio({navigation}) {
                 </View>   
             </View>
 
-            <View style={styles.buttonContainer}> 
-                <TouchableOpacity
-                    style={keyStyles.button1} 
-                    onPress = { () => {
-                        navigation.navigate('CreatorHome', {newStudio: {
+                <ActionButton text={"START"} onPress={() => { navigation.navigate("CreatorHome"); }} context={{newStudio: {
                             prompt: prompt,
                             brainstormTimeDays: brainstormTimeDays,
                             brainstormTimeHours: brainstormTimeHours
-                        }})
-                    }}
-                >
-                    <Text style={keyStyles.button1text}> START </Text>
-                </TouchableOpacity>
-            </View> 
+            }}} style={{zIndex: 0}}/>
         
         </SafeAreaView>
     );
@@ -209,27 +202,22 @@ const styles = StyleSheet.create({
         // backgroundColor: 'grey',
         width: '90%',
         margin: 20,
+        zIndex: 2
     },
     timeLimitLower: {
         height: '10%',
         // backgroundColor: 'grey',
         width: '90%',
         margin: 20,
-        zIndex: -5
+        zIndex: 1
     },
     picker: {
-        width: '32%'
+        width: '32%',
     },
     pickersContainer: {
         paddingTop: 10,
         flexDirection: 'row',
         justifyContent: 'space-between'
-    },
-    buttonContainer: {
-        zIndex: -10,
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'flex-end',
     },
     headerContainer: {
         width: '90%',
@@ -237,7 +225,8 @@ const styles = StyleSheet.create({
     },
     headerStyle: {
         fontFamily: 'Lato_700Bold',
-        fontSize: 24,
+        fontSize: 30,
+        letterSpacing: .2
     },
 
     // Prompt View styles
@@ -246,6 +235,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     subtitleStyle: {
+        fontSize: BODY_TEXT_SIZE,
         fontFamily: 'Lato_700Bold'    
     },
     promptInputView: {
@@ -254,10 +244,13 @@ const styles = StyleSheet.create({
     promptInputField: {
         backgroundColor: '#F3F1F1',
         height: '100%',
-        padding: 8
+        padding: 15,
+        borderRadius: 10,
+        fontSize: keyStyles.BODY_TEXT_SIZE,
+        lineHeight: keyStyles.BODY_TEXT_SIZE * keyStyles.LINE_HEIGHT_MULT
     },
-
-
-
+    pickerItemStyle: {
+        justifyContent: 'flex-start',
+    },
   });
   

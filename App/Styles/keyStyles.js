@@ -6,6 +6,8 @@ const keyStyles = {
     DEFAULT_BORDER_RADIUS: 20,
     PRIMARY_COLOR: "#FAC738",
     SECONDARY_COLOR: "#FFF8E0",
+    BODY_TEXT_SIZE: 16,
+    LINE_HEIGHT_MULT:1.5,
     // const ICON_SIZE: 24,
 
 
