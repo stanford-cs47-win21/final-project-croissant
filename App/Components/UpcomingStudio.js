@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     },
     reminderText: {
         fontSize: FONT_SIZE,
-        fontWeight: 'bold',
+        fontFamily: 'Lato_700Bold',
         paddingBottom: 10
     },
     bottomBox: {

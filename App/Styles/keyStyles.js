@@ -38,9 +38,11 @@ const keyStyles = {
         width: '90%',
     },
     titleText1: {
-        fontWeight: 'bold',
-        fontSize: 24,
+        fontSize: 16,
         color: 'black',
+        fontFamily: 'Lato_700Bold',
+        textTransform: 'uppercase',
+        letterSpacing: .6
     },
     centeredView: {
         // don't add height

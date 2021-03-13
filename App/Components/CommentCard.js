@@ -9,7 +9,7 @@ import { StyleSheet,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {PicAndUsername} from "./PicAndUsername";
-
+import keyStyles from '../Styles/keyStyles';
 
 export function CommentCard({cardInfo, commentColor=false}) {
 
@@ -77,9 +77,8 @@ const styles = StyleSheet.create({
         padding: 10
     },
     commentText: {
-        fontSize: 16,
-        paddingTop: 10,
-        paddingBottom: 10,
+        fontSize: keyStyles.BODY_TEXT_SIZE,
+        lineHeight: keyStyles.BODY_TEXT_SIZE * keyStyles.LINE_HEIGHT_MULT
     },
     
   });
