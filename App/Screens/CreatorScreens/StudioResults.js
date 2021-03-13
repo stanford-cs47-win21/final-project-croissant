@@ -113,6 +113,8 @@ export default function StudioResults({route, navigation}) {
                 data={fanResults}
                 renderItem={makeGroupCard}
             />
+            <ActionButton text="CREATE ROOM" onPress={() => {navigation.navigate("CreateRoom");}} context={null}
+                        /> 
         </SafeAreaView>
     );
 }
