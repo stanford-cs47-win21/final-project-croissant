@@ -240,7 +240,8 @@ const styles = StyleSheet.create({
     },
     headerStyle: {
         fontFamily: 'Lato_700Bold',
-        fontSize: 24,
+        fontSize: 30,
+        letterSpacing: .2
     },
 
     // Prompt View styles
@@ -249,6 +250,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     subtitleStyle: {
+        fontSize: BODY_TEXT_SIZE,
         fontFamily: 'Lato_700Bold'    
     },
     promptInputView: {
