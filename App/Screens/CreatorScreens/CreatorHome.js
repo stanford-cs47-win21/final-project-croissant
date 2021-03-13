@@ -18,24 +18,35 @@ export default function CreatorHome({route, navigation}) {
     // the 5 different types of hardcoded cards on the homepage initially
     const fakeNewsfeedData = [
         {
+            isAlert: true,
+            status: "2", // num participants
+            message: "Feb 29", // date
+            timeLeft: "9:30 PM PT", //time
+
+        },
+        {
+            isAlert: false,
             username: "rachel_f",
             status: "LIVE",
             message: "Woooo we are going live",
             timeLeft: "Join now",
         },
         {
+            isAlert: false,
             username: "rachel_f",
             status: "BRAINSTORMING",
             message: "I'm looking to do more vegan recipes! Would love to hear about your personal favorites.",
             timeLeft: "6 hours remaining",
         },
         {
+            isAlert: false,
             username: "rachel_f",
             status: "RANKING",
             message: "what is your favorite sandwich.",
             timeLeft: "4 hours remaining",
         },
         {
+            isAlert: false,
             username: "rachel_f",
             status: "VIEW RESULTS",
             message: "hahahaahahhaah ",
@@ -92,7 +103,6 @@ export default function CreatorHome({route, navigation}) {
             <Header studios={studios}/>
 
             <View style={keyStyles.listView}> 
-                <UpcomingStudio alertInfo={{numParticipants:2, time:"9:30 PM PT", date:"Feb 29"}}/>
                 <StudioList 
                     studios={studios} 
                 />
