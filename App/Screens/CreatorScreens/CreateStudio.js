@@ -174,7 +174,7 @@ export default function CreateStudio({navigation}) {
                 </View>   
             </View>
 
-            <ActionButton text={"START"} nextScreen={"CreatorHome"} context={{newStudio: {
+                <ActionButton text={"START"} onPress={() => { navigation.navigate("CreatorHome"); }} context={{newStudio: {
                             prompt: prompt,
                             brainstormTimeDays: brainstormTimeDays,
                             brainstormTimeHours: brainstormTimeHours
@@ -246,8 +246,8 @@ const styles = StyleSheet.create({
         height: '100%',
         padding: 15,
         borderRadius: 10,
-        fontSize: BODY_TEXT_SIZE,
-        lineHeight: BODY_TEXT_SIZE * LINE_HEIGHT_MULT
+        fontSize: keyStyles.BODY_TEXT_SIZE,
+        lineHeight: keyStyles.BODY_TEXT_SIZE * keyStyles.LINE_HEIGHT_MULT
     },
     pickerItemStyle: {
         justifyContent: 'flex-start',

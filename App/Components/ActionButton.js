@@ -18,9 +18,7 @@ export function ActionButton(props) {
             <View style={styles.buttonContainer}> 
                 <TouchableOpacity
                     style={styles.button1} 
-                    onPress = { () => {
-                        navigation.navigate(props.nextScreen, props.context);
-                    }}
+                    onPress = {props.onPress} 
                 >
                     <Text style={styles.button1text}> {props.text} </Text>
                 </TouchableOpacity>
@@ -42,6 +40,7 @@ const styles = StyleSheet.create({
         color: 'black',
         fontSize: 24,
         textAlign: 'center',
+        textTransform: 'uppercase',
         letterSpacing: .2
     },
 });

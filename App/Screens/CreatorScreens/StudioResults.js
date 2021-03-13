@@ -126,7 +126,7 @@ export default function StudioResults({route, navigation}) {
                   
                 ListFooterComponent={
                     <View style={{alignItems: 'center', marginTop: 10}}>
-                    <ActionButton text="CREATE ROOM" nextScreen="CreateRoom" context={null}
+                        <ActionButton text="CREATE ROOM" onPress={() => {navigation.navigate("CreateRoom");}} context={null}
                         /> 
                             </View>
                 }

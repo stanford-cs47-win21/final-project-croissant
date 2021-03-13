@@ -15,7 +15,7 @@ import {LiveSymbol} from "../../Components/LiveSymbol";
 import {LivePicUsername} from "../../Components/LivePicUsername";
 
 import { Feather } from '@expo/vector-icons'; 
-
+import {ActionButton} from '../../Components/ActionButton';
 
 
 
@@ -112,18 +112,14 @@ export default function LiveRoom({route, navigation}) {
 
 
             {/* Button at bottom */}
-            <View style={styles.buttonView}> 
-                <TouchableOpacity
-                    style={styles.buttonStyle} 
+            <ActionButton text= {isLive ? 'END ROOM' : 'BEGIN LIVE ROOM' } onPress
                     onPress = { () => {
                         setLive(!isLive);
                         // if (isLive) navigation.goBack();
                         // else setLive(true);
                     }}
-                >
-                    <Text style={keyStyles.button1text}> {isLive ? 'END ROOM' : 'BEGIN LIVE ROOM' } </Text>
-                </TouchableOpacity>
-            </View>
+                    context={null}
+            />
 
         </SafeAreaView>
     );
