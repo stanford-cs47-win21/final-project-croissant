@@ -82,7 +82,7 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
 
     return(
         <TouchableOpacity 
-            style={styles.outer}
+            style={[styles.outer, keyStyles.shadowProps]}
             onPress = {determineFlow}
         > 
 

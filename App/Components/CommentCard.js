@@ -18,7 +18,7 @@ export function CommentCard({cardInfo, commentColor=false}) {
     const navigation = useNavigation();
 
     return (
-        <View style={commentColor ? styles.outerStaticComment : styles.outerStatic}> 
+        <View style={[commentColor ? styles.outerStaticComment : styles.outerStatic, keyStyles.shadowProps]}> 
             <View style={styles.topRow}> 
                 <PicAndUsername userInfo = {username} /> 
             </View>
