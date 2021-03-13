@@ -19,7 +19,7 @@ export function StudioList({fan=false, ...props}) {
     const renderStudioCard = ({index, item}) => {
         // remove the plus button altogether if fan
         if (item.username === null) {
-            return <UpcomingStudio alertInfo={{numParticipants:2, time:"9:30 PM PT", date:"Feb 29"}}/>
+            return <UpcomingStudio alertInfo={{numParticipants:item.status, time:item.message, date:item.timeLeft}}/>
         } else if (fan && index === studios.length - 1) {
             return null;
         } else if (index === studios.length - 1) {

@@ -19,8 +19,9 @@ export default function CreatorHome({route, navigation}) {
     const fakeNewsfeedData = [
         {
             username: null,
-            status: "9:30 PM PT", 
-            message: "Feb 29"
+            status: "2", 
+            message: "Feb 29",
+            timeLeft: "9:30 PM PT"
         },
         {
             username: "rachel_f",
