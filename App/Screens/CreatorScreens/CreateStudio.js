@@ -81,7 +81,7 @@ export default function CreateStudio({navigation}) {
                         defaultValue = '1 DAY'
                         containerStyle={{height: 40, width: '100%'}}
                         style={{backgroundColor: '#F3F1F1'}}
-                        itemStyle={{justifyContent: 'flex-start'}}
+                        itemStyle={styles.pickerItemStyle}
                         arrowColor='black'
                         onChangeItem={item => {
                             setBrainstormTimeDays(item.value)
@@ -96,7 +96,7 @@ export default function CreateStudio({navigation}) {
                         defaultValue = '0 HOURS'
                         containerStyle={{height: 40, width: '100%'}}
                         style={{backgroundColor: '#F3F1F1'}}
-                        itemStyle={{justifyContent: 'flex-start'}}
+                        itemStyle={styles.pickerItemStyle}
                         arrowColor='black'
                         onChangeItem={item => {
                             setBrainstormTimeHours(item.value)
@@ -111,7 +111,7 @@ export default function CreateStudio({navigation}) {
                         defaultValue = '0 MIN'
                         containerStyle={{height: 40, width: '100%'}}
                         style={{backgroundColor: '#F3F1F1'}}
-                        itemStyle={{justifyContent: 'flex-start'}}
+                        itemStyle={styles.pickerItemStyle}
                         arrowColor='black'
                         //onChangeItem={item => {
                         //    setBrainstormTime(item.value)
@@ -132,7 +132,7 @@ export default function CreateStudio({navigation}) {
                         defaultValue = '1 DAY'
                         containerStyle={{height: 40, width: '100%'}}
                         style={{backgroundColor: '#F3F1F1'}}
-                        itemStyle={{justifyContent: 'flex-start'}}
+                        itemStyle={styles.pickerItemStyle}
                         arrowColor='black'
                         //onChangeItem={item => {
                         //    setBrainstormTime(item.value)
@@ -147,7 +147,7 @@ export default function CreateStudio({navigation}) {
                         defaultValue = '0 HOURS'
                         containerStyle={{height: 40, width: '100%'}}
                         style={{backgroundColor: '#F3F1F1'}}
-                        itemStyle={{justifyContent: 'flex-start'}}
+                        itemStyle={styles.pickerItemStyle}
                         arrowColor='black'
                         //onChangeItem={item => {
                         //    setBrainstormTime(item.value)
@@ -162,7 +162,7 @@ export default function CreateStudio({navigation}) {
                         defaultValue = '0 MIN'
                         containerStyle={{height: 40, width: '100%'}}
                         style={{backgroundColor: '#F3F1F1'}}
-                        itemStyle={{justifyContent: 'flex-start'}}
+                        itemStyle={styles.pickerItemStyle}
                         arrowColor='black'
                         //onChangeItem={item => {
                         //    setBrainstormTime(item.value)
@@ -194,7 +194,7 @@ export default function CreateStudio({navigation}) {
                             prompt: prompt,
                             brainstormTimeDays: brainstormTimeDays,
                             brainstormTimeHours: brainstormTimeHours
-            }}}/>
+            }}} style={{zIndex: 0}}/>
         
         </SafeAreaView>
     );
@@ -218,16 +218,17 @@ const styles = StyleSheet.create({
         // backgroundColor: 'grey',
         width: '90%',
         margin: 20,
+        zIndex: 2
     },
     timeLimitLower: {
         height: '10%',
         // backgroundColor: 'grey',
         width: '90%',
         margin: 20,
-        zIndex: -5
+        zIndex: 1
     },
     picker: {
-        width: '32%'
+        width: '32%',
     },
     pickersContainer: {
         paddingTop: 10,
@@ -264,8 +265,8 @@ const styles = StyleSheet.create({
         fontSize: BODY_TEXT_SIZE,
         lineHeight: BODY_TEXT_SIZE * LINE_HEIGHT_MULT
     },
-
-
-
+    pickerItemStyle: {
+        justifyContent: 'flex-start',
+    },
   });
   
