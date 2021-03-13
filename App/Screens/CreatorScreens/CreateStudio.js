@@ -13,6 +13,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 
 import keyStyles from '../../Styles/keyStyles';
 import {Title} from '../../Components/Title';
+import {ActionButton} from '../../Components/ActionButton';
 
 
 // TODO: Weird serializable warning because you can't pass callback functions in the route params lmao
@@ -46,7 +47,6 @@ export default function CreateStudio({navigation}) {
  
     return(
         <SafeAreaView style={styles.container}>
-
   
             <View style={styles.headerContainer}>
             <Text style={styles.headerStyle}>Create a Studio</Text>
@@ -172,6 +172,7 @@ export default function CreateStudio({navigation}) {
                 </View>   
             </View>
 
+                {/*
             <View style={styles.buttonContainer}> 
                 <TouchableOpacity
                     style={keyStyles.button1} 
@@ -186,6 +187,12 @@ export default function CreateStudio({navigation}) {
                     <Text style={keyStyles.button1text}> START </Text>
                 </TouchableOpacity>
             </View> 
+            */}
+            <ActionButton buttonInfo={"START", "CreatorHome", {newStudio: {
+                            prompt: prompt,
+                            brainstormTimeDays: brainstormTimeDays,
+                            brainstormTimeHours: brainstormTimeHours
+            }}}/>
         
         </SafeAreaView>
     );
@@ -225,12 +232,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between'
     },
-    buttonContainer: {
-        zIndex: -10,
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'flex-end',
-    },
     headerContainer: {
         width: '90%',
         margin: 10
@@ -254,7 +255,9 @@ const styles = StyleSheet.create({
     promptInputField: {
         backgroundColor: '#F3F1F1',
         height: '100%',
-        padding: 8
+        padding: 15,
+        paddingTop: 15,
+        borderRadius: 10
     },
 
 
