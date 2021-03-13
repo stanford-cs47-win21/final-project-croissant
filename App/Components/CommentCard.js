@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         paddingBottom: 20
     },
     outerStaticComment: {
-        width: Dimensions.get('window').width * .9,
+        width: '90%',
         backgroundColor: '#F2F2F2',
         alignItems: 'center',
         justifyContent: 'space-evenly',
