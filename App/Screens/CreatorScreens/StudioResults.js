@@ -19,14 +19,15 @@ import {ActionButton} from '../../Components/ActionButton';
 
 export default function StudioResults({route, navigation}) {
     const {username, status, message, timeLeft} = route.params.cardInfo;
-
     // hardcoding the data for the sectionlist
+    let SHARED_COLOR = "#F98562";
+    let BUTTON_COLOR = SHARED_COLOR;
     const fanResults = [
         {
             title: "Fan Favorites",
             explanation: "These were the overall highest-ranking fan suggestions.",
-            color: "#c39e5c",
-            buttonColor: "#f6d887",
+            color: SHARED_COLOR, 
+            buttonColor: BUTTON_COLOR,
             data: [
                 {
                     username: 'john_winston',
@@ -45,8 +46,8 @@ export default function StudioResults({route, navigation}) {
         {
             title: "Most Controversial",
             explanation: "These were the most polarizing fan suggestions.",
-            color: "#91091e",
-            buttonColor: "#df7861",
+            color: SHARED_COLOR,
+            buttonColor: BUTTON_COLOR,
             data: [
                 {
                     username: 'john_winston',
@@ -66,8 +67,8 @@ export default function StudioResults({route, navigation}) {
         {
             title: "Most Representative",
             explanation: "These were the suggestions that captured frequently referenced topics by fans.",
-            color: "#da723c",
-            buttonColor: "#ecb390",
+            color: SHARED_COLOR,
+            buttonColor: BUTTON_COLOR,
             data: [
                 {
                     username: 'john_winston',

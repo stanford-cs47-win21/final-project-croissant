@@ -16,9 +16,9 @@ export function CloseButton(props) {
     return(
             <View style={[styles.buttonContainer, {backgroundColor: props.buttonColor}]}>
                 <TouchableOpacity
-                    onPress = {props.onPress} 
+                    onPress = {props.onPress}
                 >
-                    <Icon name={'close'} color='black' size={BUTTON_SIZE/2} />
+                    <Icon name={'close'} color='white' size={BUTTON_SIZE} />
                 </TouchableOpacity>
             </View> 
     );
