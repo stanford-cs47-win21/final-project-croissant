@@ -25,8 +25,8 @@ export default function StudioResults({route, navigation}) {
         {
             title: "Fan Favorites",
             explanation: "These were the overall highest-ranking fan suggestions.",
-            color: "#00356b",
-            buttonColor: "blue",
+            color: "#c39e5c",
+            buttonColor: "#f6d887",
             data: [
                 {
                     username: 'john_winston',
@@ -45,8 +45,8 @@ export default function StudioResults({route, navigation}) {
         {
             title: "Most Controversial",
             explanation: "These were the most polarizing fan suggestions.",
-            color: "#f58634",
-            buttonColor: "orange",
+            color: "#91091e",
+            buttonColor: "#df7861",
             data: [
                 {
                     username: 'john_winston',
@@ -66,8 +66,8 @@ export default function StudioResults({route, navigation}) {
         {
             title: "Most Representative",
             explanation: "These were the suggestions that captured frequently referenced topics by fans.",
-            color: "#27AE60",
-            buttonColor: "green",
+            color: "#da723c",
+            buttonColor: "#ecb390",
             data: [
                 {
                     username: 'john_winston',
@@ -90,10 +90,8 @@ export default function StudioResults({route, navigation}) {
             items={groupInfo.data} buttonColor={groupInfo.buttonColor} />
     );
 
-    const footer = () => {<ActionButton text="CREATE ROOM" onPress={() => {navigation.navigate("CreateRoom");}} context={null}
-                />};
-
-    const renderHeader = () => {
+    return(
+        <SafeAreaView style={styles.container}>
             <View style={styles.header}>
             <CommentCard
                 cardInfo={{
@@ -113,16 +111,12 @@ export default function StudioResults({route, navigation}) {
                         </View>
 
                     </View>
-                    </View>};
-
-    return(
-        <SafeAreaView style={styles.container}>
+                    </View>
             <FlatList
-                listHeaderComponent={renderHeader}
                 data={fanResults}
                 renderItem={makeGroupCard}
-                listFooterComponent = {footer}
         />
+                    <ActionButton text="CREATE ROOM" onPress={() => {navigation.navigate("CreateRoom");}} context={null}/>
         </SafeAreaView>
     );
 }
