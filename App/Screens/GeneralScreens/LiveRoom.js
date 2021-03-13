@@ -78,7 +78,7 @@ export default function LiveRoom({route, navigation}) {
                         style={styles.icon}
                     /> */}
                     <Feather name="users" size={44} color="black" />
-                    <Text style={styles.dateTimeText}> 1969 </Text>
+                    <Text style={styles.dateTimeText}> 1,969 </Text>
                 </View>
 
                 <TouchableOpacity 
@@ -141,12 +141,12 @@ const styles = StyleSheet.create({
     sixUsers: {
         height: '30%', 
         justifyContent: 'center',
-        // backgroundColor: 'green',
+        //backgroundColor: 'green',
     },
     liveSymb: {
         alignItems: 'flex-start', 
         width: '90%', 
-        height: '7%', 
+        height: '3%', 
         justifyContent: 'center',
         // backgroundColor: "red"
     },
@@ -227,8 +227,8 @@ const styles = StyleSheet.create({
       },
       liveText: {
           color: 'red',
-          fontWeight: 'bold',
-          fontSize: 15
+          fontFamily: 'Lato_700Bold',
+          fontSize: 16
       },
       rowContainer: {
           flexDirection: 'row', // align text next to icon

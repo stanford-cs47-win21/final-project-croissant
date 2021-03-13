@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
     },
     badgeText: {
         color: 'white',
-        fontWeight: 'bold',
+        fontFamily: 'Lato_700Bold',
         fontSize: 12,
         textTransform: 'uppercase'
     },

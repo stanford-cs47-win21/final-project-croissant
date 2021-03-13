@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     },
     liveText: {
         color: 'red',
-        fontWeight: 'bold',
+        fontFamily: 'Lato_700Bold',
         fontSize: 12
     },
     rowContainer: {
