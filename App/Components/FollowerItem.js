@@ -46,22 +46,28 @@ export function FollowerItem({username, genre=null, followButton=null, ...props}
 
     return(
         <View style={styles.outer}> 
-            <Text > {username} </Text>
-            <Text > {genre} </Text>
+            <View style={styles.section}> 
+                <Text style={{marginLeft: 10}}> {username} </Text>
+            </View> 
 
-            <TouchableOpacity
-                style={followButtonPressed ? styles.pressed : styles.unpressed}
-                onPress={ () => {
-                    if (username==='rachel_f') {
-                        // props.setFollowedRachel(!followButtonPressed);
-                        setFollowedButtonPressed(!followButtonPressed);
-                    } 
-                }}
-            > 
-                <Text> 
-                    {followButtonPressed ? 'FOLLOWING' : '+ FOLLOW '} 
-                </Text>
-            </TouchableOpacity>
+            <View style={styles.section}> 
+                <Text style={{color: 'grey'}}> {genre} </Text>
+            </View>
+
+            <View style={styles.section}> 
+                <TouchableOpacity
+                    style={followButtonPressed ? styles.pressed : styles.unpressed}
+                    onPress={ () => {
+                        if (username==='rachel_f') {
+                            setFollowedButtonPressed(!followButtonPressed);
+                        } 
+                    }}
+                > 
+                    <Text> 
+                        {followButtonPressed ? 'FOLLOWING' : '+ FOLLOW '} 
+                    </Text>
+                </TouchableOpacity>
+            </View>
 
         </View>
     );
@@ -70,7 +76,7 @@ export function FollowerItem({username, genre=null, followButton=null, ...props}
 
 const styles = StyleSheet.create({
     outer: {
-        width: Dimensions.get('window').width * .9,
+        width:  Dimensions.get('window').width * .9,
         height: Dimensions.get('window').height * .08, 
         backgroundColor: '#FFF8E0',
         alignItems: 'center',
@@ -80,9 +86,24 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     pressed: {
-        backgroundColor: '#FAC738'
+        backgroundColor: '#FAC738',
+        height: '50%',
+        width: '80%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 20,
     },
     unpressed: {
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        height: '50%',
+        width: '80%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 20,
+    },
+    section: {
+        width: '33%',
+        justifyContent: 'center',
+        alignContent: 'center',
     }
   });

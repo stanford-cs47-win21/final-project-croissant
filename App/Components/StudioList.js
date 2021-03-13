@@ -15,12 +15,14 @@ export function StudioList({fan=false, ...props}) {
     const studios = props.studios;
 
     const renderStudioCard = ({index, item}) => {
-        if (index === studios.length - 1) {
+        if (fan && index === studios.length - 1) {
+            return null;
+        } else if (index === studios.length - 1) {
             return <PlusButton /> 
         } else return <StudioCard cardInfo={item} fan={fan}/>
     } 
 
-    return (
+    return ( 
         <FlatList 
             data={studios}
             renderItem = {renderStudioCard}
