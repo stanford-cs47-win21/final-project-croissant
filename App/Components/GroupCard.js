@@ -23,7 +23,8 @@ export function GroupCard(props) {
             onPress={() => setComments(!showComments)}>
             <View style={styles.topRow}>
                 <Text style={styles.headerText}>{props.groupName} </Text>
-                    {showComments && <CloseButton onPress={() => setComments(!showComments)}/>}
+                    {showComments && <CloseButton onPress={() => setComments(!showComments)}
+                    buttonColor={props.buttonColor}/>}
             </View>
             <View style={styles.explanation}>
                 <Text style={styles.explanationText}>{props.explanation}</Text>
@@ -40,6 +41,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#2F80ED',
         alignItems: 'center',
         justifyContent: 'space-evenly',
+        alignContent: 'center',
         borderRadius: 20,
         margin: 8,
         padding: 10
@@ -47,14 +49,15 @@ const styles = StyleSheet.create({
     headerText: {
         fontSize: 24,
         fontFamily: 'Lato_700Bold',
-        color: 'white',
-        marginBottom: 3
+        color: 'white'
     },
     topRow: {
         width: '90%',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignContent: "center"
+        alignContent: "center",
+        alignItems: "center",
+            flexDirection: 'row', // align text next to icon
     },
     explanation: {
         width: '90%',

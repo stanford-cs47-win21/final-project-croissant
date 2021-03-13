@@ -8,30 +8,28 @@ import { StyleSheet,
     Dimensions
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
+let BUTTON_SIZE=25;
 export function CloseButton(props) {
     const navigation = useNavigation();
     return(
-            <View style={styles.buttonContainer}> 
+            <View style={[styles.buttonContainer, {backgroundColor: props.buttonColor}]}>
                 <TouchableOpacity
-                    style={styles.button1} 
                     onPress = {props.onPress} 
                 >
-                <Text style={styles.buttonText}> CLOSE </Text>
+                    <Icon name={'close'} color='black' size={BUTTON_SIZE/2} />
                 </TouchableOpacity>
             </View> 
     );
 }
-
 const styles = StyleSheet.create({
     buttonContainer: {
-        justifyContent: 'center',
-        alignContent: 'center',
-        borderRadius: 20,
-        backgroundColor: "#F3F1F1",
+        justifyContent:'center',
+        alignItems:'center',
+        width:BUTTON_SIZE,
+        height:BUTTON_SIZE,
+        borderRadius:BUTTON_SIZE/2,
     },
-    buttonText:  {
-        fontFamily: 'Lato_700Bold',
-    }
 });
 

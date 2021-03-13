@@ -26,6 +26,7 @@ export default function StudioResults({route, navigation}) {
             title: "Fan Favorites",
             explanation: "These were the overall highest-ranking fan suggestions.",
             color: "#00356b",
+            buttonColor: "blue",
             data: [
                 {
                     username: 'john_winston',
@@ -45,6 +46,7 @@ export default function StudioResults({route, navigation}) {
             title: "Most Controversial",
             explanation: "These were the most polarizing fan suggestions.",
             color: "#f58634",
+            buttonColor: "orange",
             data: [
                 {
                     username: 'john_winston',
@@ -65,6 +67,7 @@ export default function StudioResults({route, navigation}) {
             title: "Most Representative",
             explanation: "These were the suggestions that captured frequently referenced topics by fans.",
             color: "#27AE60",
+            buttonColor: "green",
             data: [
                 {
                     username: 'john_winston',
@@ -84,7 +87,7 @@ export default function StudioResults({route, navigation}) {
     ];
     const makeGroupCard = ({item: groupInfo}) => (
         <GroupCard groupName={groupInfo.title} explanation={groupInfo.explanation} color={groupInfo.color}
-            items={groupInfo.data} />
+            items={groupInfo.data} buttonColor={groupInfo.buttonColor} />
     );
 
     const footer = () => {<ActionButton text="CREATE ROOM" onPress={() => {navigation.navigate("CreateRoom");}} context={null}
