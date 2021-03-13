@@ -24,7 +24,7 @@ export default function StudioResults({route, navigation}) {
     const fanResults = [
         {
             title: "Fan Favorites",
-            explanation: "Super favorite brah",
+            explanation: "These were the overall highest-ranking fan suggestions.",
             color: "#c5d7bd",
             data: [
                 {
@@ -42,8 +42,8 @@ export default function StudioResults({route, navigation}) {
             ]
         },
         {
-            title: "Fan Controversial",
-            explanation: "Super controversial brah",
+            title: "Most Controversial",
+            explanation: "These were the most polarizing fan suggestions.",
             color: "#383e56",
             data: [
                 {
@@ -63,7 +63,7 @@ export default function StudioResults({route, navigation}) {
         },
         {
             title: "Most Representative",
-            explanation: "Super representative brah",
+            explanation: "These were the suggestions that captured frequently referenced topics by fans.",
             color: "#fb743e",
             data: [
                 {
@@ -96,6 +96,18 @@ export default function StudioResults({route, navigation}) {
                     comment: message,
                 }}
             />
+                     <View style={styles.stats}>
+                        <View style={styles.box}>
+                            <Text style={styles.bigNum}> 850 </Text>
+                            <Text style={styles.label}> Participants </Text>
+                        </View>
+
+                        <View style={styles.box}>
+                            <Text style={styles.bigNum}> 1124 </Text>
+                            <Text style={styles.label}> Ideas </Text>
+                        </View>
+
+                    </View>
                     </View>
             <FlatList
                 data={fanResults}
