@@ -8,6 +8,7 @@ const keyStyles = {
     SECONDARY_COLOR: "#FFF8E0",
     BODY_TEXT_SIZE: 16,
     LINE_HEIGHT_MULT:1.5,
+    SALMON_COLOR:"#F98562",
     // const ICON_SIZE: 24,
 
 
