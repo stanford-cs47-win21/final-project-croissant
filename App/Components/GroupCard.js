@@ -58,7 +58,9 @@ const styles = StyleSheet.create({
         color: 'white',
     },
     topRow: {
-        width: '90%',
+        width: '100%',
+        paddingLeft: '5%',
+        paddingRight: '2%',
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignContent: "center",
