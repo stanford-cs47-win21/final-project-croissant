@@ -10,13 +10,17 @@ import { StyleSheet,
 
 import {StudioCard} from "./StudioCard";
 import {PlusButton} from "./PlusButton";
+import {UpcomingStudio} from "./UpcomingStudio"
+
 
 export function StudioList({fan=false, ...props}) {
     const studios = props.studios;
 
     const renderStudioCard = ({index, item}) => {
         // remove the plus button altogether if fan
-        if (fan && index === studios.length - 1) {
+        if (item.username === null) {
+            return <UpcomingStudio alertInfo={{numParticipants:2, time:"9:30 PM PT", date:"Feb 29"}}/>
+        } else if (fan && index === studios.length - 1) {
             return null;
         } else if (index === studios.length - 1) {
             return <PlusButton /> 

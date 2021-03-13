@@ -18,6 +18,11 @@ export default function CreatorHome({route, navigation}) {
     // the 5 different types of hardcoded cards on the homepage initially
     const fakeNewsfeedData = [
         {
+            username: null,
+            status: "9:30 PM PT", 
+            message: "Feb 29"
+        },
+        {
             username: "rachel_f",
             status: "LIVE",
             message: "Woooo we are going live",
@@ -92,7 +97,6 @@ export default function CreatorHome({route, navigation}) {
             <Header studios={studios}/>
 
             <View style={keyStyles.listView}> 
-                <UpcomingStudio alertInfo={{numParticipants:2, time:"9:30 PM PT", date:"Feb 29"}}/>
                 <StudioList 
                     studios={studios} 
                 />
