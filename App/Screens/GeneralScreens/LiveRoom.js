@@ -90,8 +90,8 @@ export default function LiveRoom({route, navigation}) {
                         <Feather name="mic" size={44} color="black" />
                         </View>
                     : 
-                        <View style={[styles.buttonView, {backgroundColor: keyStyles.SALMON_COLOR}]}>
-                        <Feather name="mic-off" size={44} color="white" />
+                        <View style={[styles.buttonView, {backgroundColor: keyStyles.LIGHT_GRAY}]}>
+                        <Feather name="mic-off" size={44} color="black" />
                             </View>
                 }
                     <Text style={styles.dateTimeText}>  </Text>
