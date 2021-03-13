@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, 
     Text, 
     SafeAreaView,
@@ -11,27 +11,25 @@ import { useNavigation } from '@react-navigation/native';
 import {PicAndUsername} from "./PicAndUsername";
 import keyStyles from '../Styles/keyStyles';
 import {CommentCard} from "./CommentCard";
+import {CloseButton} from "./CloseButton";
 
 export function GroupCard(props) {
-
-    const navigation = useNavigation();
-    let fakeItem = [{
-        username: 'parquet_courts',
-        comment: 'Before the water gets too high'
-    },];
+    const [showComments, setComments] = useState(false);
     let commonCardsArr = props.items.map(cardInfo => (
         <CommentCard cardInfo={cardInfo} commentColor={true}/>
     ));
     return (
-        <View style={[styles.outer, {backgroundColor: props.color}]}>
+        <TouchableOpacity style={[styles.outer, {backgroundColor: props.color}]}
+            onPress={() => setComments(!showComments)}>
             <View style={styles.topRow}>
                 <Text style={styles.headerText}>{props.groupName} </Text>
+                    {showComments && <CloseButton onPress={() => setComments(!showComments)}/>}
             </View>
             <View style={styles.explanation}>
                 <Text style={styles.explanationText}>{props.explanation}</Text>
             </View>
-            {commonCardsArr}
-        </View>
+                {showComments && commonCardsArr}
+        </TouchableOpacity>
     );
 }
 
@@ -54,6 +52,9 @@ const styles = StyleSheet.create({
     },
     topRow: {
         width: '90%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignContent: "center"
     },
     explanation: {
         width: '90%',

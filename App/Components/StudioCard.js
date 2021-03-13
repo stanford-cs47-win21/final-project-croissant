@@ -14,6 +14,7 @@ import { Title } from "./Title";
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import { AntDesign } from '@expo/vector-icons'; 
 import { Ionicons } from '@expo/vector-icons'; 
+import { CloseButton } from "./CloseButton";
 
 
 

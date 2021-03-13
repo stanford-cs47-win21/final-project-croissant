@@ -25,7 +25,7 @@ export default function StudioResults({route, navigation}) {
         {
             title: "Fan Favorites",
             explanation: "These were the overall highest-ranking fan suggestions.",
-            color: "#c5d7bd",
+            color: "#00356b",
             data: [
                 {
                     username: 'john_winston',
@@ -44,7 +44,7 @@ export default function StudioResults({route, navigation}) {
         {
             title: "Most Controversial",
             explanation: "These were the most polarizing fan suggestions.",
-            color: "#383e56",
+            color: "#f58634",
             data: [
                 {
                     username: 'john_winston',
@@ -64,7 +64,7 @@ export default function StudioResults({route, navigation}) {
         {
             title: "Most Representative",
             explanation: "These were the suggestions that captured frequently referenced topics by fans.",
-            color: "#fb743e",
+            color: "#27AE60",
             data: [
                 {
                     username: 'john_winston',
@@ -87,8 +87,10 @@ export default function StudioResults({route, navigation}) {
             items={groupInfo.data} />
     );
 
-    return(
-        <SafeAreaView style={styles.container}>
+    const footer = () => {<ActionButton text="CREATE ROOM" onPress={() => {navigation.navigate("CreateRoom");}} context={null}
+                />};
+
+    const renderHeader = () => {
             <View style={styles.header}>
             <CommentCard
                 cardInfo={{
@@ -108,13 +110,16 @@ export default function StudioResults({route, navigation}) {
                         </View>
 
                     </View>
-                    </View>
+                    </View>};
+
+    return(
+        <SafeAreaView style={styles.container}>
             <FlatList
+                listHeaderComponent={renderHeader}
                 data={fanResults}
                 renderItem={makeGroupCard}
-            />
-            <ActionButton text="CREATE ROOM" onPress={() => {navigation.navigate("CreateRoom");}} context={null}
-                        /> 
+                listFooterComponent = {footer}
+        />
         </SafeAreaView>
     );
 }
