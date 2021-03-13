@@ -8,6 +8,7 @@ import { StyleSheet,
     Dimensions
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import keyStyles from '../Styles/keyStyles';
 
 const ICON_SIZE = 24;
 const FONT_SIZE = 16;
@@ -16,7 +17,7 @@ export function UpcomingStudio({alertInfo}) {
 
     const {numParticipants, time, date} = alertInfo; 
     return(
-        <View style={styles.outer}> 
+        <View style={[styles.outer, keyStyles.shadowProps]}> 
             <Text style={styles.reminderText}>Upcoming room with {numParticipants} fans</Text> 
             <View style={styles.bottomBox}>
                 <View style={styles.iconTextContainer}>
