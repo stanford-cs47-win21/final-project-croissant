@@ -7,6 +7,7 @@ import {
   SafeAreaView,
   Dimensions
 } from 'react-native';
+import {ActionButton} from '../Components/ActionButton';
 
 import keyStyles from '../Styles/keyStyles';
 
@@ -26,12 +27,11 @@ export default function Welcome({navigation}) {
       <Text style={styles.bodyText}>{content}</Text>
       </View>
       <View style={styles.buttonContainer}>
-      <TouchableOpacity
-                    style={keyStyles.button1} 
+      <ActionButton
+          text="Get Started"
                     onPress = { () => {navigation.navigate('CreatorOnboarding')}}
-                >
-                    <Text style={keyStyles.button1text}> GET STARTED </Text>
-                </TouchableOpacity>
+          contex={null}
+      />
       </View>
     </SafeAreaView>
     );
