@@ -63,28 +63,32 @@ export default function FanHome({route, navigation}) {
     const updateRankingStatus = () => {
         let studiosCopy = [...studios]; 
         const rankingStudioIndex = studiosCopy.findIndex((studio => studio.status == 'RANKING'));
+        console.log("RANKING STUDIO INDEX ", rankingStudioIndex);
 
-        if (rankingStudioIndex) {
+        if (rankingStudioIndex !== -1) {
             studiosCopy[rankingStudioIndex].status = "RANKED"; // ✓
             setStudios(studiosCopy);
         }
     }
+
+    // Listen for whether brainstorming status is updated
+    useEffect( () => {
+        if (route.params?.brainstormingStatus) { 
+            updateBrainstormingStatus();
+        }
+    }, [route.params?.brainstormingStatus]);
+
+    // Update ranking status function
+    const updateBrainstormingStatus = () => {
+        let studiosCopy = [...studios]; 
+        const brainstormingStudioIndex = studiosCopy.findIndex((studio => studio.status == 'BRAINSTORMING'));
+
+        if (brainstormingStudioIndex !== -1) {
+            studiosCopy[brainstormingStudioIndex].status = "BRAINSTORMED"; // ✓
+            setStudios(studiosCopy); 
+        }
+    }
    
-
-
-
-    // Change state when we start following rachel
-    // useEffect( () => {
-    //     if (route.params?.followedRachel) {
-    //         setIsFollowingRachel(route.params.followedRachel);
-    //     }
-    // }, [route.params?.followedRachel]);
-    // useEffect( () => {
-    //     if (route.params?.followedRachel) {
-    //         setIsFollowingRachel(route.params.followedRachel);
-    //     }
-    // }, [route.params?.followedRachel]);
-
     const fakeNewsfeedData = [
         {
             username: "rachel_f",
@@ -108,7 +112,7 @@ export default function FanHome({route, navigation}) {
             username: "rachel_f",
             status: "VIEW RESULTS",
             message: "hahahaahahhaah ",
-            timeLeft: "0:00 remaining",
+            timeLeft: "0 hours remaining",
         },
         // Last object will render into the plus button, sort of jank
         {

@@ -15,6 +15,7 @@ export function StudioList({fan=false, ...props}) {
     const studios = props.studios;
 
     const renderStudioCard = ({index, item}) => {
+        // remove the plus button altogether if fan
         if (fan && index === studios.length - 1) {
             return null;
         } else if (index === studios.length - 1) {

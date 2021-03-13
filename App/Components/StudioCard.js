@@ -59,6 +59,8 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                 navigation.navigate('StudioResults', {cardInfo});
             } else if (status === "RANKING") {
                 navigation.navigate('FanRanking', {cardInfo});
+            } else if (status === "BRAINSTORMING") {
+                navigation.navigate('Brainstorm', {cardInfo});
             } else if (status === "RANKED" | status === "BRAINSTORMED"){
                 // show a modal
                 toggleFanOverlay();
