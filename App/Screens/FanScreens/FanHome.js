@@ -51,6 +51,24 @@ export default function FanHome({route, navigation}) {
 
     }, []);
 
+
+    // Listen for whether ranking status is updated
+    useEffect( () => {
+        if (route.params?.rankingStatus) {
+            updateRankingStatus();
+        }
+    }, [route.params?.rankingStatus]);
+
+    // Update ranking status function
+    const updateRankingStatus = () => {
+        let studiosCopy = [...studios]; 
+        const rankingStudioIndex = studiosCopy.findIndex((studio => studio.status == 'RANKING'));
+
+        if (rankingStudioIndex) {
+            studiosCopy[rankingStudioIndex].status = "RANKED"; // ✓
+            setStudios(studiosCopy);
+        }
+    }
    
 
 
@@ -98,6 +116,7 @@ export default function FanHome({route, navigation}) {
         },
     ]
 
+    console.log("State of studios", studios);
     return(
         <SafeAreaView style={styles.container}> 
             <Header fan={true}/>
