@@ -12,22 +12,17 @@ import { useNavigation } from '@react-navigation/native';
 let HEIGHT_OVER_WIDTH = 70 / 318; // from Figma
 let WIDTH =  Dimensions.get('window').width * .75;
 
-export function ActionButton({buttonInfo}) {
-    const {text, nextScreen, context} = buttonInfo; 
+export function ActionButton(props) {
     const navigation = useNavigation();
     return(
             <View style={styles.buttonContainer}> 
                 <TouchableOpacity
                     style={styles.button1} 
                     onPress = { () => {
-                        navigation.navigate('CreatorHome', {newStudio: {
-                            prompt: prompt,
-                            brainstormTimeDays: brainstormTimeDays,
-                            brainstormTimeHours: brainstormTimeHours
-                        }})
+                        navigation.navigate(props.nextScreen, props.context);
                     }}
                 >
-                    <Text style={styles.button1text}> START </Text>
+                    <Text style={styles.button1text}> {props.text} </Text>
                 </TouchableOpacity>
             </View> 
     );
@@ -47,9 +42,7 @@ const styles = StyleSheet.create({
         color: 'black',
         fontSize: 24,
         textAlign: 'center',
-        letterSpacing: 1,
-        fontFamily: 'Lato_700Bold'
-
+        letterSpacing: .2
     },
 });
 

@@ -174,23 +174,7 @@ export default function CreateStudio({navigation}) {
                 </View>   
             </View>
 
-                {/*
-            <View style={styles.buttonContainer}> 
-                <TouchableOpacity
-                    style={keyStyles.button1} 
-                    onPress = { () => {
-                        navigation.navigate('CreatorHome', {newStudio: {
-                            prompt: prompt,
-                            brainstormTimeDays: brainstormTimeDays,
-                            brainstormTimeHours: brainstormTimeHours
-                        }})
-                    }}
-                >
-                    <Text style={keyStyles.button1text}> START </Text>
-                </TouchableOpacity>
-            </View> 
-            */}
-            <ActionButton buttonInfo={"START", "CreatorHome", {newStudio: {
+            <ActionButton text={"START"} nextScreen={"CreatorHome"} context={{newStudio: {
                             prompt: prompt,
                             brainstormTimeDays: brainstormTimeDays,
                             brainstormTimeHours: brainstormTimeHours

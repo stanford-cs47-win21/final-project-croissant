@@ -13,6 +13,7 @@ import keyStyles from '../../Styles/keyStyles';
 import {Title} from "../../Components/Title";
 import {StudioCard} from "../../Components/StudioCard";
 import {CommentCard} from "../../Components/CommentCard";
+import {ActionButton} from '../../Components/ActionButton';
 
 export default function StudioResults({route, navigation}) {
     const {username, status, message, timeLeft} = route.params.cardInfo;
@@ -122,15 +123,12 @@ export default function StudioResults({route, navigation}) {
                 )
                 }}
 
+                  
                 ListFooterComponent={
-                  <View style={keyStyles.centeredView}>
-                      <TouchableOpacity
-                          style={keyStyles.button1}
-                          onPress = { () => navigation.navigate('CreateRoom')} // TODO: pass data
-                      >
-                          <Text style={keyStyles.button1text}> CREATE ROOM </Text>
-                      </TouchableOpacity>
-                  </View>
+                    <View style={{alignItems: 'center', marginTop: 10}}>
+                    <ActionButton text="CREATE ROOM" nextScreen="CreateRoom" context={null}
+                        /> 
+                            </View>
                 }
             />
 
@@ -179,5 +177,8 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       alignContent: 'center',
       justifyContent: 'center',
+    },
+    footer: {
+        margin: 10
     }
   });
