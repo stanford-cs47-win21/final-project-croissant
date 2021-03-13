@@ -6,22 +6,26 @@ import { StyleSheet,
     View,
     Image,
     ScrollView,
-    SectionList
+    FlatList,
+    Dimensions
 } from 'react-native';
 
 import keyStyles from '../../Styles/keyStyles';
 import {Title} from "../../Components/Title";
 import {StudioCard} from "../../Components/StudioCard";
 import {CommentCard} from "../../Components/CommentCard";
+import {GroupCard} from "../../Components/GroupCard";
 import {ActionButton} from '../../Components/ActionButton';
 
 export default function StudioResults({route, navigation}) {
     const {username, status, message, timeLeft} = route.params.cardInfo;
-
     // hardcoding the data for the sectionlist
+    let SHARED_COLOR = "#F98562";
     const fanResults = [
         {
             title: "Fan Favorites",
+            explanation: "These were the overall highest-ranking fan suggestions.",
+            color: SHARED_COLOR, 
             data: [
                 {
                     username: 'john_winston',
@@ -38,7 +42,9 @@ export default function StudioResults({route, navigation}) {
             ]
         },
         {
-            title: "Fan Controversial",
+            title: "Most Controversial",
+            explanation: "These were the most polarizing fan suggestions.",
+            color: SHARED_COLOR,
             data: [
                 {
                     username: 'john_winston',
@@ -57,6 +63,8 @@ export default function StudioResults({route, navigation}) {
         },
         {
             title: "Most Representative",
+            explanation: "These were the suggestions that captured frequently referenced topics by fans.",
+            color: SHARED_COLOR,
             data: [
                 {
                     username: 'john_winston',
@@ -73,34 +81,22 @@ export default function StudioResults({route, navigation}) {
             ]
 
         },
-    ]
+    ];
+    const makeGroupCard = ({item: groupInfo}) => (
+        <GroupCard groupName={groupInfo.title} explanation={groupInfo.explanation} color={groupInfo.color}
+            items={groupInfo.data} buttonColor={groupInfo.buttonColor} />
+    );
 
     return(
         <SafeAreaView style={styles.container}>
-
-
-            {/* TODO: SectionList, has some bugs to fix -- we could just hardcode each item if we want*/}
-            <SectionList
-                sections={fanResults}
-                stickySectionHeadersEnabled={false}
-                directionalLockEnabled={true}
-                keyExtractor={(item, index) => index.toString()}
-
-                renderSectionHeader={({section}) => {
-                    // Weird bug where <Title text={section.title} /> doesn't work because the text is wrapped in a view
-                    return <Text style={styles.sectionText}> {section.title} </Text>
+            <View style={styles.header}>
+            <CommentCard
+                cardInfo={{
+                    username: username,
+                    comment: message,
                 }}
-
-                ListHeaderComponent={
-                  <View style={styles.header}>
-                    <CommentCard
-                        cardInfo={{
-                            username: username,
-                            comment: message,
-                        }}
-                    />
- 
-                    <View style={styles.stats}>
+            />
+                     <View style={styles.stats}>
                         <View style={styles.box}>
                             <Text style={styles.bigNum}> 850 </Text>
                             <Text style={styles.label}> Participants </Text>
@@ -112,26 +108,12 @@ export default function StudioResults({route, navigation}) {
                         </View>
 
                     </View>
-                </View>
-                }
-
-                renderItem={({item}) => {
-                  return (
-                  <View style={styles.item}>
-                     <CommentCard cardInfo={item} commentColor={true}/>
-                  </View>
-                )
-                }}
-
-                  
-                ListFooterComponent={
-                    <View style={{alignItems: 'center', marginTop: 10}}>
-                        <ActionButton text="CREATE ROOM" onPress={() => {navigation.navigate("CreateRoom");}} context={null}
-                        /> 
-                            </View>
-                }
-            />
-
+                    </View>
+            <FlatList
+                data={fanResults}
+                renderItem={makeGroupCard}
+        />
+                    <ActionButton text="CREATE ROOM" onPress={() => {navigation.navigate("CreateRoom");}} context={null}/>
         </SafeAreaView>
     );
 }
@@ -161,11 +143,11 @@ const styles = StyleSheet.create({
         fontSize: 35,
     },
     sectionText: {
-        fontWeight: 'bold',
+        width: Dimensions.get('window').width * .9,
+        fontFamily: 'Lato_700Bold',
         fontSize: 24,
         color: 'black',
-        marginLeft: 8,
-        marginTop: 8
+        marginBottom: 10
     },
     item: {
       flexDirection: 'row',
