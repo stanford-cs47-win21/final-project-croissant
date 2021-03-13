@@ -14,7 +14,7 @@ let BUTTON_SIZE=25;
 export function CloseButton(props) {
     const navigation = useNavigation();
     return(
-            <View style={[styles.buttonContainer, {backgroundColor: props.buttonColor}]}>
+            <View style={styles.buttonContainer}>
                 <TouchableOpacity
                     onPress = {props.onPress}
                 >
@@ -26,10 +26,7 @@ export function CloseButton(props) {
 const styles = StyleSheet.create({
     buttonContainer: {
         justifyContent:'center',
-        alignItems:'center',
-        width:BUTTON_SIZE,
-        height:BUTTON_SIZE,
-        borderRadius:BUTTON_SIZE/2,
+        alignItems:'center'
     },
 });
 

@@ -12,7 +12,9 @@ import {PicAndUsername} from "./PicAndUsername";
 import keyStyles from '../Styles/keyStyles';
 import {CommentCard} from "./CommentCard";
 import {CloseButton} from "./CloseButton";
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
+let BUTTON_SIZE=25;
 export function GroupCard(props) {
     const [showComments, setComments] = useState(false);
     let commonCardsArr = props.items.map(cardInfo => (
@@ -20,15 +22,19 @@ export function GroupCard(props) {
     ));
     return (
         <TouchableOpacity style={[styles.outer, {backgroundColor: props.color}]}
-            onPress={() => setComments(!showComments)}>
+            onPress={() => {if(!showComments) {setComments(true);}}}>
             <View style={styles.topRow}>
                 <Text style={styles.headerText}>{props.groupName} </Text>
-                    {showComments && <CloseButton onPress={() => setComments(!showComments)}
-                    buttonColor={props.buttonColor}/>}
+                    {showComments ? <CloseButton onPress={() => setComments(!showComments)}/>
+                        : 
+                    <Icon name={'arrow-down-drop-circle-outline'} color='white' size={BUTTON_SIZE} />}
+                    
             </View>
+            {showComments &&
             <View style={styles.explanation}>
                 <Text style={styles.explanationText}>{props.explanation}</Text>
             </View>
+            }
                 {showComments && commonCardsArr}
         </TouchableOpacity>
     );
@@ -44,12 +50,12 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         borderRadius: 20,
         margin: 8,
-        padding: 10
+        padding: 20,
     },
     headerText: {
         fontSize: 24,
         fontFamily: 'Lato_700Bold',
-        color: 'white'
+        color: 'white',
     },
     topRow: {
         width: '90%',
@@ -61,6 +67,7 @@ const styles = StyleSheet.create({
     },
     explanation: {
         width: '90%',
+        marginTop: 4,
         marginBottom: 10
     },
     explanationText: {
