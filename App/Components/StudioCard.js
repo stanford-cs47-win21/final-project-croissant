@@ -29,18 +29,24 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
         setVisible(!visible);
     };
 
+    const [fanOverlayVisible, setFanOverlayVisible] = useState(false);
+    const toggleFanOverlay = () => {
+        setFanOverlayVisible(!fanOverlayVisible);
+    };
+
     const {username, status, message, timeLeft} = cardInfo; 
 
     const determineStatus = () => {
+        console.log("ARE WE RE-RENDERING STATUS OF RANKED ?? " , status);
         if (status === "BRAINSTORMING") {
             return styles.badgeBrainstorm;
         } else if (status === "RANKING") {
             return styles.badgeRanking;
         } else if (status === "VIEW RESULTS"){
             return styles.badgeResults;
+        } else if (status === "RANKED" | status === "BRAINSTORMED"){    // else: ranked already, we want plain rendered background style for it
+            return styles.badgeCompletedPhase;
         }
-        
-        // else: if no status is passed in, we don't want to render any background style for it
     }
 
     // what happens when  you click the studiocard, based on its status
@@ -53,6 +59,9 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                 navigation.navigate('StudioResults', {cardInfo});
             } else if (status === "RANKING") {
                 navigation.navigate('FanRanking', {cardInfo});
+            } else if (status === "RANKED" | status === "BRAINSTORMED"){
+                // show a modal
+                toggleFanOverlay();
             }
         } else {
             if (status === "LIVE") {
@@ -95,7 +104,7 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                             </View>
                     }
 
-                    {/* This can be placed anywhere i guess */}
+                    {/* CREATOR OVERLAY This can be placed anywhere i guess */}
                     <Overlay 
                         isVisible={visible} 
                         onBackdropPress={toggleOverlay}
@@ -117,6 +126,33 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                                 <TouchableOpacity 
                                     style={keyStyles.button1}
                                     onPress={toggleOverlay}
+                                > 
+                                    <Text style={keyStyles.button1text}> OK </Text>
+                                </TouchableOpacity>
+                            </View> 
+                    </Overlay>
+
+                    {/* FAN OVERLAY */}
+                    <Overlay 
+                        isVisible={fanOverlayVisible} 
+                        onBackdropPress={toggleFanOverlay}
+                        animationType={'fade'}
+                        overlayStyle={{height: '30%', width: '70%', justifyContent: 'center', alignItems: 'center'}}
+                    >
+                        <View style={{height: '40%', alignItems: 'center', justifyContent: 'center'}}> 
+                            <Text style={keyStyles.titleText1}> {status==='RANKED' ? 'Rank' : 'Brainstorm'}ing Completed </Text>
+                            <MaterialCommunityIcons name="check" size={36} color="black" style={{marginTop: 10}}/>
+                        </View>
+
+                        <View style={{ height: '30%', width: '90%', justifyContent: 'center'}}>    
+                            <Text style={{textAlign: 'center'}}> You have already {status==='RANKED' ? 'rank' : 'brainstorm'}ed ideas for this studio. We'll let you know when the 
+                            other fans are done! </Text>
+                        </View>
+
+                            <View style={{height: '30%'}}> 
+                                <TouchableOpacity 
+                                    style={keyStyles.button1}
+                                    onPress={toggleFanOverlay}
                                 > 
                                     <Text style={keyStyles.button1text}> OK </Text>
                                 </TouchableOpacity>
@@ -163,6 +199,13 @@ const styles = StyleSheet.create({
     },
     badgeResults: {
         backgroundColor: "#B9480B",
+        borderRadius: 50,
+        padding: 3, 
+        width: 130,
+        alignItems: 'center'
+    },
+    badgeCompletedPhase: {
+        backgroundColor: "grey",
         borderRadius: 50,
         padding: 3, 
         width: 130,
