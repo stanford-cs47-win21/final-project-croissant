@@ -44,16 +44,16 @@ export function FollowerItem({username, genre=null, followButton=null, ...props}
     }, [followButtonPressed])
 
     return(
-        <View style={styles.outer}> 
-            <View style={styles.section}> 
-                <Text style={{fontSize: 16, marginLeft: 10}}> {username} </Text>
+        <View style={styles.outer} onLayout={(event) => {var {x, y, width, height} = event.nativeEvent.layout;  console.log(height);}}>
+            <View style={styles.usernameSection}> 
+                <Text style={{fontSize: 16}}> {username} </Text>
             </View> 
 
             <View style={styles.section}> 
                 <Text style={{color: 'grey'}}> {genre} </Text>
             </View>
 
-            <View style={styles.section}> 
+            <View style={styles.buttonView}> 
                 <TouchableOpacity
                     style={followButtonPressed ? styles.pressed : styles.unpressed}
                     onPress={ () => {
@@ -76,34 +76,40 @@ export function FollowerItem({username, genre=null, followButton=null, ...props}
 const styles = StyleSheet.create({
     outer: {
         width:  Dimensions.get('window').width * .9,
-        height: '80%', // Dimensions.get('window').height * .18, 
+        //height: '80%', // Dimensions.get('window').height * .18, 
         backgroundColor: '#FFF8E0',
         alignItems: 'center',
         justifyContent: 'space-evenly',
         borderRadius: 50,
         margin: 8,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        padding: 15
     },
+    buttonView: {
+        width: '30%'
+    },
+
     pressed: {
         backgroundColor: '#FAC738',
-        height: '50%',
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 20,
-        paddingLeft: 4,
-        paddingRight: 4
+        padding: 4
     },
     unpressed: {
         backgroundColor: 'white',
-        height: '50%',
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 20,
         padding: 4
     },
     section: {
-        width: '30%',
+        width: '33%',
         justifyContent: 'center',
+        alignContent: 'center',
+    },
+    usernameSection: {
+        width: '33%',
         alignContent: 'center',
     }
   });
