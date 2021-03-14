@@ -113,19 +113,19 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                         isVisible={visible} 
                         onBackdropPress={toggleOverlay}
                         animationType={'fade'}
-                        overlayStyle={{height: '40%', width: '90%', justifyContent: 'center', alignItems: 'center', borderRadius: 20}}
+                        overlayStyle={{width: '90%', justifyContent: 'center', alignItems: 'center', borderRadius: 20, padding: 15}}
                     >
-                        <View style={{height: '40%', alignItems: 'center', justifyContent: 'center'}}> 
-                            <Text style={keyStyles.titleText1}> Studio in Progress </Text>
+                        <View style={styles.alertBadge}>
+                            <Text style={styles.alertText}> Studio in Progress </Text>
                             {/* <AntDesign name="hourglass" size={24} color="black" /> */}
-                            <MaterialCommunityIcons name="progress-clock" size={36} color="black" style={{marginTop: 10}}/>
+                            <MaterialCommunityIcons name="progress-clock" size={36} color="white"/>
                             {/* <Ionicons name="hourglass" size={24} color="black" /> */}
                         </View>
 
                         <View style={{ width: '90%', justifyContent: 'center'}}>    
                             <Text style={[styles.messageText, {marginBottom: 8}]}>Your fans still have time to {status==='RANKING' ? 'rank' : 'brainstorm'} ideas. We'll let you know when the results are ready to view! </Text>
                         </View>
-                            <ActionButton onPress={toggleOverlay} text="OK" style={{height:"10%"}}/>
+                            <ActionButton onPress={toggleOverlay} text="OK" />
                     </Overlay>
 
                     {/* FAN OVERLAY */}
@@ -238,4 +238,20 @@ const styles = StyleSheet.create({
         lineHeight: keyStyles.BODY_TEXT_SIZE * keyStyles.LINE_HEIGHT_MULT
     },
     
+    alertBadge: {
+        width: '90%',
+        marginBottom: 12,
+        justifyContent: 'space-between',
+        alignContent: 'center',
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: keyStyles.SALMON_COLOR,
+        padding: 20,
+        borderRadius: 20
+    },
+    alertText: {
+        fontSize: 24,
+        fontFamily: 'Lato_700Bold',
+        color: 'white',
+    },
   });
