@@ -113,7 +113,7 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                         isVisible={visible} 
                         onBackdropPress={toggleOverlay}
                         animationType={'fade'}
-                        overlayStyle={{height: '30%', width: '90%', justifyContent: 'center', alignItems: 'center', borderRadius: 20}}
+                        overlayStyle={{height: '40%', width: '90%', justifyContent: 'center', alignItems: 'center', borderRadius: 20}}
                     >
                         <View style={{height: '40%', alignItems: 'center', justifyContent: 'center'}}> 
                             <Text style={keyStyles.titleText1}> Studio in Progress </Text>
