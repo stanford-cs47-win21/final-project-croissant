@@ -52,6 +52,11 @@ const keyStyles = {
         width: '90%',
     },
     titleText1: {
+        fontSize: 28,
+        color: 'black',
+        letterSpacing: .6
+    },
+    smallBold: {
         fontSize: 16,
         color: 'black',
         fontFamily: 'Lato_700Bold',
@@ -72,7 +77,6 @@ const keyStyles = {
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
-        height: '70%',
         marginTop: -5
     },
 }
