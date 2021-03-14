@@ -11,7 +11,7 @@ import { StyleSheet,
 
 import keyStyles from '../../Styles/keyStyles';
 import {Title} from "../../Components/Title";
-import {ActionButton} from "../../Components/StudioCard";
+import {ActionButton} from "../../Components/ActionButton";
 import {CommentCard} from "../../Components/CommentCard";
 
 let BODY_TEXT_SIZE = 16;
@@ -22,8 +22,8 @@ export default function Brainstorm({route, navigation, ...props}) {
 
     return(
         <SafeAreaView style={styles.container}> 
+            <Title text="Provide Feedback" />
             <View style={styles.topCard}> 
-                <Title text="Provide Feedback" />
                 <CommentCard 
                     cardInfo={{
                         username: username,
@@ -52,12 +52,10 @@ export default function Brainstorm({route, navigation, ...props}) {
 
             {/* TODO: Convert to Action Button (make sure button inside the view though) */}
             <View style={styles.bottomButton}> 
-                <TouchableOpacity
-                    style={keyStyles.button1} 
-                    onPress = {() => navigation.navigate('FanHome', {brainstormingStatus: 'BRAINSTORMED'})} 
-                >
-                    <Text style={keyStyles.button1text}> Submit feedback </Text>
-                </TouchableOpacity>
+                        <ActionButton text={"SUBMIT"} 
+                            onPress = {() => {navigation.navigate('FanHome')}}
+                            context={{brainstormingStatus: 'BRAINSTORMED'}}
+                            />
             </View> 
             
 
@@ -72,16 +70,14 @@ const styles = StyleSheet.create({
       flex: 1,
       backgroundColor: '#fff',
       alignItems: 'center',
-      justifyContent: 'center',
     },
     topCard: {
-        height: '35%',
-        justifyContent: 'center',
+        marginBottom: 10,
     },
     instruction: {
         justifyContent: 'flex-start', 
         width: '90%', 
-        height: '10%'
+        marginBottom: 10,
     },
     textInputView: {
         height: '40%',
