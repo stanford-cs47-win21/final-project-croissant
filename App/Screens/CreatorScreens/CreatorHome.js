@@ -117,7 +117,6 @@ export default function CreatorHome({route, navigation}) {
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
-        justifyContent: 'center',
         backgroundColor: '#fff',
         height: '100%'
 
