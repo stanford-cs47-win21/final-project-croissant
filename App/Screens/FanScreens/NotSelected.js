@@ -32,7 +32,8 @@ export default function NotSelected({route, navigation, ...props}) {
                 cardInfo={{
                     username: username,
                     comment: "I like blueberries. I also like strawberries",
-                }}/>
+                }}
+                commentColor={true}/>
             <SalmonBadge leftText="Percentile" rightText="62nd"/> 
             <SalmonBadge leftText="Total views" rightText="42"/> 
             <SalmonBadge leftText="Average ranking" rightText="2.4"/> 
