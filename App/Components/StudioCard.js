@@ -22,6 +22,7 @@ import { ActionButton } from "./ActionButton";
 
 import {Overlay} from 'react-native-elements';
 import keyStyles from '../Styles/keyStyles';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
 
@@ -113,19 +114,25 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                         isVisible={visible} 
                         onBackdropPress={toggleOverlay}
                         animationType={'fade'}
-                        overlayStyle={{height: '30%', width: '90%', justifyContent: 'center', alignItems: 'center', borderRadius: 20}}
+                        overlayStyle={styles.overlay}
                     >
-                        <View style={{height: '40%', alignItems: 'center', justifyContent: 'center'}}> 
-                            <Text style={keyStyles.titleText1}> Studio in Progress </Text>
+
+                        <View style={styles.closeButtonRowContainer}>
+                        <TouchableOpacity onPress={toggleOverlay} style={keyStyles.topRight}>
+                            <Icon name={'close'} color="white" size={25}/>
+                        </TouchableOpacity>
+                        </View>
+
+                        <View style={styles.overlayRow}>
+                            <Text style={styles.alertText}> Studio in Progress </Text>
                             {/* <AntDesign name="hourglass" size={24} color="black" /> */}
-                            <MaterialCommunityIcons name="progress-clock" size={36} color="black" style={{marginTop: 10}}/>
+                            <MaterialCommunityIcons name="progress-clock" size={36} color="white"/>
                             {/* <Ionicons name="hourglass" size={24} color="black" /> */}
                         </View>
 
-                        <View style={{ width: '90%', justifyContent: 'center'}}>    
+                        <View style={[styles.overlayTextContainer, keyStyles.shadowProps]}>    
                             <Text style={[styles.messageText, {marginBottom: 8}]}>Your fans still have time to {status==='RANKING' ? 'rank' : 'brainstorm'} ideas. We'll let you know when the results are ready to view! </Text>
                         </View>
-                            <ActionButton onPress={toggleOverlay} text="OK" style={{height:"10%"}}/>
                     </Overlay>
 
                     {/* FAN OVERLAY */}
@@ -140,7 +147,7 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                             <MaterialCommunityIcons name="check" size={36} color="black" style={{marginTop: 10}}/>
                         </View>
 
-                        <View style={{ height: '30%', width: '90%', justifyContent: 'center'}}>    
+                        <View style={styles.overlayTextContainer}>    
                             <Text style={styles.messageText}> You have already {status==='RANKED' ? 'rank' : 'brainstorm'}ed ideas for this studio. We'll let you know when the 
                             other fans are done! </Text>
                         </View>
@@ -238,4 +245,34 @@ const styles = StyleSheet.create({
         lineHeight: keyStyles.BODY_TEXT_SIZE * keyStyles.LINE_HEIGHT_MULT
     },
     
+    overlayRow: {
+        width: '90%',
+        justifyContent: 'space-between',
+        alignContent: 'center',
+        flexDirection: 'column',
+        alignItems: 'center'
+    },
+    alertText: {
+        fontSize: 24,
+        fontFamily: 'Lato_700Bold',
+        color: 'white',
+    },
+    overlay: {
+        width: '90%', 
+        alignItems: 'center', 
+        borderRadius: 20, 
+        backgroundColor: keyStyles.SALMON_COLOR,
+    },
+    overlayTextContainer:{ 
+        width: '90%',
+        justifyContent: 'center', 
+        backgroundColor: 'white',
+        borderRadius: 20, 
+        alignContent: 'center',
+        padding: 15,
+        marginTop: 20
+    },
+    closeButtonRowContainer: {
+        width: '100%'
+    }
   });

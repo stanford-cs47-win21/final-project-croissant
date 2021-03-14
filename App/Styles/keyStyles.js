@@ -12,6 +12,11 @@ const keyStyles = {
     SALMON_COLOR:"#F98562",
     // const ICON_SIZE: 24,
 
+    topRight: {
+        alignSelf: 'flex-end',
+        position: 'absolute',
+    },
+
     shadowProps: {
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 1.2 },

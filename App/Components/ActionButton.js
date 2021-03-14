@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     },
     button1text: {
         color: 'black',
-        fontSize: 24,
+        fontSize: 20,
         textAlign: 'center',
         textTransform: 'uppercase',
         letterSpacing: .2

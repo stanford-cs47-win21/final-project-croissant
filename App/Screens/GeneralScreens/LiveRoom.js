@@ -27,14 +27,12 @@ export default function LiveRoom({route, navigation}) {
     return(
         <SafeAreaView style={styles.container}> 
 
-            <View style={styles.topCard}> 
                 <CommentCard 
                     cardInfo={{
                         username: username,
                         comment: message,
                     }}
                 />
-            </View>
 
             {/* Live symbol */}
             <View style={styles.liveSymb}> 
@@ -147,6 +145,7 @@ const styles = StyleSheet.create({
         width: '90%', 
         height: '3%', 
         justifyContent: 'center',
+        marginTop: 20
         // backgroundColor: "red"
     },
     rowOfGuests: {
