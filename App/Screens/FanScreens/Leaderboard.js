@@ -1,25 +1,26 @@
-import React, {useState} from 'react';
-import { StyleSheet,
-    Text,
+import React, {useState, useEffect} from 'react';
+import { StyleSheet, 
+    Text, 
     SafeAreaView,
     TouchableOpacity,
     View,
     Image,
-    ScrollView,
-    FlatList,
-    Dimensions
+    TextInput,
+    Keyboard,
+    Dimensions,
+    FlatList
 } from 'react-native';
 
 import keyStyles from '../../Styles/keyStyles';
 import {Title} from "../../Components/Title";
-import {StudioCard} from "../../Components/StudioCard";
+import {ActionButton} from "../../Components/ActionButton";
 import {CommentCard} from "../../Components/CommentCard";
 import {GroupCard} from "../../Components/GroupCard";
-import {ActionButton} from '../../Components/ActionButton';
 
-export default function StudioResults({route, navigation}) {
-    const {username, status, message, timeLeft} = route.params.cardInfo;
-    // hardcoding the data for the sectionlist
+let BODY_TEXT_SIZE = 16;
+
+export default function Leaderboard({route, navigation, ...props}) {
+
     const fanResults = [
         {
             title: "Fan Favorites",
@@ -83,84 +84,36 @@ export default function StudioResults({route, navigation}) {
     ];
     const makeGroupCard = ({item: groupInfo}) => (
         <GroupCard groupName={groupInfo.title} explanation={groupInfo.explanation} color={groupInfo.color}
-            items={groupInfo.data} buttonColor={groupInfo.buttonColor} autoExpand={false}/>
+            items={groupInfo.data} buttonColor={groupInfo.buttonColor} autoExpand={true}/>
     );
 
     return(
         <SafeAreaView style={styles.container}>
-            <View style={styles.header}>
-            <CommentCard
-                cardInfo={{
-                    username: username,
-                    comment: message,
-                }}
-            />
-                     <View style={styles.stats}>
-                        <View style={styles.box}>
-                            <Text style={styles.bigNum}> 850 </Text>
-                            <Text style={styles.label}> Participants </Text>
-                        </View>
-
-                        <View style={styles.box}>
-                            <Text style={styles.bigNum}> 1124 </Text>
-                            <Text style={styles.label}> Ideas </Text>
-                        </View>
-
-                    </View>
-                    </View>
+            <Title text="Leaderboard"/>
             <FlatList
                 data={fanResults}
                 renderItem={makeGroupCard}
                 keyExtractor={(item, index) => index.toString()}
         />
-                    <ActionButton text="CREATE ROOM" onPress={() => {navigation.navigate("CreateRoom");}} context={null}/>
         </SafeAreaView>
     );
 }
 
 
-// uncomment ugly background colors to make it clear where the flexboxes for the views are
 const styles = StyleSheet.create({
     container: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#fff',
-        height: '100%',
-    },
-    stats: {
-        flexDirection: 'row',
-        width: '100%',
-        justifyContent: 'space-evenly',
-        marginTop: 12,
-        marginBottom: 12,
-    },
-    box: {
-        alignItems: 'center',
-        alignContent: 'center',
-        justifyContent: 'center',
-    },
-    bigNum: {
-        fontSize: 35,
-    },
-    sectionText: {
-        width: Dimensions.get('window').width * .9,
-        fontFamily: 'Lato_700Bold',
-        fontSize: 24,
-        color: 'black',
-        marginBottom: 10
-    },
-    item: {
-      flexDirection: 'row',
-      justifyContent: 'center'
-    },
-    header: {
-      marginTop: 8,
-      marginBottom: 8,
+      flex: 1,
+      backgroundColor: '#fff',
       alignItems: 'center',
-      alignContent: 'center',
-      justifyContent: 'center',
     },
-    footer: {
-        margin: 10
-    }
+    bodyTextContainer: {
+        width: '90%',
+        marginBottom: 15
+    },
+    bodyText: {
+        fontSize: keyStyles.BODY_TEXT_SIZE,
+        lineHeight: keyStyles.BODY_TEXT_SIZE * keyStyles.LINE_HEIGHT_MULT
+    },
+
   });
+  
