@@ -63,7 +63,6 @@ const keyStyles = {
     },
     listView: {
         // backgroundColor: 'red',
-        height: '90%',
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',

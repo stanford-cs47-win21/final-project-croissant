@@ -111,6 +111,7 @@ export default function StudioResults({route, navigation}) {
             <FlatList
                 data={fanResults}
                 renderItem={makeGroupCard}
+                keyExtractor={(item, index) => index.toString()}
         />
                     <ActionButton text="CREATE ROOM" onPress={() => {navigation.navigate("CreateRoom");}} context={null}/>
         </SafeAreaView>

@@ -18,7 +18,7 @@ let BUTTON_SIZE=25;
 export function GroupCard(props) {
     const [showComments, setComments] = useState(false);
     let commonCardsArr = props.items.map(cardInfo => (
-        <CommentCard cardInfo={cardInfo} commentColor={true}/>
+        <CommentCard key={cardInfo.username + cardInfo.message} cardInfo={cardInfo} commentColor={true}/>
     ));
     return (
         <TouchableOpacity style={[styles.outer, {backgroundColor: props.color}]}

@@ -64,12 +64,12 @@ export function Header({fan=false, studios=null}) {
 // uncomment ugly background colors to make it clear where the flexboxes for the views are
 const styles = StyleSheet.create({
     headerView: {
-        height: '8%',
         //backgroundColor: 'red',
         alignItems: 'center',
         justifyContent: 'center',
         width: Dimensions.get('window').width * .9,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        height: '8%'
     },
     rightSide: {
         flexDirection: 'row',
