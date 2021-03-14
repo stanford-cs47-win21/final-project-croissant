@@ -77,7 +77,6 @@ const keyStyles = {
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
-        height: '70%',
         marginTop: -5
     },
 }
