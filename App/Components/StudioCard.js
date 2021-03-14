@@ -135,7 +135,7 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                         <View style={[styles.overlayTextContainer, keyStyles.shadowProps]}>    
                             <Text style={[styles.messageText, {marginBottom: 8}]}>Your fans still have time to {status==='RANKING' ? 'rank' : 'brainstorm'} ideas. We'll let you know when the results are ready to view! </Text>
                         </View>
-                        <ActionButton text="ok" onPress={toggleOverlay}/>
+                        <ActionButton text="ok" onPress={toggleOverlay} style={keyStyles.shadowProps}/>
                     </Overlay>
 
                     {/* FAN OVERLAY */}

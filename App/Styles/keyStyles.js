@@ -10,6 +10,7 @@ const keyStyles = {
     LINE_HEIGHT_MULT:1.5,
     LIGHT_GRAY: '#F2F2F2',
     SALMON_COLOR:"#F98562",
+    DARK_GRAY: '#979797',
     // const ICON_SIZE: 24,
 
     topRight: {
@@ -71,6 +72,8 @@ const keyStyles = {
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
+        height: '70%',
+        marginTop: -5
     },
 }
 

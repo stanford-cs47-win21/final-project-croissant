@@ -13,6 +13,7 @@ import { StyleSheet,
 import keyStyles from '../../Styles/keyStyles';
 import {Header} from '../../Components/Header';
 import {FollowerItem} from '../../Components/FollowerItem';
+import {ActionButton} from "../../Components/ActionButton";
 
 import firestore from '../../../firebase';
 import firebase from 'firebase';
@@ -53,7 +54,7 @@ export default function FindRachel({route, navigation}) {
             <View style={styles.searchView}> 
                 <TextInput
                     placeholder="Search for a creator to follow"
-                    placeholderTextColor='grey'
+                    placeholderTextColor={keyStyles.DARK_GRAY}
                     style={styles.searchField}
                     onSubmitEditing={ () => {
                         searchCreatorList(); 
@@ -80,18 +81,17 @@ export default function FindRachel({route, navigation}) {
                         keyExtractor = { (item, index) => index.toString()}
                     />
                 : 
-                    <Text> Try searching for rachel_f! </Text>
+                    <Text style={{fontSize: 18, color: keyStyles.DARK_GRAY}}> Try searching for rachel_f! </Text>
                 }
 
-                <TouchableOpacity 
-                    onPress={ () => {
-                        navigation.navigate('FanHome', {followedRachel: followedRachel})
-                    }}
-                    style={keyStyles.button1}
-                >
-                    <Text> Go Home </Text>
-                </TouchableOpacity> 
             </View> 
+            <ActionButton 
+                onPress={ () => {
+                    navigation.navigate('FanHome', {followedRachel: followedRachel})
+                }}
+                text="Go home"
+                
+            />
 
         </SafeAreaView>
     );
@@ -115,6 +115,8 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         height: '80%',
         width: '100%',
+        padding: 15,
+        fontSize: 16
     }
   });
   
