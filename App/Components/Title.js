@@ -14,7 +14,7 @@ import keyStyles from '../Styles/keyStyles';
 export function Title({text, center=false}) {
     return(
         <View style={[keyStyles.titleView, center && {justifyContent: 'center'}]}> 
-            <Text style={keyStyles.titleText1}> {text} </Text>
+            <Text style={keyStyles.titleText1}>{text}</Text>
         </View>
     );
 }

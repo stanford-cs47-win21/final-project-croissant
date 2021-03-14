@@ -59,7 +59,7 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
             if (status === "LIVE") {
                 navigation.navigate('LiveRoom', {cardInfo});
             } else if (status === "VIEW RESULTS") {
-                navigation.navigate('StudioResults', {cardInfo});
+                navigation.navigate('NotSelected', {cardInfo});
             } else if (status === "RANKING") {
                 navigation.navigate('FanRanking', {cardInfo});
             } else if (status === "BRAINSTORMING") {

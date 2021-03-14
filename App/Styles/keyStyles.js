@@ -45,11 +45,11 @@ const keyStyles = {
         fontFamily: 'Lato_700Bold',
     },
     titleView: {
-        height: '10%',
+        height: '8%',
         flexDirection: 'row',
         alignItems: 'center',
         // justifyContent: 'center',
-        width: '90%',
+        width: '90%'
     },
     titleText1: {
         fontSize: 28,
