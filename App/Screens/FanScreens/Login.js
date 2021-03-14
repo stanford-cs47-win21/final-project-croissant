@@ -42,13 +42,19 @@ export default function Login({route, navigation, ...props}) {
                 value={loginEmail}
                 onChangeText={(loginEmail) => setLoginEmail(loginEmail)}
                 placeholder="Email" 
+                autoCapitalize={"none"}
+                autoCompleteType={"email"}
+                autoCorrect={false}
+                textContentType={"emailAddress"}
             />
             <TextInput
                 style={styles.input}
                 value={loginPassword}
                 secureTextEntry={true}
+                auto
                 onChangeText={(loginPassword) => setLoginPassword(loginPassword)}
                 placeholder="Password" 
+                textContentType={"password"}
             />
 
             <ActionButton
