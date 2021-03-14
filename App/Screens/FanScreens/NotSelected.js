@@ -37,7 +37,7 @@ export default function NotSelected({route, navigation, ...props}) {
             <SalmonBadge leftText="Total views" rightText="42"/> 
             <SalmonBadge leftText="Average ranking" rightText="2.4"/> 
             
-            <ActionButton text={"SEE LEADERBOARD"} onPress = {() => {navigation.navigate('FanHome')}}/>
+            <ActionButton text={"SEE LEADERBOARD"} onPress = {() => {navigation.navigate('Leaderboard')}}/>
             
 
 

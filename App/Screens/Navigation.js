@@ -22,6 +22,7 @@ import FanProfile from './FanScreens/FanProfile';
 import Login from './FanScreens/Login';
 import Brainstorm from './FanScreens/Brainstorm';
 import NotSelected from './FanScreens/NotSelected';
+import Leaderboard from './FanScreens/Leaderboard';
 
 
 const Stack = createStackNavigator();
@@ -69,6 +70,7 @@ export default function Navigation() {
                 <Stack.Screen name='Brainstorm' component={Brainstorm} options={{headerBackTitle: 'Studios'}}/>
                 <Stack.Screen name='Login' component={Login}/>
                 <Stack.Screen name='NotSelected' component={NotSelected}/>
+                <Stack.Screen name='Leaderboard' component={Leaderboard}/>
 
             </Stack.Navigator>
         </NavigationContainer>
