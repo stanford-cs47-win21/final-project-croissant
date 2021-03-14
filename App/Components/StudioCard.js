@@ -117,11 +117,13 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                         overlayStyle={styles.overlay}
                     >
 
+                        {/*
                         <View style={styles.closeButtonRowContainer}>
                         <TouchableOpacity onPress={toggleOverlay} style={keyStyles.topRight}>
                             <Icon name={'close'} color="white" size={25}/>
                         </TouchableOpacity>
                         </View>
+                        */}
 
                         <View style={styles.overlayRow}>
                             <Text style={styles.alertText}> Studio in Progress </Text>
@@ -133,6 +135,7 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                         <View style={[styles.overlayTextContainer, keyStyles.shadowProps]}>    
                             <Text style={[styles.messageText, {marginBottom: 8}]}>Your fans still have time to {status==='RANKING' ? 'rank' : 'brainstorm'} ideas. We'll let you know when the results are ready to view! </Text>
                         </View>
+                        <ActionButton text="ok" onPress={toggleOverlay}/>
                     </Overlay>
 
                     {/* FAN OVERLAY */}
