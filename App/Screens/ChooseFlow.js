@@ -14,9 +14,11 @@ export default function ChooseFlow({navigation}) {
 
     return(
         <SafeAreaView style={styles.container}> 
-            <View style={styles.welcome}> 
-                <Text style={keyStyles.croissantHeader}> croissant </Text> 
-            </View>
+                <Image 
+                    source={require("../Images/full-croissant-logo.png")}
+                    resizeMode="contain"
+                    style={{width: '70%'}}
+                />
             
             <View style={{alignItems: 'center'}}> 
                 <TouchableOpacity
