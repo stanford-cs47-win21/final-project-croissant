@@ -17,7 +17,6 @@ import firebase from 'firebase';
 export function FollowerItem({username, genre=null, followButton=null, ...props}) {
     const navigation = useNavigation();
     const [followButtonPressed, setFollowedButtonPressed] = useState(false);
-
     
 
     // Determine should the rachel_f follower item be pressed?
@@ -47,7 +46,7 @@ export function FollowerItem({username, genre=null, followButton=null, ...props}
     return(
         <View style={styles.outer}> 
             <View style={styles.section}> 
-                <Text style={{marginLeft: 10}}> {username} </Text>
+                <Text style={{fontSize: 16, marginLeft: 10}}> {username} </Text>
             </View> 
 
             <View style={styles.section}> 
@@ -81,28 +80,29 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFF8E0',
         alignItems: 'center',
         justifyContent: 'space-evenly',
-        borderRadius: 20,
+        borderRadius: 50,
         margin: 8,
         flexDirection: 'row'
     },
     pressed: {
         backgroundColor: '#FAC738',
         height: '50%',
-        width: '80%',
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 20,
+        paddingLeft: 4,
+        paddingRight: 4
     },
     unpressed: {
         backgroundColor: 'white',
         height: '50%',
-        width: '80%',
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 20,
+        padding: 4
     },
     section: {
-        width: '33%',
+        width: '30%',
         justifyContent: 'center',
         alignContent: 'center',
     }
