@@ -57,7 +57,8 @@ export default function FanProfile({route, navigation}) {
 
             <View style={styles.infoAbout}>  
                 <SalmonBadge leftText="Your Contributions" rightText="5" isButton={true} onPress={()=> {navigation.navigate("YourContributions", {username: username});}}/>
-                <SalmonBadge leftText="Following" rightText={isFollowingRachel ? "1" : "0"} isButton={true}/>
+                    <SalmonBadge leftText="Following" rightText={isFollowingRachel ? "1" : "0"} isButton={isFollowingRachel} 
+                        onPress={isFollowingRachel ? () => {navigation.navigate("FollowingScreen");} : null}/>
 
                     <TouchableOpacity 
                         style={[styles.profItem, {backgroundColor: '#F2F2F2'}]}
