@@ -54,8 +54,8 @@ export default function FanRanking({route, navigation, ...props}) {
           keyExtractor={(item, index) => index.toString()}
           onDragEnd={({ data }) => setData(data)}
         />
-        <ActionButton text="Submit"/>
-
+        <ActionButton text="Submit"
+            onPress = {() => navigation.navigate('FanHome', {rankingStatus: 'RANKED'})}/>
 
         </SafeAreaView>
     );

@@ -11,14 +11,15 @@ import { useNavigation } from '@react-navigation/native';
 import {PicAndUsername} from "./PicAndUsername";
 import keyStyles from '../Styles/keyStyles';
 
-export function CommentCard({cardInfo, commentColor=false}) {
+export function CommentCard({cardInfo, commentColor=false, absoluteSize=true}) {
+    // absolute size controls whether it is 90% of WINDOW or 90% of available space
 
     const {username, comment} = cardInfo; 
 
     const navigation = useNavigation();
 
     return (
-        <View style={[commentColor ? styles.outerStaticComment : styles.outerStatic, keyStyles.shadowProps]}> 
+        <View style={[commentColor ? styles.outerStaticComment : styles.outerStatic, keyStyles.shadowProps, !absoluteSize && {width: '90%'}]}> 
             <View style={styles.topRow}> 
                 <PicAndUsername userInfo = {username} /> 
             </View>
