@@ -10,6 +10,7 @@ import { StyleSheet,
 import keyStyles from '../../Styles/keyStyles';
 import {FollowerItem} from "../../Components/FollowerItem";
 import { Ionicons } from '@expo/vector-icons';
+import {SalmonBadge} from "../../Components/SalmonBadge";
 
 import firestore from '../../../firebase';
 import firebase from 'firebase';
@@ -55,19 +56,8 @@ export default function FanProfile({route, navigation}) {
             </View>
 
             <View style={styles.infoAbout}>  
-                <View style={styles.profItem}> 
-                    <Text style={styles.infoText}> Your Contributions </Text>
-                    <Text style={styles.infoText}> 24 </Text>
-                </View>
-
-                <View style={styles.profItem}> 
-                    <Text style={styles.infoText}> Following </Text>
-                    <Text style={styles.infoText}> {isFollowingRachel ? 1 : 0 } </Text>
-                </View>
-
-                <View style={{height: '16%'}}> 
-                    {isFollowingRachel && <FollowerItem username="rachel_f" genre="BAKING"/> }
-                </View>
+                <SalmonBadge leftText="Your Contributions" rightText="5" isButton={true}/>
+                <SalmonBadge leftText="Following" rightText={isFollowingRachel ? "1" : "0"} isButton={true}/>
 
                     <TouchableOpacity 
                         style={[styles.profItem, {backgroundColor: '#F2F2F2'}]}
