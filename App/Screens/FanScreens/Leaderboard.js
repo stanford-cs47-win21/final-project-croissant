@@ -71,12 +71,12 @@ export default function Leaderboard({route, navigation, ...props}) {
                     comment: 'I\'d like a chocolate dessert cookbook.',
                 },
                 {
-                    username: 'dewman',
-                    comment: 'I love you Rachel!! :)',
-                },
-                {
                     username: 'bentham',
                     comment: 'Quick desserts.',
+                },
+                {
+                    username: 'jacques_d',
+                    comment: 'I love you Rachel!! :)',
                 },
             ]
 

@@ -20,7 +20,7 @@ function getPhoto(username) {
     photoDict.set("phil_l", <Image source={require("../Images/Phil.png")} style={styles.pictureStyle}/>);
     photoDict.set("weir_wood", <Image source={require("../Images/Bob.png")} style={styles.pictureStyle}/>);
     photoDict.set("p_sing", <Image source={require("../Images/Singer.png")} style={styles.pictureStyle}/>);
-    photoDict.set("dewman", <Image source={require("../Images/Dewey.png")} style={styles.pictureStyle}/>);
+    photoDict.set("jacques_d", <Image source={require("../Images/Derrida.png")} style={styles.pictureStyle}/>);
     photoDict.set("bentham", <Image source={require("../Images/Bentham.png")} style={styles.pictureStyle}/>);
     photoDict.set("gordon_r", <Image source={require("../Images/Gordon.png")} style={styles.pictureStyle}/>);
     photoDict.set("gusteau", <Image source={require("../Images/Gusteau.png")} style={styles.pictureStyle}/>);
