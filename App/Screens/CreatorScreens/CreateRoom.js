@@ -179,7 +179,7 @@ export default function CreateRoom({route, navigation, variant}) {
                         />
                     </View>
                 </View>
-                <ActionButton text="ok" onPress={hideModal} style={keyStyles.shadowProps}/>
+                <ActionButton text="Send" onPress={hideModal} style={keyStyles.shadowProps}/>
             </Overlay>
 
         {/* modal for time picker */}
