@@ -11,10 +11,10 @@ import { StyleSheet,
 import keyStyles from '../Styles/keyStyles';
 
 
-export function Title({text}) {
+export function Title({text, center=false}) {
     return(
-        <View style={keyStyles.titleView}> 
-            <Text style={keyStyles.titleText1}> {text} </Text>
+        <View style={[keyStyles.titleView, center && {justifyContent: 'center'}]}> 
+            <Text style={keyStyles.titleText1}>{text}</Text>
         </View>
     );
 }

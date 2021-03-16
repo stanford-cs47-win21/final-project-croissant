@@ -38,7 +38,7 @@ export default function LiveRoom({route, navigation}) {
             <View style={styles.liveSymb}> 
             {
                 !isLive ? 
-                <Text style={keyStyles.titleText1}>Your Guests </Text> 
+                <Text style={keyStyles.smallBold}>Your Guests </Text> 
 
                 : 
                     <View style={styles.rowContainer}>

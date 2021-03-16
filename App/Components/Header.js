@@ -29,6 +29,7 @@ export function Header({fan=false, studios=null}) {
                 {fan ? 
                     <TouchableOpacity
                         onPress = {() => {navigation.navigate('FindRachel')}} 
+                        style={styles.searchButton}
                     > 
                         <AntDesign name="search1" size={30} color="black" /> 
                     </TouchableOpacity>
@@ -98,5 +99,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginLeft: 10
+    },
+    searchButton: {
+        marginRight: 15
     }
   });

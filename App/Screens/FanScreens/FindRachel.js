@@ -65,7 +65,7 @@ export default function FindRachel({route, navigation}) {
                 /> 
             </View>
 
-            <View style={keyStyles.listView}> 
+            <View style={styles.resultsView}> 
                 {searchText ? 
                     <FlatList 
                         data={searchCreatorList()}
@@ -111,12 +111,19 @@ const styles = StyleSheet.create({
         width: Dimensions.get('window').width * .9,
     },
     searchField: {
-        backgroundColor: keyStyles.SECONDARY_COLOR,
+        backgroundColor: keyStyles.LIGHT_GRAY,
         borderRadius: 50,
         height: '80%',
         width: '100%',
         padding: 15,
         fontSize: 16
-    }
+    },
+    resultsView: {
+        // backgroundColor: 'red',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
+        height: '75%'
+    },
   });
   

@@ -59,7 +59,7 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
             if (status === "LIVE") {
                 navigation.navigate('LiveRoom', {cardInfo});
             } else if (status === "VIEW RESULTS") {
-                navigation.navigate('StudioResults', {cardInfo});
+                navigation.navigate('NotSelected', {cardInfo});
             } else if (status === "RANKING") {
                 navigation.navigate('FanRanking', {cardInfo});
             } else if (status === "BRAINSTORMING") {
@@ -117,14 +117,6 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                         overlayStyle={styles.overlay}
                     >
 
-                        {/*
-                        <View style={styles.closeButtonRowContainer}>
-                        <TouchableOpacity onPress={toggleOverlay} style={keyStyles.topRight}>
-                            <Icon name={'close'} color="white" size={25}/>
-                        </TouchableOpacity>
-                        </View>
-                        */}
-
                         <View style={styles.overlayRow}>
                             <Text style={styles.alertText}> Studio in Progress </Text>
                             {/* <AntDesign name="hourglass" size={24} color="black" /> */}
@@ -143,28 +135,22 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                         isVisible={fanOverlayVisible} 
                         onBackdropPress={toggleFanOverlay}
                         animationType={'fade'}
-                        overlayStyle={{height: '30%', width: '70%', justifyContent: 'center', alignItems: 'center'}}
+                        overlayStyle={styles.overlay}
                     >
-                        <View style={{height: '40%', alignItems: 'center', justifyContent: 'center'}}> 
-                            <Text style={keyStyles.titleText1}> {status==='RANKED' ? 'Rank' : 'Brainstorm'}ing Completed </Text>
-                            <MaterialCommunityIcons name="check" size={36} color="black" style={{marginTop: 10}}/>
+
+                        <View style={styles.overlayRow}>
+                            <Text style={styles.alertText}> {status==='RANKED' ? 'Rank' : 'Brainstorm'}ing Completed </Text>
+                            {/* <AntDesign name="hourglass" size={24} color="black" /> */}
+                            <MaterialCommunityIcons name="check" size={36} color="white" />
+                            {/* <Ionicons name="hourglass" size={24} color="black" /> */}
                         </View>
 
-                        <View style={styles.overlayTextContainer}>    
+                        <View style={[styles.overlayTextContainer, keyStyles.shadowProps]}>    
                             <Text style={styles.messageText}> You have already {status==='RANKED' ? 'rank' : 'brainstorm'}ed ideas for this studio. We'll let you know when the 
                             other fans are done! </Text>
                         </View>
-
-                            <View style={{height: '30%'}}> 
-                                <TouchableOpacity 
-                                    style={keyStyles.button1}
-                                    onPress={toggleFanOverlay}
-                                > 
-                                    <Text style={keyStyles.button1text}> OK </Text>
-                                </TouchableOpacity>
-                            </View> 
+                        <ActionButton text="ok" onPress={toggleFanOverlay} />
                     </Overlay>
-
             </TouchableOpacity>
         );
     }

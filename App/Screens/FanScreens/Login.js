@@ -11,6 +11,8 @@ import { StyleSheet,
 import keyStyles from '../../Styles/keyStyles';
 import firestore from '../../../firebase';
 import firebase from 'firebase';
+import {Title} from "../../Components/Title";
+import {ActionButton} from "../../Components/ActionButton";
 
 export default function Login({route, navigation, ...props}) {
     const [loginEmail, setLoginEmail] = useState('');
@@ -33,28 +35,32 @@ export default function Login({route, navigation, ...props}) {
     return(
         <SafeAreaView style={styles.container}> 
 
-            <Text style={styles.header}> Log In </Text>
 
+            <View style={styles.contentContainer}>
             <TextInput
                 style={styles.input}
                 value={loginEmail}
                 onChangeText={(loginEmail) => setLoginEmail(loginEmail)}
-                placeholder="EMAIL" 
+                placeholder="Email" 
+                autoCapitalize={"none"}
+                autoCompleteType={"email"}
+                autoCorrect={false}
+                textContentType={"emailAddress"}
             />
             <TextInput
                 style={styles.input}
                 value={loginPassword}
                 secureTextEntry={true}
+                auto
                 onChangeText={(loginPassword) => setLoginPassword(loginPassword)}
-                placeholder="PASSWORD" 
+                placeholder="Password" 
+                textContentType={"password"}
             />
 
-            <TouchableOpacity
-                style={keyStyles.button1} 
+            <ActionButton
                 onPress = { () => {login(); console.log("Logged in");}}
-            >
-                <Text style={keyStyles.button1text}> Log In </Text>
-            </TouchableOpacity>
+                text={"Log In"} />
+                </View>
 
         </SafeAreaView>
     );
@@ -62,11 +68,17 @@ export default function Login({route, navigation, ...props}) {
 
 
 const styles = StyleSheet.create({
+    contentContainer: {
+        marginTop: 50,
+        alignItems: 'center',
+        width: '100%',
+        height: '100%',
+    },
+    
     container: {
         flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
-        justifyContent: 'center',
     },
     header: {
         marginBottom: 10,
@@ -74,13 +86,15 @@ const styles = StyleSheet.create({
     },
     input: {
         height: '8%',
-        width: '65%',
+        width: '75%',
         fontSize: 15,
         margin: 10,
         padding: 5,
+        paddingLeft: 8,
         borderColor: '#FAC738',
         borderRadius: 18,
         borderWidth: 1,
+        fontSize: 16
     },
   });
   

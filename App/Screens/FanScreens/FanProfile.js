@@ -10,6 +10,7 @@ import { StyleSheet,
 import keyStyles from '../../Styles/keyStyles';
 import {FollowerItem} from "../../Components/FollowerItem";
 import { Ionicons } from '@expo/vector-icons';
+import {SalmonBadge} from "../../Components/SalmonBadge";
 
 import firestore from '../../../firebase';
 import firebase from 'firebase';
@@ -55,35 +56,18 @@ export default function FanProfile({route, navigation}) {
             </View>
 
             <View style={styles.infoAbout}>  
-                <View style={styles.profItem}> 
-                    <Text style={styles.infoText}> Your Contributions </Text>
-                    <Text style={styles.infoText}> 24 </Text>
-                </View>
+                <SalmonBadge leftText="Your Contributions" rightText="5" isButton={true} onPress={()=> {navigation.navigate("YourContributions", {username: username});}}/>
+                    <SalmonBadge leftText="Following" rightText={isFollowingRachel ? "1" : "0"} isButton={isFollowingRachel} 
+                        onPress={isFollowingRachel ? () => {navigation.navigate("FollowingScreen");} : null}/>
 
-                <View style={styles.profItem}> 
-                    <Text style={styles.infoText}> Following </Text>
-                    <Text style={styles.infoText}> {isFollowingRachel ? 1 : 0 } </Text>
-                </View>
-
-                <View style={{height: '16%'}}> 
-                    {isFollowingRachel && <FollowerItem username="rachel_f" genre="BAKING"/> }
-                </View>
-
-                {/* Log out button */}
-                <View style={{height: '50%', justifyContent: 'flex-end'}}> 
-                    <TouchableOpacity style={keyStyles.button1}
-                        onPress={() => {
-                            firebase.auth().signOut()
-                            .then(() => navigation.navigate('ChooseFlow'))
-                            .catch(console.err);
-                        }}
+                    <TouchableOpacity 
+                        style={[styles.profItem, {backgroundColor: '#F2F2F2'}]}
+        
+                        onPress={() => navigation.navigate('ChooseFlow')}
                     >
-                        <View style={{flexDirection: 'row', alignItems: 'center'}} > 
-                            <Ionicons name='exit-outline' size={24} color='black' style={{marginRight: 10}} />
-                            <Text style={keyStyles.button1text}>Log out</Text>
-                        </View>
+                    <Text style={[styles.infoText, {color:'black'}]}> Log Out </Text>
+                    <Ionicons name='exit-outline' size={36} color='black'/>
                     </TouchableOpacity>
-                </View>
                 
             </View> 
 
@@ -94,58 +78,54 @@ export default function FanProfile({route, navigation}) {
 }
 
 
-// uncomment ugly background colors to make it clear where the flexboxes for the views are
+  
 const styles = StyleSheet.create({
-    container: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#fff',
-        height: '100%',
-    },
-    userInfo: {
-        alignItems: 'center',
-        height: '40%',
-        // backgroundColor: 'red',
-    },
-    infoAbout: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '80%',
-        height: '60%',
-        // backgroundColor: 'green'
+    profileCircle: {
+      width: PIC_SIZE,
+      height: PIC_SIZE,
+      borderRadius: PIC_SIZE/2,
+      backgroundColor: '#F2F2F2',
+      margin: 3,
     },
     realName: {
-        marginTop: 8,
         marginBottom: 5,
-        fontSize: FONT_SIZE
+        fontSize: FONT_SIZE * 1.5
     },
     username: {
         color: '#645F5C',
-        fontSize: FONT_SIZE
+        fontSize: FONT_SIZE * 1.2 
     },
-    // profItem: {
-    //     width: '80%',
-    //     height: 40,
-    //     justifyContent: 'space-evenly',
-    //     flexDirection: 'row',
-    //     // backgroundColor: 'red',
-    //     alignItems: 'center',
-    // },
-    profItem: {
+    container: {
+        backgroundColor: '#fff',
+        height: '100%'
+    },
+    userInfo: {
+        marginBottom: 50,
+        alignItems: 'center'
+    },
+    infoAbout: {
+        alignItems: 'center',
+        justifyContent: 'center',
         width: '100%',
-        // height: 20,
+    },
+    profItem: {
+        width: '90%',
         margin: 8,
         justifyContent: 'space-between',
         alignContent: 'center',
         flexDirection: 'row',
         alignItems: 'center',
+        backgroundColor: keyStyles.SALMON_COLOR,
+        padding: 20,
+        borderRadius: 20
+    },
+    infoText: {
+        fontSize: 24,
+        fontFamily: 'Lato_700Bold',
+        color: 'white',
     },
     pictureStyle: {
         resizeMode: 'contain',
         width: PIC_SIZE
-    },
-    infoText: {
-        fontSize: FONT_SIZE,
-    },
+    }
   });
-  

@@ -9,7 +9,7 @@ const keyStyles = {
     BODY_TEXT_SIZE: 16,
     LINE_HEIGHT_MULT:1.5,
     LIGHT_GRAY: '#F2F2F2',
-    SALMON_COLOR:"#F98562",
+    SALMON_COLOR:"#f59376", //  #f59376 // #F98562
     DARK_GRAY: '#979797',
     // const ICON_SIZE: 24,
 
@@ -45,13 +45,18 @@ const keyStyles = {
         fontFamily: 'Lato_700Bold',
     },
     titleView: {
-        height: '10%',
+        height: '8%',
         flexDirection: 'row',
         alignItems: 'center',
         // justifyContent: 'center',
-        width: '90%',
+        width: '90%'
     },
     titleText1: {
+        fontSize: 28,
+        color: 'black',
+        letterSpacing: .6
+    },
+    smallBold: {
         fontSize: 16,
         color: 'black',
         fontFamily: 'Lato_700Bold',
@@ -72,8 +77,7 @@ const keyStyles = {
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
-        height: '70%',
-        marginTop: -5
+        height: '100%'
     },
 }
 
