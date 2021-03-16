@@ -12,6 +12,7 @@ import keyStyles from '../../Styles/keyStyles';
 import {Title} from "../../Components/Title";
 import {StudioCard} from "../../Components/StudioCard";
 import {CommentCard} from "../../Components/CommentCard";
+import {DraggableCard} from "../../Components/DraggableCard";
 import {ActionButton} from "../../Components/ActionButton";
 import DraggableFlatList from 'react-native-draggable-flatlist';
 
@@ -20,15 +21,12 @@ export default function FanRanking({route, navigation, ...props}) {
 
     const initialData = [
                 {
-                    username: 'john_winston',
                     comment: 'Slow down when you are taking video clips! I find it hard to follow along.',
                 },
                 {
-                    username: 'george_h',
                     comment: 'Stop making videos. They all suck.',
                 },
                 {
-                    username: 'paul_walrus',
                     comment: 'Can you spend time zooming in on the texture of your cake?',
                 },
             ];
@@ -37,7 +35,7 @@ export default function FanRanking({route, navigation, ...props}) {
 
     const renderItem = ({ item, index, drag, isActive }) => (
         <TouchableOpacity onLongPress={drag}>
-            <CommentCard cardInfo={item} commentColor={true}/>
+        <DraggableCard comment={item.comment}/>
         </TouchableOpacity>
     );
     return(
