@@ -8,13 +8,14 @@ import { StyleSheet,
     Dimensions
 } from 'react-native';
 
-export function PicAndUsername({userInfo}) {
-    // TODO: Add picture to userInfo
-    const username = userInfo; // to be able to use as prop
+let PIC_SIZE = 20;
+export function PicAndUsername(props) {
+    let rachelPhoto = <Image source={require("../Images/Rachel.png")} style={styles.pictureStyle}/>
+    let johnPhoto = <Image source={require("../Images/John.png")} style={styles.pictureStyle}/>
     return (
         <View style={styles.rowContainer}>
-            <View style={styles.profileCircle} />
-            <Text style={styles.username}> {username} </Text> 
+            {(props.photoPerson === 'John') ? johnPhoto : rachelPhoto} 
+            <Text style={styles.username}> {props.userInfo} </Text> 
         </View>
     );
 }
@@ -22,17 +23,22 @@ export function PicAndUsername({userInfo}) {
 
 const styles = StyleSheet.create({
     profileCircle: {
-      width: 20,
-      height: 20,
-      borderRadius: 20/2,
+      width: PIC_SIZE,
+      height: PIC_SIZE,
+      borderRadius: PIC_SIZE/2,
       backgroundColor: '#979797',
     },
     username: {
         fontSize: 14,
-        textAlign: 'center'
+        textAlign: 'center',
     },
     rowContainer: {
         flexDirection: 'row', // align text next to icon
         justifyContent: 'center'
     },
+    pictureStyle: {
+        resizeMode: 'contain',
+        height: PIC_SIZE,
+        width: PIC_SIZE
+    }
   });
