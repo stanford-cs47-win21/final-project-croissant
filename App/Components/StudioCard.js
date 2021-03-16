@@ -88,7 +88,7 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
         > 
 
             <View style={styles.topRow}> 
-                <PicAndUsername userInfo={username} />  
+                <PicAndUsername userInfo={username} photoPerson="John"/>  
                 <View style={determineStatus()}> 
                     {status != "LIVE" && <Text style={styles.badgeText}> {status}</Text>}
                 </View>

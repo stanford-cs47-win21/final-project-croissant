@@ -8,13 +8,42 @@ import { StyleSheet,
     Dimensions
 } from 'react-native';
 
-export function PicAndUsername({userInfo}) {
-    // TODO: Add picture to userInfo
-    const username = userInfo; // to be able to use as prop
+let PIC_SIZE = 20;
+
+function getPhoto(username) {
+    var photoDict = new Map();
+    let johnPhoto = <Image source={require("../Images/John.png")} style={styles.pictureStyle}/>
+    photoDict.set("rachel_f", <Image source={require("../Images/Rachel.png")} style={styles.pictureStyle}/>)
+    photoDict.set("paul_walrus", <Image source={require("../Images/Paul.png")} style={styles.pictureStyle}/>);
+    photoDict.set("george_h", <Image source={require("../Images/George.png")} style={styles.pictureStyle}/>);
+    photoDict.set("jerry_g", <Image source={require("../Images/Jerry.png")} style={styles.pictureStyle}/>);
+    photoDict.set("phil_l", <Image source={require("../Images/Phil.png")} style={styles.pictureStyle}/>);
+    photoDict.set("weir_wood", <Image source={require("../Images/Bob.png")} style={styles.pictureStyle}/>);
+    photoDict.set("p_sing", <Image source={require("../Images/Singer.png")} style={styles.pictureStyle}/>);
+    photoDict.set("dewman", <Image source={require("../Images/Dewey.png")} style={styles.pictureStyle}/>);
+    photoDict.set("bentham", <Image source={require("../Images/Bentham.png")} style={styles.pictureStyle}/>);
+    photoDict.set("gordon_r", <Image source={require("../Images/Gordon.png")} style={styles.pictureStyle}/>);
+    photoDict.set("gusteau", <Image source={require("../Images/Gusteau.png")} style={styles.pictureStyle}/>);
+    photoDict.set("marco", <Image source={require("../Images/Marco.png")} style={styles.pictureStyle}/>);
+    if (photoDict.has(username)) {
+        return photoDict.get(username);
+    } else {
+        return johnPhoto;
+    }
+}
+
+
+/*
+ * Component for rendering picture and username
+ * Defaults to photo of rachel unless "John" is passed in props.photoPerson
+ * Note: Photos must already be circles
+ * TODO: add more people!
+ */
+export function PicAndUsername(props) {
     return (
         <View style={styles.rowContainer}>
-            <View style={styles.profileCircle} />
-            <Text style={styles.username}> {username} </Text> 
+            {getPhoto(props.userInfo)}
+            <Text style={styles.username}> {props.userInfo} </Text> 
         </View>
     );
 }
@@ -22,17 +51,22 @@ export function PicAndUsername({userInfo}) {
 
 const styles = StyleSheet.create({
     profileCircle: {
-      width: 20,
-      height: 20,
-      borderRadius: 20/2,
+      width: PIC_SIZE,
+      height: PIC_SIZE,
+      borderRadius: PIC_SIZE/2,
       backgroundColor: '#979797',
     },
     username: {
         fontSize: 14,
-        textAlign: 'center'
+        textAlign: 'center',
     },
     rowContainer: {
         flexDirection: 'row', // align text next to icon
         justifyContent: 'center'
     },
+    pictureStyle: {
+        resizeMode: 'contain',
+        height: PIC_SIZE,
+        width: PIC_SIZE
+    }
   });
