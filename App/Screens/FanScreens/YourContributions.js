@@ -21,23 +21,19 @@ export default function YourContributions({route, navigation, ...props}) {
     let data = [
         {
             username: route.params.username,
-            comment: 'yes',
+            comment: 'I like blueberry and strawberry sweets.',
         },
         {
             username: route.params.username,
-            comment: 'no',
+            comment: 'Rachel please notice me',
         },
         {
             username: route.params.username,
-            comment: 'ofcccc',
+            comment: 'What if you invited a guest speaker to your channel every week?',
         },
         {
             username: route.params.username,
-            comment: 'ofccc',
-        },
-        {
-            username: route.params.username,
-            comment: 'ofc',
+            comment: 'Fruits are really good in brownies.',
         },
     ]
 
