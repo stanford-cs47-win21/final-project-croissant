@@ -29,15 +29,15 @@ export default function Leaderboard({route, navigation, ...props}) {
             data: [
                 {
                     username: 'john_winston',
-                    comment: 'Suggest oil-based recipes',
+                    comment: 'A dark chocolate-based cookbook would be amazing!!',
                 },
                 {
                     username: 'george_h',
-                    comment: 'Egg-based recipes',
+                    comment: 'Eggless-cookie recipes. Trying to go vegan.',
                 },
                 {
                     username: 'paul_walrus',
-                    comment: 'Milk chocolate alternatives pleaseee',
+                    comment: 'What if you made one dish from each country in the world? Try an international palette.',
                 },
             ]
         },
@@ -48,15 +48,15 @@ export default function Leaderboard({route, navigation, ...props}) {
             data: [
                 {
                     username: 'john_winston',
-                    comment: 'wooo',
+                    comment: 'Honestly don\'t even make a cookbook',
                 },
                 {
                     username: 'george_h',
-                    comment: 'hi',
+                    comment: 'Cookbooks are boring. Make a movie instead!',
                 },
                 {
                     username: 'paul_walrus',
-                    comment: 'lol',
+                    comment: 'I wish you would put your videos on TikTok instead of YouTube.',
                 },
             ]
 
@@ -68,15 +68,15 @@ export default function Leaderboard({route, navigation, ...props}) {
             data: [
                 {
                     username: 'john_winston',
-                    comment: 'yes',
+                    comment: 'I\'d like a chocolate dessert cookbook.',
                 },
                 {
                     username: 'george_h',
-                    comment: 'no',
+                    comment: 'I love you Rachel!! :)',
                 },
                 {
                     username: 'paul_walrus',
-                    comment: 'ofcccc',
+                    comment: 'Quick desserts.',
                 },
             ]
 

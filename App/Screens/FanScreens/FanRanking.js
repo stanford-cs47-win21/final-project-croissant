@@ -11,6 +11,7 @@ import { StyleSheet,
 import keyStyles from '../../Styles/keyStyles';
 import {Title} from "../../Components/Title";
 import {StudioCard} from "../../Components/StudioCard";
+import {CommentCard} from "../../Components/CommentCard";
 import {DraggableCard} from "../../Components/DraggableCard";
 import {ActionButton} from "../../Components/ActionButton";
 import DraggableFlatList from 'react-native-draggable-flatlist';
@@ -20,13 +21,13 @@ export default function FanRanking({route, navigation, ...props}) {
 
     const initialData = [
                 {
-                    comment: 'yes',
+                    comment: 'Slow down when you are taking video clips! I find it hard to follow along.',
                 },
                 {
-                    comment: 'no',
+                    comment: 'Stop making videos. They all suck.',
                 },
                 {
-                    comment: 'I love writing long comments. In fact, I have an icon to verbosity in my room. Hemingway was a fraud.',
+                    comment: 'Can you spend time zooming in on the texture of your cake?',
                 },
             ];
 
@@ -40,7 +41,17 @@ export default function FanRanking({route, navigation, ...props}) {
     return(
 
         <SafeAreaView style={styles.container}> 
-        <Title text="Rank Items"/>
+        <Title text="Rank Ideas"/>
+        <View style={styles.topCard}> 
+            <CommentCard 
+                cardInfo={{
+                    username: username,
+                    comment: message,
+                }}
+            />
+        </View>
+
+
         <View style={styles.bodyTextContainer}> 
             <Text style={styles.bodyText}> Drag and drop the suggestions below </Text>
         </View>
@@ -67,8 +78,9 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
     },
     topCard: {
-        height: '40%',
+        height: '17%',
         justifyContent: 'center',
+        marginBottom: 18,
     },
     bodyTextContainer: {
         width: '90%',

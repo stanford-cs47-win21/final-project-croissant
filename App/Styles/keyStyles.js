@@ -9,7 +9,7 @@ const keyStyles = {
     BODY_TEXT_SIZE: 16,
     LINE_HEIGHT_MULT:1.5,
     LIGHT_GRAY: '#F2F2F2',
-    SALMON_COLOR:"#F98562",
+    SALMON_COLOR:"#f59376", //  #f59376 // #F98562
     DARK_GRAY: '#979797',
     // const ICON_SIZE: 24,
 

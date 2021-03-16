@@ -78,7 +78,7 @@ export default function FanHome({route, navigation}) {
         }
     }, [route.params?.brainstormingStatus]);
 
-    // Update ranking status function
+    // Update brainstorming status function
     const updateBrainstormingStatus = () => {
         let studiosCopy = [...studios]; 
         const brainstormingStudioIndex = studiosCopy.findIndex((studio => studio.status == 'BRAINSTORMING'));
@@ -93,7 +93,7 @@ export default function FanHome({route, navigation}) {
         {
             username: "rachel_f",
             status: "LIVE",
-            message: "Woooo we are going live",
+            message: "What is the weirdest recipe you enjoy?",
             timeLeft: "doesn't matter",
         },
         {
@@ -105,13 +105,13 @@ export default function FanHome({route, navigation}) {
         {
             username: "rachel_f",
             status: "RANKING",
-            message: "what is your favorite sandwich.",
+            message: "How can I improve my videography skills?",
             timeLeft: "4 hours remaining",
         },
         {
             username: "rachel_f",
             status: "VIEW RESULTS",
-            message: "hahahaahahhaah ",
+            message: "What should the theme of my new cookbook be?",
             timeLeft: "0 hours remaining",
         },
         // Last object will render into the plus button, sort of jank
