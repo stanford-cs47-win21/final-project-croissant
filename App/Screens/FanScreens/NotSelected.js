@@ -24,6 +24,15 @@ export default function NotSelected({route, navigation, ...props}) {
     return(
         <SafeAreaView style={styles.container}> 
             <Title text="Thanks for contributing!" />
+            <View style={styles.topCard}> 
+                <CommentCard 
+                    cardInfo={{
+                        username: username,
+                        comment: message,
+                    }}
+                />
+            </View>
+
             <View style={styles.bodyTextContainer}> 
                 <Text style={styles.bodyText}>rachel_f appreciates your feedback. Check out how other fans rated your idea: </Text>
             </View>
@@ -31,7 +40,7 @@ export default function NotSelected({route, navigation, ...props}) {
             <CommentCard 
                 cardInfo={{
                     username: username,
-                    comment: "I like blueberries. I also like strawberries",
+                    comment: "I like blueberry and strawberry sweets.",
                 }}
                 commentColor={true}/>
             <SalmonBadge leftText="Percentile" rightText="62nd"/> 
@@ -52,6 +61,11 @@ const styles = StyleSheet.create({
       flex: 1,
       backgroundColor: '#fff',
       alignItems: 'center',
+    },
+    topCard: {
+        height: '17%',
+        justifyContent: 'center',
+        marginBottom: 18,
     },
     bodyTextContainer: {
         width: '90%',
