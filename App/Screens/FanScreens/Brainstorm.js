@@ -53,9 +53,9 @@ export default function Brainstorm({route, navigation, ...props}) {
             {/* TODO: Convert to Action Button (make sure button inside the view though) */}
             <View style={styles.bottomButton}> 
                         <ActionButton text={"SUBMIT"} 
-                            onPress = {() => {navigation.navigate('FanHome')}}
+                            onPress = {() => {navigation.navigate('FanHome', {brainstormingStatus: 'BRAINSTORMED'})}}
                             context={{brainstormingStatus: 'BRAINSTORMED'}}
-                            />
+                        />
             </View> 
             
 

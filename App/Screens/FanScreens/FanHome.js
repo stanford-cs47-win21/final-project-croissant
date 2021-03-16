@@ -78,7 +78,7 @@ export default function FanHome({route, navigation}) {
         }
     }, [route.params?.brainstormingStatus]);
 
-    // Update ranking status function
+    // Update brainstorming status function
     const updateBrainstormingStatus = () => {
         let studiosCopy = [...studios]; 
         const brainstormingStudioIndex = studiosCopy.findIndex((studio => studio.status == 'BRAINSTORMING'));
