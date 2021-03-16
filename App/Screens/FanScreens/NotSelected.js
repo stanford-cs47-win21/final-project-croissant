@@ -14,12 +14,30 @@ import {Title} from "../../Components/Title";
 import {ActionButton} from "../../Components/ActionButton";
 import {CommentCard} from "../../Components/CommentCard";
 import {SalmonBadge} from "../../Components/SalmonBadge";
+import firebase from 'firebase';
+import firestore from '../../../firebase';
+
 
 let BODY_TEXT_SIZE = 16;
 
 export default function NotSelected({route, navigation, ...props}) {
     const [prompt, setPrompt] = useState("");
+    const [fanUsername, setFanusername] = useState("");
     const {username, status, message, timeLeft} = route.params.cardInfo;
+
+    // load user data
+    useEffect( () => {
+        const user = firebase.auth().currentUser;
+        let userRef = firestore.doc('users/' + user.uid);
+        const getUserDoc = async(userRef) => {
+            let userDoc = await userRef.get();
+            if (userDoc.exists) {
+                const userData = userDoc.data();
+                setFanusername(userData.username);
+            }
+        }
+        getUserDoc(userRef);    
+    }, [])
 
     return(
         <SafeAreaView style={styles.container}> 
@@ -39,7 +57,7 @@ export default function NotSelected({route, navigation, ...props}) {
             
             <CommentCard 
                 cardInfo={{
-                    username: username,
+                    username: fanUsername,
                     comment: "I like blueberry and strawberry sweets.",
                 }}
                 commentColor={true}/>
