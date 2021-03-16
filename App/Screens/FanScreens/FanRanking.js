@@ -21,15 +21,15 @@ export default function FanRanking({route, navigation, ...props}) {
     const initialData = [
                 {
                     username: 'john_winston',
-                    comment: 'yes',
+                    comment: 'Slow down when you are taking video clips! I find it hard to follow along.',
                 },
                 {
                     username: 'george_h',
-                    comment: 'no',
+                    comment: 'Stop making videos. They all suck.',
                 },
                 {
                     username: 'paul_walrus',
-                    comment: 'ofcccc',
+                    comment: 'Can you spend time zooming in on the texture of your cake?',
                 },
             ];
 
@@ -43,7 +43,17 @@ export default function FanRanking({route, navigation, ...props}) {
     return(
 
         <SafeAreaView style={styles.container}> 
-        <Title text="Rank Items"/>
+        <Title text="Rank Ideas"/>
+        <View style={styles.topCard}> 
+            <CommentCard 
+                cardInfo={{
+                    username: username,
+                    comment: message,
+                }}
+            />
+        </View>
+
+
         <View style={styles.bodyTextContainer}> 
             <Text style={styles.bodyText}> Drag and drop the suggestions below </Text>
         </View>
@@ -70,8 +80,9 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
     },
     topCard: {
-        height: '40%',
+        height: '17%',
         justifyContent: 'center',
+        marginBottom: 18,
     },
     bodyTextContainer: {
         width: '90%',
