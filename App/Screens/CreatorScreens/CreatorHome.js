@@ -28,8 +28,8 @@ export default function CreatorHome({route, navigation}) {
             isAlert: false,
             username: "rachel_f",
             status: "LIVE",
-            message: "Woooo we are going live",
-            timeLeft: "Join now",
+            message: "What is the weirdest recipe you enjoy?",
+            timeLeft: "doesn't matter",
         },
         {
             isAlert: false,
@@ -42,15 +42,15 @@ export default function CreatorHome({route, navigation}) {
             isAlert: false,
             username: "rachel_f",
             status: "RANKING",
-            message: "what is your favorite sandwich.",
+            message: "How can I improve my videography skills?",
             timeLeft: "4 hours remaining",
         },
         {
             isAlert: false,
             username: "rachel_f",
             status: "VIEW RESULTS",
-            message: "hahahaahahhaah ",
-            timeLeft: "0:00 remaining",
+            message: "What should the theme of my new cookbook be?",
+            timeLeft: "0 hours remaining",
         },
         // Last object will render into the plus button, sort of jank
         {
