@@ -97,19 +97,19 @@ export default function FanHome({route, navigation}) {
             timeLeft: "doesn't matter",
         },
         {
-            username: "rachel_f",
+            username: "gusteau",
             status: "BRAINSTORMING",
             message: "I'm looking to do more vegan recipes! Would love to hear about your personal favorites.",
             timeLeft: "6 hours remaining",
         },
         {
-            username: "rachel_f",
+            username: "gordon_r",
             status: "RANKING",
             message: "How can I improve my videography skills?",
             timeLeft: "4 hours remaining",
         },
         {
-            username: "rachel_f",
+            username: "marco",
             status: "VIEW RESULTS",
             message: "What should the theme of my new cookbook be?",
             timeLeft: "0 hours remaining",

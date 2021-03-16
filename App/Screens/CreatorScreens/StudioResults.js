@@ -46,15 +46,15 @@ export default function StudioResults({route, navigation}) {
             color: keyStyles.SALMON_COLOR,
             data: [
                 {
-                    username: 'john_winston',
+                    username: 'jerry_g',
                     comment: 'Honestly don\'t even make a cookbook',
                 },
                 {
-                    username: 'george_h',
+                    username: 'phil_l',
                     comment: 'Cookbooks are boring. Make a movie instead!',
                 },
                 {
-                    username: 'paul_walrus',
+                    username: 'weir_wood',
                     comment: 'I wish you would put your videos on TikTok instead of YouTube.',
                 },
             ]
@@ -66,15 +66,15 @@ export default function StudioResults({route, navigation}) {
             color: keyStyles.SALMON_COLOR,
             data: [
                 {
-                    username: 'john_winston',
+                    username: 'p_sing',
                     comment: 'I\'d like a chocolate dessert cookbook.',
                 },
                 {
-                    username: 'george_h',
+                    username: 'dewman',
                     comment: 'I love you Rachel!! :)',
                 },
                 {
-                    username: 'paul_walrus',
+                    username: 'bentham',
                     comment: 'Quick desserts.',
                 },
             ]
