@@ -37,7 +37,7 @@ export default function FanRanking({route, navigation, ...props}) {
 
     const renderItem = ({ item, index, drag, isActive }) => (
         <TouchableOpacity onLongPress={drag}>
-        <CommentCard cardInfo={item} commentColor={true}/>
+            <CommentCard cardInfo={item} commentColor={true}/>
         </TouchableOpacity>
     );
     return(
