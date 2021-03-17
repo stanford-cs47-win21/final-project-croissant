@@ -19,6 +19,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import {ActionButton} from '../../Components/ActionButton';
 import {Overlay} from 'react-native-elements';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
+import InviteModal from "../../Components/InviteModal";
 
 const BODY_TEXT_SIZE = 16;
 const ICON_SIZE = 24;
@@ -107,7 +108,6 @@ export default function CreateRoom({route, navigation, variant}) {
 
 
             {/* datetime pickers */}
-
             <View style={styles.bottomBox}>
                 <View style={styles.iconTextContainer}>
                   <Image
@@ -141,6 +141,8 @@ export default function CreateRoom({route, navigation, variant}) {
             />
 
             {/* send invitation modal */}
+
+                <InviteModal visible={visible} hideModal={hideModal} prompt={prompt} setPrompt={setPrompt}/> 
             <Overlay
                 isVisible={visible}
                 onBackdropPress={hideModal}
@@ -204,14 +206,15 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     user: {
-        //backgroundColor: 'yellow',
-      alignItems: 'center',
+        alignItems: 'center',
+        width: 120,
+        height: 120
     },
     rowOfGuests: {
         flexDirection: 'row',
         margin: 10,
         alignContent: 'space-between',
-        justifyContent: 'space-around',
+        justifyContent: 'space-evenly',
         width: '100%',
     },
     iconTextContainer: {
