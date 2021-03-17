@@ -141,8 +141,13 @@ export default function CreateRoom({route, navigation, variant}) {
             />
 
 
-        {/* modal for time picker */}
-        <ActionButton text={"SCHEDULE ROOM"} onPress={() => { navigation.navigate("CreatorHome"); }} style={{zIndex: 0}}/>
+        {/* Schedule a new room */}
+        <ActionButton text={"SCHEDULE ROOM"} onPress={() => { navigation.navigate("CreatorHome", {newStudio: {
+                            isAlert: true,
+                            status: 6, // number of invitees
+                            message: "Mar 30", // JSON.stringify(cur_date),// "Feb 29", // date
+                            timeLeft: "9:30 PM PT", //time
+            }}) }} style={{zIndex: 0}}/>
 
     </SafeAreaView>
     );

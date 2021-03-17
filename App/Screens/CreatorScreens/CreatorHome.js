@@ -17,13 +17,13 @@ export default function CreatorHome({route, navigation}) {
     
     // the 5 different types of hardcoded cards on the homepage initially
     const fakeNewsfeedData = [
-        {
-            isAlert: true,
-            status: "2", // num participants
-            message: "Feb 29", // date
-            timeLeft: "9:30 PM PT", //time
+        // {
+        //     isAlert: true,
+        //     status: "2", // num participants
+        //     message: "Feb 29", // date
+        //     timeLeft: "9:30 PM PT", //time
 
-        },
+        // },
         {
             isAlert: false,
             username: "rachel_f",
@@ -70,31 +70,41 @@ export default function CreatorHome({route, navigation}) {
         }
     }, [route.params && route.params.newStudio])
 
-    
+    // adds both a new studio and a new upcoming room
     const addStudio = (newStudio) => {
-        const prompt = newStudio.prompt;
-        const timeRemainingDays = newStudio.brainstormTimeDays;
-        const timeRemainingHours = newStudio.brainstormTimeHours;
-
-        var timeLeft = null;
-
-        if (timeRemainingDays === 'O DAYS') {
-            timeLeft = timeRemainingHours + ' REMAINING'
-        } else if (timeRemainingHours === '0 HOURS') {
-            timeLeft = timeRemainingDays + ' REMAINING'
+        // new upcoming room
+        if (newStudio && newStudio.isAlert) {
+            let newStudioList = [];
+            newStudioList.push(newStudio);
+            newStudioList.push(...studios);
+            console.log("NEW UPCOMING ROOM ADDED  ", newStudioList);
+            setStudios(newStudioList);
+        // a general new studio created
         } else {
-            timeLeft = timeRemainingDays + ', ' + timeRemainingHours + ' REMAINING'
+            const prompt = newStudio.prompt;
+            const timeRemainingDays = newStudio.brainstormTimeDays;
+            const timeRemainingHours = newStudio.brainstormTimeHours;
+
+            var timeLeft = null; 
+
+            if (timeRemainingDays === 'O DAYS') {
+                timeLeft = timeRemainingHours + ' REMAINING'
+            } else if (timeRemainingHours === '0 HOURS') {
+                timeLeft = timeRemainingDays + ' REMAINING'
+            } else {
+                timeLeft = timeRemainingDays + ', ' + timeRemainingHours + ' REMAINING'
+            }
+            let newStudioList = [];
+            newStudioList.push({
+                username: "rachel_f",
+                status: "BRAINSTORMING",
+                message: prompt,
+                timeLeft: timeLeft,
+            });
+            newStudioList.push(...studios);
+            console.log("NEW STUDIO LIST after adding custom studio ", newStudioList);
+            setStudios(newStudioList);
         }
-        let newStudioList = [];
-        newStudioList.push({
-            username: "rachel_f",
-            status: "BRAINSTORMING",
-            message: prompt,
-            timeLeft: timeLeft,
-        });
-        newStudioList.push(...studios);
-        console.log("NEW STUDIO LIST after adding custom studio ", newStudioList);
-        setStudios(newStudioList);
     }
 
     return(
