@@ -22,7 +22,7 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
 import InviteModal from "../../Components/InviteModal";
 
 const BODY_TEXT_SIZE = 16;
-const ICON_SIZE = 24;
+const ICON_SIZE = 36;
 const FONT_SIZE = 16;
 
 export default function CreateRoom({route, navigation, variant}) {
@@ -116,7 +116,7 @@ export default function CreateRoom({route, navigation, variant}) {
                   />
 
                     <TouchableOpacity onPress={showDatePicker} style={styles.datepicker}>
-                      <Text> {cur_date.toLocaleDateString()} </Text>
+                      <Text style={styles.dateTimeText}> {cur_date.toLocaleDateString()} </Text>
                     </TouchableOpacity>
                 </View>
 
@@ -126,7 +126,7 @@ export default function CreateRoom({route, navigation, variant}) {
                         style={styles.icon}
                     />
                     <TouchableOpacity onPress={showTimePicker} style={styles.datepicker}>
-                      <Text> {cur_date.toLocaleTimeString()} </Text>
+                      <Text style={styles.dateTimeText}> {cur_date.toLocaleTimeString([], {hour: 'numeric', minute: '2-digit'})} </Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -193,7 +193,6 @@ const styles = StyleSheet.create({
         fontSize: 16,
         textTransform: 'uppercase',
         fontFamily: 'Lato_700Bold',
-        padding: 5,
     },
     subtitleStyle: {
         fontSize: BODY_TEXT_SIZE,
@@ -217,16 +216,14 @@ const styles = StyleSheet.create({
     icon: {
         resizeMode: 'contain',
         width: ICON_SIZE,
-        paddingHorizontal: 10,
-        //marginVertical: 20,
-        //backgroundColor: "yellow"
+        marginRight: 5
     },
     datepicker: {
       backgroundColor: '#F2F2F2',
       borderRadius: 10,
-      paddingVertical: 10,
-      paddingHorizontal: 10,
-      margin: 0
+      alignContent: 'center',
+      justifyContent: 'center',
+      padding: 10
     },
     promptInputView: {
         height: '40%',
