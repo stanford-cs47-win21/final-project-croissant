@@ -41,6 +41,5 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         marginHorizontal: 5,
         marginVertical: 3,
-        width: '33%',
     },
   });

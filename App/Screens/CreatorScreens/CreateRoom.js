@@ -19,6 +19,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import {ActionButton} from '../../Components/ActionButton';
 import {Overlay} from 'react-native-elements';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
+import InviteModal from "../../Components/InviteModal";
 
 const BODY_TEXT_SIZE = 16;
 const ICON_SIZE = 24;
@@ -75,39 +76,38 @@ export default function CreateRoom({route, navigation, variant}) {
 
             {/* recommended invitees */}
             <View style={styles.subtitle}>
-                <Text style={keyStyles.titleText1}> Recommended Invitees </Text>
+                <Text style={keyStyles.smallBold}> Recommended Invitees </Text>
             </View>
 
             {/*grid of invitees*/}
             <View style={styles.sixUsers}>
                 <View style={styles.rowOfGuests}>
-                  <TouchableOpacity onPress={showModal} style={styles.user}>
-                      <LivePicUsername userInfo={'john_winston'} />
-                  </TouchableOpacity>
-                  <TouchableOpacity onPress={showModal} style={styles.user}>
-                      <LivePicUsername userInfo={'rachel_f'} />
-                  </TouchableOpacity>
-                  <TouchableOpacity onPress={showModal} style={styles.user}>
-                      <LivePicUsername userInfo={'george_h'} />
-                  </TouchableOpacity>
+                  <View style={styles.user}>
+                    <InviteModal username="john_winston" comment="All you need is love."/> 
+                  </View>
+                  <View style={styles.user}>
+                    <InviteModal username="bentham" comment="The greatest good for the greatest number."/> 
+                  </View>
+                  <View style={styles.user}>
+                    <InviteModal username="george_h" comment="I don't know."/> 
+                  </View>
                 </View>
 
                 <View style={styles.rowOfGuests}>
-                  <TouchableOpacity onPress={showModal} style={styles.user}>
-                    <LivePicUsername userInfo={'starr_LFC'} />
-                  </TouchableOpacity>
-                  <TouchableOpacity onPress={showModal} style={styles.user}>
-                    <LivePicUsername userInfo={'yokono'} />
-                  </TouchableOpacity>
-                  <TouchableOpacity onPress={showModal} style={styles.user}>
-                    <LivePicUsername userInfo={'mclinda'} />
-                  </TouchableOpacity>
+                  <View style={styles.user}>
+                    <InviteModal username="starr_LFC" comment="Thomas the Tank Engine"/> 
+                  </View>
+                  <View style={styles.user}>
+                    <InviteModal username="yokono" comment="To break up the Beatles."/> 
+                  </View>
+                  <View style={styles.user}>
+                    <InviteModal username="mclinda" comment="I married a Walrus."/> 
+                  </View>
                 </View>
             </View>
 
 
             {/* datetime pickers */}
-
             <View style={styles.bottomBox}>
                 <View style={styles.iconTextContainer}>
                   <Image
@@ -140,47 +140,6 @@ export default function CreateRoom({route, navigation, variant}) {
               onCancel={hidePicker}
             />
 
-            {/* send invitation modal */}
-            <Overlay
-                isVisible={visible}
-                onBackdropPress={hideModal}
-                animationType={'fade'}
-                overlayStyle={styles.overlay}
-                >
-
-                <View style={styles.subtitle}>
-                    <Text style={keyStyles.titleText1}> user_name's Idea: </Text>
-                </View>
-
-                <View style={null}>
-                    <CommentCard
-                        cardInfo={{
-                            username: "howdoipassstatetothisusername",
-                            comment: "you should bake cookies or sumn ",
-                        }}
-                    />
-                </View>
-
-                <View style={styles.subtitle}>
-                    <Text style={keyStyles.titleText1}> Send Invite </Text>
-                </View>
-
-
-                <View style={styles.promptView}>
-                    <View style={styles.promptInputView}>
-                        <TextInput
-                          placeholder="Type a question, proposal or concept to share with your fans."
-                          placeholderTextColor='grey'
-                          style={styles.promptInputField}
-                          onSubmitEditing={ () => Keyboard.dismiss()}
-                          value={prompt}
-                          onChangeText={ input => setPrompt(input)}
-                          multiline={true}
-                        />
-                    </View>
-                </View>
-                <ActionButton text="Send" onPress={hideModal} style={keyStyles.shadowProps}/>
-            </Overlay>
 
         {/* modal for time picker */}
         <ActionButton text={"SCHEDULE ROOM"} onPress={() => { navigation.navigate("CreatorHome"); }} style={{zIndex: 0}}/>
@@ -204,15 +163,16 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     user: {
-      //backgroundColor: 'yellow',
-      alignItems: 'center',
+        alignItems: 'center',
+        width: 120,
+        height: 120
     },
     rowOfGuests: {
         flexDirection: 'row',
         margin: 10,
         alignContent: 'space-between',
-        justifyContent: 'space-around',
-        width: '80%',
+        justifyContent: 'space-evenly',
+        width: '100%',
     },
     iconTextContainer: {
         flexDirection: 'row',
