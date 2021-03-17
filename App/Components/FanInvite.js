@@ -8,6 +8,10 @@ import { StyleSheet,
     Dimensions
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import {Overlay} from 'react-native-elements';
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+import { ActionButton } from "./ActionButton";
+
 import keyStyles from '../Styles/keyStyles';
 
 import {PicAndUsername} from "./PicAndUsername";
@@ -19,13 +23,18 @@ const FONT_SIZE = 16;
 export function FanInvite({inviteInfo}) {
     const {isInvite, username, message, date, time} = inviteInfo; 
     const [acceptedOrRejected, setAorR] = useState('');
+    const [visible, setVisible] = useState(false);
+    const toggleOverlay = () => {
+        setVisible(!visible);
+    };
 
     if (acceptedOrRejected === 'Accept') {
         return(
             <UpcomingStudio alertInfo={{numParticipants:0, time:"10:00 AM PT", date:"FEB 24"}} accepted={true}/>
         );
     } else if (acceptedOrRejected === 'Reject') {
-        return null;
+        {/* After confirmation overlay */}
+        return null; 
     } 
     // RSVP required
     else return(
@@ -61,7 +70,7 @@ export function FanInvite({inviteInfo}) {
             <View style={styles.bottomBox}>
                 <TouchableOpacity
                     style={styles.backButton} 
-                    onPress = {() => setAorR('Reject')}
+                    onPress = {toggleOverlay}
                 >
                     <Text style={styles.buttonText}> REJECT </Text>
                 </TouchableOpacity>
@@ -73,6 +82,43 @@ export function FanInvite({inviteInfo}) {
                     <Text style={styles.buttonText}> ACCEPT </Text>
                 </TouchableOpacity>
             </View>
+
+            {/* Confirmation overlay to show up after rejection */}
+            <Overlay 
+                isVisible={visible} 
+                onBackdropPress={toggleOverlay}
+                animationType={'fade'}
+                overlayStyle={styles.overlay}
+            >
+
+                <View style={styles.overlayRow}>
+                    <Text style={styles.alertText}> Reject Invite </Text>
+                    <MaterialCommunityIcons name="exclamation" size={36} color="white"/>
+                </View>
+
+                <View style={[styles.overlayTextContainer, keyStyles.shadowProps]}>    
+                    <Text style={[styles.messageText, {marginBottom: 8}]}> Are you sure you want to reject this invite? You won't be able to edit your response! </Text>
+                </View>
+
+                {/* Accept or reject buttons */}
+                <View style={styles.bottomBox}> 
+                    <TouchableOpacity
+                        style={styles.backButton} 
+                        onPress = {toggleOverlay}
+                    >
+                        <Text style={styles.buttonText}> CANCEL </Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        style={styles.forwardButton} 
+                        onPress={() => {toggleOverlay(); setAorR('Reject')}}
+                    >
+                        <Text style={styles.buttonText}> REJECT </Text>
+                    </TouchableOpacity>
+                </View> 
+            </Overlay>
+            
+
         </View>
     );
 }
@@ -117,7 +163,8 @@ const styles = StyleSheet.create({
         width: '90%',
         height: 30,
         justifyContent: 'space-evenly',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: 5,
     },
     iconTextContainer: {
         flexDirection: 'row',
@@ -150,4 +197,37 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    // confirmation for overlay
+    overlay: {
+        width: '90%', 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        borderRadius: 20, 
+        backgroundColor: keyStyles.SALMON_COLOR,
+        height: '30%',
+    },
+    overlayRow: {
+        width: '90%',
+        justifyContent: 'space-between',
+        alignContent: 'center',
+        flexDirection: 'column',
+        alignItems: 'center'
+    },
+    alertText: {
+        fontSize: 24,
+        fontFamily: 'Lato_700Bold',
+        color: 'white',
+    },
+    overlayTextContainer:{ 
+        width: '90%',
+        justifyContent: 'center', 
+        backgroundColor: 'white',
+        borderRadius: 20, 
+        alignContent: 'center',
+        padding: 15,
+        marginVertical: 5,
+    },
+    closeButtonRowContainer: {
+        width: '100%'
+    }
   });
