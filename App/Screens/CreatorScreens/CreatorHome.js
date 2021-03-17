@@ -70,7 +70,7 @@ export default function CreatorHome({route, navigation}) {
         }
     }, [route.params && route.params.newStudio])
 
-    // adds both a new studio and a new upcoming room
+    // adds either a new studio or a new upcoming room
     const addStudio = (newStudio) => {
         // new upcoming room
         if (newStudio && newStudio.isAlert) {
@@ -78,8 +78,9 @@ export default function CreatorHome({route, navigation}) {
             newStudioList.push(newStudio);
             newStudioList.push(...studios);
             console.log("NEW UPCOMING ROOM ADDED  ");
+            // am a little confused why this works since the plus button should be last but whatever
             newStudioList.pop();
-            console.log("REMOVED THE VIEW RESULTS since we made an invite for it  ", newStudioList);
+            console.log("REMOVED THE VIEW RESULTS STUDIO since we made an invite for it  ", newStudioList);
             setStudios(newStudioList);
         // a general new studio created
         } else {
