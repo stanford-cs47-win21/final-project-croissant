@@ -55,7 +55,7 @@ export default function LiveRoom({route, navigation}) {
             <View style={styles.sixUsers}> 
                 <View style={styles.rowOfGuests}> 
                     <LivePicUsername userInfo={'john_winston'} /> 
-                    <LivePicUsername userInfo={'rachel_f'} /> 
+                    <LivePicUsername userInfo={'bentham'} /> 
                     <LivePicUsername userInfo={'george_h'} /> 
                 </View>
 

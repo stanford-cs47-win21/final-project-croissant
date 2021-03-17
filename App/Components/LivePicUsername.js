@@ -7,13 +7,14 @@ import { StyleSheet,
     Image,
     Dimensions
 } from 'react-native';
+import {keyStyles,getPhoto} from "../Styles/keyStyles";
 
 export function LivePicUsername({userInfo}) {
     // TODO: Add picture to userInfo
     const username = userInfo; // to be able to use as prop
     return (
         <View style={styles.colContainer}>
-            <View style={styles.profileCircle} />
+            {getPhoto(username, 70)}
             <Text style={styles.username}> {username} </Text> 
         </View>
     );

@@ -70,7 +70,7 @@ export default function StudioResults({route, navigation}) {
                     comment: 'I\'d like a chocolate dessert cookbook.',
                 },
                 {
-                    username: 'dewman',
+                    username: 'jacques_d',
                     comment: 'I love you Rachel!! :)',
                 },
                 {
@@ -102,7 +102,7 @@ export default function StudioResults({route, navigation}) {
                         </View>
 
                         <View style={styles.box}>
-                            <Text style={styles.bigNum}> 1124 </Text>
+                            <Text style={styles.bigNum}> 1,124 </Text>
                             <Text style={styles.label}> Ideas </Text>
                         </View>
 
