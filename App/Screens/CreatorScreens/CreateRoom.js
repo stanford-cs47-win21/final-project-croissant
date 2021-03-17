@@ -68,7 +68,7 @@ export default function CreateRoom({route, navigation, variant}) {
                 <CommentCard
                     cardInfo={{
                         username: "rachel_f",
-                        comment: " this is hard coded wohooooo",
+                        comment: "What should the theme of my new cookbook be?",
                     }}
                 />
             </View>
@@ -83,25 +83,25 @@ export default function CreateRoom({route, navigation, variant}) {
             <View style={styles.sixUsers}>
                 <View style={styles.rowOfGuests}>
                   <View style={styles.user}>
-                    <InviteModal username="john_winston" comment="All you need is love."/> 
+                    <InviteModal username="john_winston" comment="A dark chocolate-based cookbook would be amazing!!"/> 
                   </View>
                   <View style={styles.user}>
-                    <InviteModal username="bentham" comment="The greatest good for the greatest number."/> 
+                    <InviteModal username="bentham" comment="Quick desserts."/> 
                   </View>
                   <View style={styles.user}>
-                    <InviteModal username="george_h" comment="I don't know."/> 
+                    <InviteModal username="george_h" comment="Eggless-cookie recipes. Trying to go vegan."/> 
                   </View>
                 </View>
 
                 <View style={styles.rowOfGuests}>
                   <View style={styles.user}>
-                    <InviteModal username="starr_LFC" comment="Thomas the Tank Engine"/> 
+                    <InviteModal username= 'weir_wood' comment= 'I wish you would put your videos on TikTok instead of YouTube.'/> 
                   </View>
                   <View style={styles.user}>
-                    <InviteModal username="yokono" comment="To break up the Beatles."/> 
+                    <InviteModal username="yokono" comment="How to break up the Beatles."/> 
                   </View>
                   <View style={styles.user}>
-                    <InviteModal username="mclinda" comment="I married a Walrus."/> 
+                    <InviteModal username='paul_walrus' comment='What if you made one dish from each country in the world? Try an international palette.'/> 
                   </View>
                 </View>
             </View>
