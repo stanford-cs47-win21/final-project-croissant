@@ -34,6 +34,7 @@ export default function InviteModal(props) {
     };
 
     const [prompt, setPrompt] = useState("");
+    let invitationText = "Invite " + props.username + " to chat about their feedback."
     return(
         <View>
             <TouchableOpacity onPress={showModal} style={styles.user}>
@@ -64,7 +65,7 @@ export default function InviteModal(props) {
                 </View>
                 <View style={styles.promptInputView}>
                     <TextInput
-                        placeholder="Invite {username} to chat about their feedback."
+                        placeholder={invitationText}
                         placeholderTextColor='grey'
                         style={styles.promptInputField}
                         onSubmitEditing={ () => Keyboard.dismiss()}
@@ -86,11 +87,10 @@ export default function InviteModal(props) {
 const styles = StyleSheet.create({
     topCard: {
         width: '100%',
-        marginBottom: 10,
         alignItems: 'center'
     },
     promptInputView: {
-        height: '30%',
+        height: 200,
         width: '90%',
         alignItems: 'center',
     },
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         padding: 15,
-        borderRadius: 10,
+        borderRadius: 20,
         fontSize: keyStyles.BODY_TEXT_SIZE,
         lineHeight: keyStyles.BODY_TEXT_SIZE * keyStyles.LINE_HEIGHT_MULT,
     },
