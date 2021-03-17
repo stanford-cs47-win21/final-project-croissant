@@ -11,6 +11,7 @@ import { StyleSheet,
 
 import keyStyles from '../../Styles/keyStyles';
 import firestore from '../../../firebase';
+import {ActionButton} from "../../Components/ActionButton";
 import firebase from 'firebase';
 
 import { Feather } from '@expo/vector-icons';
@@ -66,26 +67,26 @@ export default function SignUp({route, navigation, ...props}) {
                 style={styles.input}
                 value={signUpName}
                 onChangeText={(signUpName) => setSignUpName(signUpName)}
-                placeholder="NAME" 
+                placeholder="Name" 
             />
             <TextInput
                 style={styles.input}
                 value={signUpEmail}
                 onChangeText={(signUpEmail) => setSignUpEmail(signUpEmail)}
-                placeholder="EMAIL" 
+                placeholder="Email" 
             />
             <TextInput
                 style={styles.input}
                 value={signUpUsername}
                 onChangeText={(signUpUsername) => setSignUpUsername(signUpUsername)}
-                placeholder="USERNAME" 
+                placeholder="Username" 
             />
             <TextInput
                 style={styles.input}
                 value={signUpPassword}
                 secureTextEntry={true}
                 onChangeText={(signUpPassword) => setSignUpPassword(signUpPassword)}
-                placeholder="PASSWORD" 
+                placeholder="Password" 
             />
 
             {/* Row of checkboxes */}
@@ -115,12 +116,9 @@ export default function SignUp({route, navigation, ...props}) {
             </View>
             
             {/* Sign up button */}
-            <TouchableOpacity
-                style={keyStyles.button1} 
+            <ActionButton
                 onPress = { () => {signUp(); console.log("SIGNED UP");}}
-            >
-                <Text style={keyStyles.button1text}> Create Account </Text>
-            </TouchableOpacity>
+                text="Create Account"/>
 
 
             {/* Optional error stuff */}
