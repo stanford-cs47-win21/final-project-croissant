@@ -9,21 +9,25 @@ import { useFonts, Lato_400Regular, Lato_400Bold } from '@expo-google-fonts/lato
 
 let PIC_SIZE = 20;
 
-export function getPhoto(username) {
+export function getPhoto(username, size) {
+    size = (typeof size != "undefined") ? size : 20; // default to size for PicAndUsername
     var photoDict = new Map();
-    let johnPhoto = <Image source={require("../Images/John.png")} style={keyStyles.pictureStyle}/>
-    photoDict.set("rachel_f", <Image source={require("../Images/Rachel.png")} style={keyStyles.pictureStyle}/>)
-    photoDict.set("paul_walrus", <Image source={require("../Images/Paul.png")} style={keyStyles.pictureStyle}/>);
-    photoDict.set("george_h", <Image source={require("../Images/George.png")} style={keyStyles.pictureStyle}/>);
-    photoDict.set("jerry_g", <Image source={require("../Images/Jerry.png")} style={keyStyles.pictureStyle}/>);
-    photoDict.set("phil_l", <Image source={require("../Images/Phil.png")} style={keyStyles.pictureStyle}/>);
-    photoDict.set("weir_wood", <Image source={require("../Images/Bob.png")} style={keyStyles.pictureStyle}/>);
-    photoDict.set("p_sing", <Image source={require("../Images/Singer.png")} style={keyStyles.pictureStyle}/>);
-    photoDict.set("jacques_d", <Image source={require("../Images/Derrida.png")} style={keyStyles.pictureStyle}/>);
-    photoDict.set("bentham", <Image source={require("../Images/Bentham.png")} style={keyStyles.pictureStyle}/>);
-    photoDict.set("gordon_r", <Image source={require("../Images/Gordon.png")} style={keyStyles.pictureStyle}/>);
-    photoDict.set("gusteau", <Image source={require("../Images/Gusteau.png")} style={keyStyles.pictureStyle}/>);
-    photoDict.set("marco", <Image source={require("../Images/Marco.png")} style={keyStyles.pictureStyle}/>);
+    let johnPhoto = <Image source={require("../Images/John.png")} style={[keyStyles.pictureStyle, {height:size, width:size}]}/>
+    photoDict.set("rachel_f", <Image source={require("../Images/Rachel.png")} style={[keyStyles.pictureStyle, {height: size, width: size}]}/>)
+    photoDict.set("paul_walrus", <Image source={require("../Images/Paul.png")} style={[keyStyles.pictureStyle, {height: size, width: size}]}/>)
+    photoDict.set("george_h", <Image source={require("../Images/George.png")} style={[keyStyles.pictureStyle, {height: size, width: size}]}/>);
+    photoDict.set("jerry_g", <Image source={require("../Images/Jerry.png")} style={[keyStyles.pictureStyle, {height:size, width:size}]}/>);
+    photoDict.set("phil_l", <Image source={require("../Images/Phil.png")} style={[keyStyles.pictureStyle, {height:size, width:size}]}/>);
+    photoDict.set("weir_wood", <Image source={require("../Images/Bob.png")} style={[keyStyles.pictureStyle, {height:size, width:size}]}/>);
+    photoDict.set("p_sing", <Image source={require("../Images/Singer.png")} style={[keyStyles.pictureStyle, {height:size, width:size}]}/>);
+    photoDict.set("jacques_d", <Image source={require("../Images/Derrida.png")} style={[keyStyles.pictureStyle, {height:size, width:size}]}/>);
+    photoDict.set("bentham", <Image source={require("../Images/Bentham.png")} style={[keyStyles.pictureStyle, {height:size, width:size}]}/>);
+    photoDict.set("gordon_r", <Image source={require("../Images/Gordon.png")} style={[keyStyles.pictureStyle, {height:size, width:size}]}/>);
+    photoDict.set("gusteau", <Image source={require("../Images/Gusteau.png")} style={[keyStyles.pictureStyle, {height:size, width:size}]}/>);
+    photoDict.set("marco", <Image source={require("../Images/Marco.png")} style={[keyStyles.pictureStyle, {height:size, width:size}]}/>);
+    photoDict.set("mclinda", <Image source={require("../Images/Linda.png")} style={[keyStyles.pictureStyle, {height:size, width:size}]}/>);
+    photoDict.set("yokono", <Image source={require("../Images/Yoko.png")} style={[keyStyles.pictureStyle, {height:size, width:size}]}/>);
+    photoDict.set("starr_FLC", <Image source={require("../Images/Ringo.png")} style={[keyStyles.pictureStyle, {height:size, width:size}]}/>);
     if (photoDict.has(username)) {
         return photoDict.get(username);
     } else {
