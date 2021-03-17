@@ -17,6 +17,8 @@ import {ActionButton} from "../../Components/ActionButton";
 export default function Login({route, navigation, ...props}) {
     const [loginEmail, setLoginEmail] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+
 
     // Check out this link to learn more about firebase.auth()
     // https://firebase.google.com/docs/reference/node/firebase.auth.Auth
@@ -27,6 +29,7 @@ export default function Login({route, navigation, ...props}) {
             await firebase.auth().signInWithEmailAndPassword(loginEmail, loginPassword);
             navigation.navigate('FanHome');
         } catch (err) {
+            setErrorMessage(err);
             console.log(err);
         }
     }
@@ -37,6 +40,9 @@ export default function Login({route, navigation, ...props}) {
 
 
             <View style={styles.contentContainer}>
+
+            <Text style={styles.header}> Welcome back! </Text>
+
             <TextInput
                 style={styles.input}
                 value={loginEmail}
@@ -59,8 +65,17 @@ export default function Login({route, navigation, ...props}) {
 
             <ActionButton
                 onPress = { () => {login(); console.log("Logged in");}}
-                text={"Log In"} />
-                </View>
+                text={"Log In"} 
+            />
+
+            {/* Optional error stuff */}
+            <View style={{flexDirection: 'row', height: '7%', width: '90%', justifyContent: 'center', flexWrap: 'wrap'}}> 
+                <Text style={{color: 'red', textAlign: 'center'}}> {errorMessage ? "ERROR: " + errorMessage.message : null} </Text>
+            </View>
+            
+            </View>
+
+            
 
         </SafeAreaView>
     );
@@ -74,7 +89,6 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
     },
-    
     container: {
         flex: 1,
         backgroundColor: '#fff',
