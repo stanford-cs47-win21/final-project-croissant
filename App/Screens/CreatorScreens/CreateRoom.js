@@ -75,7 +75,7 @@ export default function CreateRoom({route, navigation, variant}) {
 
             {/* recommended invitees */}
             <View style={styles.subtitle}>
-                <Text style={keyStyles.titleText1}> Recommended Invitees </Text>
+                <Text style={keyStyles.smallBold}> Recommended Invitees </Text>
             </View>
 
             {/*grid of invitees*/}
@@ -204,7 +204,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     user: {
-      //backgroundColor: 'yellow',
+        //backgroundColor: 'yellow',
       alignItems: 'center',
     },
     rowOfGuests: {
@@ -212,7 +212,7 @@ const styles = StyleSheet.create({
         margin: 10,
         alignContent: 'space-between',
         justifyContent: 'space-around',
-        width: '80%',
+        width: '100%',
     },
     iconTextContainer: {
         flexDirection: 'row',
