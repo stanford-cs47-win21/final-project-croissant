@@ -124,7 +124,7 @@ export default function SignUp({route, navigation, ...props}) {
 
             {/* Optional error stuff */}
             <View style={{flexDirection: 'row', height: '7%', width: '90%', justifyContent: 'center', flexWrap: 'wrap'}}> 
-                <Text style={{color: 'red', textAlign: 'center'}}> {errorMessage ? "Error: " + getErrorMessage(errorMessage) : null} </Text>
+                <Text style={{color: 'red', textAlign: 'center'}}> {errorMessage ? "ERROR: " + getErrorMessage(errorMessage) : null} </Text>
             </View>
 
         </SafeAreaView>
