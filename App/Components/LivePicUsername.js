@@ -8,14 +8,19 @@ import { StyleSheet,
     Dimensions
 } from 'react-native';
 import {keyStyles,getPhoto} from "../Styles/keyStyles";
+    import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
-export function LivePicUsername({userInfo}) {
+export function LivePicUsername({userInfo, checked=false}) {
     // TODO: Add picture to userInfo
     const username = userInfo; // to be able to use as prop
     return (
         <View style={styles.colContainer}>
-            {getPhoto(username, 70)}
-            <Text style={styles.username}> {username} </Text> 
+            {checked ? 
+                getPhoto("check", 70)
+                : getPhoto(username, 70)
+                }
+            <Text style={styles.username}> {username}</Text> 
+            <Text style={[keyStyles.smallBold, {fontSize: 12}]}> {checked && "Invited"}</Text>
         </View>
     );
 }
