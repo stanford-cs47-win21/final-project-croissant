@@ -55,6 +55,9 @@ export default function InviteModal(props) {
                 >
 
 
+                <TouchableOpacity style={styles.closeButton} onPress={hideModal}>
+                    <MaterialCommunityIcons name="close" size={24} color="white"/>
+                </TouchableOpacity>
                         <View style={styles.overlayRow}>
                             <Text style={styles.alertText}> Send Invite </Text>
                             <MaterialCommunityIcons name="account-plus" size={36} color="white"/>
@@ -126,5 +129,10 @@ const styles = StyleSheet.create({
         alignItems: 'center', 
         borderRadius: 20, 
         backgroundColor: keyStyles.SALMON_COLOR,
+    },
+    closeButton: {
+        position: 'absolute',
+        alignSelf: 'flex-end',
+        padding: 10
     }
   });
