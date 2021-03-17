@@ -24,6 +24,7 @@ const FONT_SIZE = 16;
 export default function InviteModal(props) {
     //State info for invitation modal
     const [visible, setVisible] = useState(false);
+    const [checked, setChecked] = useState(false);
 
     const showModal = () => {
     setVisible(true);
@@ -33,15 +34,19 @@ export default function InviteModal(props) {
     setVisible(false);
     };
 
+    const hideModalAndSend = () => {
+        setVisible(false);
+        setChecked(true);
+    };
     const [prompt, setPrompt] = useState("");
     let invitationText = "Invite " + props.username + " to chat about their feedback."
     return(
         <View>
             <TouchableOpacity onPress={showModal} style={styles.user}>
-                <LivePicUsername userInfo={props.username} />
+                <LivePicUsername userInfo={props.username} checked={checked} />
             </TouchableOpacity>
 
-            <Overlay
+            {!checked && <Overlay
                 isVisible={visible}
                 onBackdropPress={hideModal}
                 animationType={'fade'}
@@ -75,8 +80,8 @@ export default function InviteModal(props) {
                     />
                 </View>
 
-                <ActionButton text="Send" onPress={hideModal} style={keyStyles.shadowProps}/>
-                    </Overlay>
+                <ActionButton text="Send" onPress={hideModalAndSend} style={keyStyles.shadowProps}/>
+                    </Overlay>}
             </View>
 
 

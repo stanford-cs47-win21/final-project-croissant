@@ -28,6 +28,7 @@ export function getPhoto(username, size) {
     photoDict.set("mclinda", <Image source={require("../Images/Linda.png")} style={[keyStyles.pictureStyle, {height:size, width:size}]}/>);
     photoDict.set("yokono", <Image source={require("../Images/Yoko.png")} style={[keyStyles.pictureStyle, {height:size, width:size}]}/>);
     photoDict.set("starr_LFC", <Image source={require("../Images/Ringo.png")} style={[keyStyles.pictureStyle, {height:size, width:size}]}/>);
+    photoDict.set("check", <Image source={require("../Images/check.png")} style={[keyStyles.pictureStyle, {height:size, width:size}]}/>);
     if (photoDict.has(username)) {
         return photoDict.get(username);
     } else {
@@ -35,7 +36,7 @@ export function getPhoto(username, size) {
     }
 }
 
-const keyStyles = {
+export const keyStyles = {
     DEFAULT_BORDER_RADIUS: 20,
     PRIMARY_COLOR: "#FAC738",
     SECONDARY_COLOR: "#FFF8E0",
