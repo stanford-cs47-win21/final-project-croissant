@@ -37,6 +37,7 @@ export default function InviteModal(props) {
     const hideModalAndSend = () => {
         setVisible(false);
         setChecked(true);
+        props.increaseNumInvitees();
     };
     const [prompt, setPrompt] = useState("");
     let invitationText = "Invite " + props.username + " to chat about their feedback."

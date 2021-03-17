@@ -174,11 +174,11 @@ export default function CreateStudio({navigation}) {
                 </View>   
             </View>
 
-                <ActionButton text={"START"} onPress={() => { navigation.navigate("CreatorHome"); }} context={{newStudio: {
+            <ActionButton text={"START"} onPress={() => { navigation.navigate("CreatorHome", {newStudio: {
                             prompt: prompt,
                             brainstormTimeDays: brainstormTimeDays,
                             brainstormTimeHours: brainstormTimeHours
-            }}} style={{zIndex: 0}}/>
+            }}) }} />
         
         </SafeAreaView>
     );

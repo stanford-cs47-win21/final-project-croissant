@@ -31,6 +31,12 @@ export default function CreateRoom({route, navigation, variant}) {
       const [cur_date, setDate] = useState(new Date())
       const [pickerMode, setPickerMode] = useState(null);
 
+      // set invitees correctly
+      const [numInvitees, setNumInvitees] = useState(0);
+      const increaseNumInvitees = () => {
+          setNumInvitees(numInvitees+1);
+      }
+
       const showDatePicker = () => {
         setPickerMode("date");
       };
@@ -83,25 +89,25 @@ export default function CreateRoom({route, navigation, variant}) {
             <View style={styles.sixUsers}>
                 <View style={styles.rowOfGuests}>
                   <View style={styles.user}>
-                    <InviteModal username="john_winston" comment="A dark chocolate-based cookbook would be amazing!!"/> 
+                    <InviteModal username="john_winston" comment="A dark chocolate-based cookbook would be amazing!!" increaseNumInvitees={increaseNumInvitees}/> 
                   </View>
                   <View style={styles.user}>
-                    <InviteModal username="bentham" comment="Quick desserts."/> 
+                    <InviteModal username="bentham" comment="Quick desserts." increaseNumInvitees={increaseNumInvitees}/> 
                   </View>
                   <View style={styles.user}>
-                    <InviteModal username="george_h" comment="Eggless-cookie recipes. Trying to go vegan."/> 
+                    <InviteModal username="george_h" comment="Eggless-cookie recipes. Trying to go vegan." increaseNumInvitees={increaseNumInvitees}/> 
                   </View>
                 </View>
 
                 <View style={styles.rowOfGuests}>
                   <View style={styles.user}>
-                    <InviteModal username= 'weir_wood' comment= 'I wish you would put your videos on TikTok instead of YouTube.'/> 
+                    <InviteModal username= 'weir_wood' comment= 'I wish you would put your videos on TikTok instead of YouTube.' increaseNumInvitees={increaseNumInvitees}/> 
                   </View>
                   <View style={styles.user}>
-                    <InviteModal username="yokono" comment="How to break up the Beatles."/> 
+                    <InviteModal username="yokono" comment="How to break up the Beatles." increaseNumInvitees={increaseNumInvitees}/> 
                   </View>
                   <View style={styles.user}>
-                    <InviteModal username='paul_walrus' comment='What if you made one dish from each country in the world? Try an international palette.'/> 
+                    <InviteModal username='paul_walrus' comment='What if you made one dish from each country in the world? Try an international palette.' increaseNumInvitees={increaseNumInvitees}/> 
                   </View>
                 </View>
             </View>
@@ -141,8 +147,13 @@ export default function CreateRoom({route, navigation, variant}) {
             />
 
 
-        {/* modal for time picker */}
-        <ActionButton text={"SCHEDULE ROOM"} onPress={() => { navigation.navigate("CreatorHome"); }} style={{zIndex: 0}}/>
+        {/* Schedule a new room */}
+        <ActionButton text={"SCHEDULE ROOM"} onPress={() => { navigation.navigate("CreatorHome", {newStudio: {
+                            isAlert: true,
+                            status: numInvitees, // number of invitees
+                            message: cur_date.toLocaleDateString(), // "Mar 30", // JSON.stringify(cur_date), // date
+                            timeLeft: cur_date.toLocaleTimeString([], {hour: 'numeric', minute: '2-digit'}),// "9:30 PM PT", //time
+            }}) }} style={{zIndex: 0}}/>
 
     </SafeAreaView>
     );
