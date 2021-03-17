@@ -8,6 +8,7 @@ import { StyleSheet,
 } from 'react-native';
 
 import keyStyles from '../Styles/keyStyles';
+import {ActionButton} from '../Components/ActionButton';
 
 
 export default function ChooseFlow({navigation}) {
@@ -21,24 +22,21 @@ export default function ChooseFlow({navigation}) {
                 />
             
             <View style={{alignItems: 'center'}}> 
-                <TouchableOpacity
-                    style={keyStyles.button1} 
+                <ActionButton
                     onPress = { () => navigation.navigate('Welcome')}
-                >
-                    <Text style={keyStyles.button1text}> Login As Creator </Text>
-                </TouchableOpacity>
+                    text={"Creator login"}
+                />
 
-                <TouchableOpacity
-                    style={keyStyles.button1} 
+                <ActionButton
                     onPress = { () => navigation.navigate('Login')}
-                >
-                    <Text style={keyStyles.button1text}> Login As Fan </Text>
-                </TouchableOpacity>
+                    text={"Fan login"}
+                />
 
                 <TouchableOpacity
                     onPress = { () => navigation.navigate('SignUp')}
                 >
-                    <Text style={{textDecorationLine: 'underline', marginTop: 15}}> Create an Account </Text>
+                        <Text style={{textDecorationLine: 'underline', marginTop: 15,
+                        textSize: keyStyles.BODY_TEXT_SIZE}}> Create an Account </Text>
                 </TouchableOpacity>
 
             </View>
