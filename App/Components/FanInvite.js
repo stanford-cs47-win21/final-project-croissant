@@ -24,6 +24,8 @@ export function FanInvite({inviteInfo}) {
         return(
             <UpcomingStudio alertInfo={{numParticipants:0, time:"10:00 AM PT", date:"FEB 24"}} accepted={true}/>
         );
+    } else if (acceptedOrRejected === 'Reject') {
+        return null;
     } 
     // RSVP required
     else return(
@@ -59,7 +61,7 @@ export function FanInvite({inviteInfo}) {
             <View style={styles.bottomBox}>
                 <TouchableOpacity
                     style={styles.backButton} 
-                    // onPress = {() => setAorR('Reject')}
+                    onPress = {() => setAorR('Reject')}
                 >
                     <Text style={styles.buttonText}> REJECT </Text>
                 </TouchableOpacity>
