@@ -37,6 +37,9 @@ export default function Login({route, navigation, ...props}) {
 
 
             <View style={styles.contentContainer}>
+
+            <Text style={styles.header}> Welcome back! </Text>
+
             <TextInput
                 style={styles.input}
                 value={loginEmail}
@@ -74,7 +77,6 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
     },
-    
     container: {
         flex: 1,
         backgroundColor: '#fff',
