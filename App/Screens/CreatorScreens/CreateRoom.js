@@ -151,8 +151,8 @@ export default function CreateRoom({route, navigation, variant}) {
         <ActionButton text={"SCHEDULE ROOM"} onPress={() => { navigation.navigate("CreatorHome", {newStudio: {
                             isAlert: true,
                             status: numInvitees, // number of invitees
-                            message: "Mar 30", // JSON.stringify(cur_date),// "Feb 29", // date
-                            timeLeft: "9:30 PM PT", //time
+                            message: cur_date.toLocaleDateString(), // "Mar 30", // JSON.stringify(cur_date), // date
+                            timeLeft: cur_date.toLocaleTimeString([], {hour: 'numeric', minute: '2-digit'}),// "9:30 PM PT", //time
             }}) }} style={{zIndex: 0}}/>
 
     </SafeAreaView>
