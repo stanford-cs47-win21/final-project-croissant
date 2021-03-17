@@ -13,12 +13,14 @@ import keyStyles from '../Styles/keyStyles';
 const ICON_SIZE = 24;
 const FONT_SIZE = 16;
 
-export function UpcomingStudio({alertInfo}) {
+// accepted parameter tells us if it is rendering something for the fan side
+export function UpcomingStudio({alertInfo, accepted=false}) {
 
     const {numParticipants, time, date} = alertInfo; 
     return(
         <View style={[styles.outer, keyStyles.shadowProps]}> 
-            <Text style={styles.reminderText}>Upcoming room with {numParticipants} fans</Text> 
+            {/* {accepted && } */}
+            <Text style={styles.reminderText}>{accepted===true ? 'Accepted invite from rachel_f' : 'Upcoming room with ' + numParticipants + ' fans'} </Text> 
             <View style={styles.bottomBox}>
                 <View style={styles.iconTextContainer}>
                     <Image 

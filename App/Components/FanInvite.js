@@ -11,6 +11,7 @@ import { useNavigation } from '@react-navigation/native';
 import keyStyles from '../Styles/keyStyles';
 
 import {PicAndUsername} from "./PicAndUsername";
+import {UpcomingStudio} from "./UpcomingStudio";
 
 const ICON_SIZE = 24;
 const FONT_SIZE = 16;
@@ -19,7 +20,13 @@ export function FanInvite({inviteInfo}) {
     const {isInvite, username, message, date, time} = inviteInfo; 
     const [acceptedOrRejected, setAorR] = useState('');
 
-    return(
+    if (acceptedOrRejected === 'Accept') {
+        return(
+            <UpcomingStudio alertInfo={{numParticipants:0, time:"10:00 AM PT", date:"FEB 24"}} accepted={true}/>
+        );
+    } 
+    // RSVP required
+    else return(
         <View style={[styles.outer, keyStyles.shadowProps]}> 
             <View style={styles.topRow}> 
                 <PicAndUsername userInfo={username} photoPerson="Rachel"/>  
@@ -52,7 +59,7 @@ export function FanInvite({inviteInfo}) {
             <View style={styles.bottomBox}>
                 <TouchableOpacity
                     style={styles.backButton} 
-                    onPress = {() => setAorR('Reject')}
+                    // onPress = {() => setAorR('Reject')}
                 >
                     <Text style={styles.buttonText}> REJECT </Text>
                 </TouchableOpacity>
