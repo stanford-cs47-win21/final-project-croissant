@@ -98,7 +98,7 @@ export default function CreatorOnboarding({navigation}) {
                     onPress = {onPressBack}
                 >
                     <Text style={styles.buttonText}> BACK </Text>
-                </TouchableOpacity>
+        </TouchableOpacity>
 
       <TouchableOpacity
                     style={styles.forwardButton} 
@@ -107,7 +107,7 @@ export default function CreatorOnboarding({navigation}) {
                 {currentPage === 3 ? <Text style={styles.buttonText}> FINISH </Text> :
                   <Text style={keyStyles.button1text}> NEXT </Text>}
                     
-                </TouchableOpacity>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
     );

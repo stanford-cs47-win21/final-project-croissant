@@ -91,6 +91,13 @@ export default function FanHome({route, navigation}) {
    
     const fakeNewsfeedData = [
         {
+            isInvite: true,
+            username: "rachel_f",
+            message: "I loved your suggestion to use jackfruit as a substitute and want to meet you in a panel!",
+            date: "Feb 24", // date
+            time: "10:00 AM PT", //time
+        },
+        {
             username: "rachel_f",
             status: "LIVE",
             message: "What is the weirdest recipe you enjoy?",

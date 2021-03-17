@@ -10,15 +10,29 @@ import { StyleSheet,
 import { useNavigation } from '@react-navigation/native';
 import keyStyles from '../Styles/keyStyles';
 
+import { Feather } from '@expo/vector-icons';
+
 const ICON_SIZE = 24;
 const FONT_SIZE = 16;
 
-export function UpcomingStudio({alertInfo}) {
+// accepted parameter tells us if it is rendering something for the fan side
+export function UpcomingStudio({alertInfo, accepted=false}) {
 
     const {numParticipants, time, date} = alertInfo; 
     return(
         <View style={[styles.outer, keyStyles.shadowProps]}> 
-            <Text style={styles.reminderText}>Upcoming room with {numParticipants} fans</Text> 
+            {accepted && 
+                <View style={styles.checkBoxRow}> 
+                    <View style={styles.checkItem} > 
+                        <View style={styles.fullCheckBox} 
+                        >
+                            <Feather name="check" size={12} color="white" /> 
+                        </View>
+                        <Text> ACCEPTED </Text>
+                    </View>
+                </View>
+            }
+            <Text style={styles.reminderText}>{accepted===true ? 'Accepted invite from rachel_f' : 'Upcoming room with ' + numParticipants + ' fans'} </Text> 
             <View style={styles.bottomBox}>
                 <View style={styles.iconTextContainer}>
                     <Image 
@@ -61,7 +75,7 @@ const styles = StyleSheet.create({
         width: '90%',
         height: 30,
         justifyContent: 'space-evenly',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     iconTextContainer: {
         flexDirection: 'row',
@@ -76,5 +90,30 @@ const styles = StyleSheet.create({
         fontSize: FONT_SIZE,
         textTransform: 'uppercase',
         padding: 5
+    },
+    // check box
+    checkBoxRow: {
+        flexDirection: 'row', 
+        // height: '17%', 
+        width: '100%', 
+        justifyContent: 'flex-start',
+        // backgroundColor: 'red', 
+        marginBottom: 6,
+    },
+    checkItem: {
+        flexDirection: 'row', 
+        width: '100%', 
+        height: '100%', 
+        // justifyContent: 'flex-start',
+        alignItems: 'center'
+    },
+    fullCheckBox: {
+        height: 15,
+        width: 15,
+        borderRadius: 15/2,
+        backgroundColor: '#08BD1A',
+        marginRight: '1%',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
   });
