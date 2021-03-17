@@ -67,14 +67,14 @@ export default function Navigation() {
                 <Stack.Screen name='LiveRoom' component={LiveRoom} options={{headerBackTitle: 'Studios'}}/>
                 <Stack.Screen name='FindRachel' component={FindRachel}/>
                 <Stack.Screen name='SignUp' component={SignUp}/>
-                <Stack.Screen name='FanRanking' component={FanRanking}/>
+                <Stack.Screen name='FanRanking' component={FanRanking} options={{headerBackTitle: 'Studios'}}/>
                 <Stack.Screen name='FanProfile' component={FanProfile} options={{headerBackTitle: 'Studios'}}/>
                 <Stack.Screen name='Brainstorm' component={Brainstorm} options={{headerBackTitle: 'Studios'}}/>
                 <Stack.Screen name='Login' component={Login}/>
-                <Stack.Screen name='NotSelected' component={NotSelected}/>
-                <Stack.Screen name='Leaderboard' component={Leaderboard}/>
-                <Stack.Screen name='YourContributions' component={YourContributions}/>
-                <Stack.Screen name='FollowingScreen' component={FollowingScreen}/>
+                <Stack.Screen name='NotSelected' component={NotSelected} options={{headerBackTitle: 'Studios'}}/>
+                <Stack.Screen name='Leaderboard' component={Leaderboard} options={{headerBackTitle: 'Your Contribution'}}/>
+                <Stack.Screen name='YourContributions' component={YourContributions} options={{headerBackTitle: 'Profile'}}/>
+                <Stack.Screen name='FollowingScreen' component={FollowingScreen} options={{headerBackTitle: 'Profile'}}/>
 
             </Stack.Navigator>
         </NavigationContainer>
