@@ -77,7 +77,9 @@ export default function CreatorHome({route, navigation}) {
             let newStudioList = [];
             newStudioList.push(newStudio);
             newStudioList.push(...studios);
-            console.log("NEW UPCOMING ROOM ADDED  ", newStudioList);
+            console.log("NEW UPCOMING ROOM ADDED  ");
+            newStudioList.pop();
+            console.log("REMOVED THE VIEW RESULTS since we made an invite for it  ", newStudioList);
             setStudios(newStudioList);
         // a general new studio created
         } else {
