@@ -27,7 +27,7 @@ export function getPhoto(username, size) {
     photoDict.set("marco", <Image source={require("../Images/Marco.png")} style={[keyStyles.pictureStyle, {height:size, width:size}]}/>);
     photoDict.set("mclinda", <Image source={require("../Images/Linda.png")} style={[keyStyles.pictureStyle, {height:size, width:size}]}/>);
     photoDict.set("yokono", <Image source={require("../Images/Yoko.png")} style={[keyStyles.pictureStyle, {height:size, width:size}]}/>);
-    photoDict.set("starr_FLC", <Image source={require("../Images/Ringo.png")} style={[keyStyles.pictureStyle, {height:size, width:size}]}/>);
+    photoDict.set("starr_LFC", <Image source={require("../Images/Ringo.png")} style={[keyStyles.pictureStyle, {height:size, width:size}]}/>);
     if (photoDict.has(username)) {
         return photoDict.get(username);
     } else {

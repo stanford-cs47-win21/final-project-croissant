@@ -60,7 +60,7 @@ export default function LiveRoom({route, navigation}) {
                 </View>
 
                 <View style={styles.rowOfGuests}> 
-                    <LivePicUsername userInfo={'starr_FLC'} /> 
+                    <LivePicUsername userInfo={'starr_LFC'} /> 
                     <LivePicUsername userInfo={'yokono'} /> 
                     <LivePicUsername userInfo={'mclinda'} /> 
                 </View>
