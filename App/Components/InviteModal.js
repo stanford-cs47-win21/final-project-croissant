@@ -15,80 +15,110 @@ import {Overlay} from 'react-native-elements';
 import keyStyles from '../Styles/keyStyles';
 import {CommentCard} from "./CommentCard";
 import {ActionButton} from './ActionButton';
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+import {LivePicUsername} from "./LivePicUsername";
 
 const BODY_TEXT_SIZE = 16;
 const ICON_SIZE = 24;
 const FONT_SIZE = 16;
 export default function InviteModal(props) {
-    console.log(props.visible);
+    //State info for invitation modal
+    const [visible, setVisible] = useState(false);
+
+    const showModal = () => {
+    setVisible(true);
+    };
+
+    const hideModal = () => {
+    setVisible(false);
+    };
+
+    const [prompt, setPrompt] = useState("");
     return(
+        <View>
+            <TouchableOpacity onPress={showModal} style={styles.user}>
+                <LivePicUsername userInfo={props.username} />
+            </TouchableOpacity>
+
             <Overlay
-                isVisible={props.visible}
-                onBackdropPress={props.hideModal}
+                isVisible={visible}
+                onBackdropPress={hideModal}
                 animationType={'fade'}
                 overlayStyle={styles.overlay}
                 >
 
+
+                        <View style={styles.overlayRow}>
+                            <Text style={styles.alertText}> Send Invite </Text>
+                            <MaterialCommunityIcons name="account-plus" size={36} color="white"/>
+                        </View>
                 <View style={styles.topCard}>
                     <CommentCard
                         cardInfo={{
-                            username: "howdoipassstatetothisusername",
-                            comment: "you should bake cookies or sumn ",
+                            username: props.username,
+                            comment: props.comment
                         }}
+                        commentColor={true}
                         absoluteSize={false}
                     />
                 </View>
-
-                <View style={styles.subtitle}>
-                    <Text style={[keyStyles.smallBold, {color:'white', textAlign:'left'}]}> Send Invite </Text>
-                </View>
-
                 <View style={styles.promptInputView}>
                     <TextInput
-                        placeholder="Type a question, proposal or concept to share with your fans."
+                        placeholder="Invite {username} to chat about their feedback."
                         placeholderTextColor='grey'
                         style={styles.promptInputField}
                         onSubmitEditing={ () => Keyboard.dismiss()}
                         value={props.prompt}
-                        onChangeText={ input => props.setPrompt(input)}
+                        onChangeText={ input => setPrompt(input)}
                         multiline={true}
                     />
                 </View>
 
-                <ActionButton text="Send" onPress={props.hideModal} style={keyStyles.shadowProps}/>
-         </Overlay>
+                <ActionButton text="Send" onPress={hideModal} style={keyStyles.shadowProps}/>
+                    </Overlay>
+            </View>
+
+
+
 );
 }
 
 const styles = StyleSheet.create({
-    subtitle: {
-        width: '90%'
-    },
-    promptInputView: {
-        height: '30%',
-        width: '90%',
-        alignItems: 'center',
-        marginBottom: 20,
-        marginTop: 10,
-    },
     topCard: {
         width: '100%',
         marginBottom: 10,
         alignItems: 'center'
     },
+    promptInputView: {
+        height: '30%',
+        width: '90%',
+        alignItems: 'center',
+    },
     promptInputField: {
-        backgroundColor: '#F3F1F1',
-        height: '100%',
+        backgroundColor: 'white',
         width: '100%',
+        height: '100%',
         padding: 15,
         borderRadius: 10,
         fontSize: keyStyles.BODY_TEXT_SIZE,
         lineHeight: keyStyles.BODY_TEXT_SIZE * keyStyles.LINE_HEIGHT_MULT,
     },
-    overlay: {
+    overlayRow: {
         width: '90%',
-        alignItems: 'center',
-        borderRadius: 20,
-        backgroundColor: keyStyles.SALMON_COLOR,
+        justifyContent: 'space-between',
+        alignContent: 'center',
+        flexDirection: 'column',
+        alignItems: 'center'
     },
+    alertText: {
+        fontSize: 24,
+        fontFamily: 'Lato_700Bold',
+        color: 'white',
+    },
+    overlay: {
+        width: '90%', 
+        alignItems: 'center', 
+        borderRadius: 20, 
+        backgroundColor: keyStyles.SALMON_COLOR,
+    }
   });
