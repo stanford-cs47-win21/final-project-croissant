@@ -57,7 +57,7 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
         // Wrap in outer if based on if creator or fan / pass as param
         if (fan) {
             if (status === "LIVE") {
-                navigation.navigate('LiveRoom', {cardInfo});
+                navigation.navigate('LiveRoom', {cardInfo, fan: true});
             } else if (status === "VIEW RESULTS") {
                 navigation.navigate('NotSelected', {cardInfo});
             } else if (status === "RANKING") {

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { StyleSheet, 
     Text, 
     SafeAreaView,
@@ -23,6 +23,17 @@ export default function LiveRoom({route, navigation}) {
     const {username, status, message, timeLeft} = route.params.cardInfo;
     const [isMuted, setMuted] = useState(false);
     const [isLive, setLive] = useState(false);
+    const [isFan, setFan] = useState(false);
+
+    // decide how it should be rendered based on if it's the fan view
+    useEffect( () => {
+        if (route.params?.fan === true) {
+            setFan(true);
+            setLive(true);
+        }
+    }, [route.params?.fan])
+
+    
 
     return(
         <SafeAreaView style={styles.container}> 
@@ -43,7 +54,7 @@ export default function LiveRoom({route, navigation}) {
                 : 
                     <View style={styles.rowContainer}>
                         <View style={styles.liveCircle} />
-                        <Text style={styles.liveText}>LIVE</Text> 
+                        <Text style={styles.liveText}>LIVE</Text>
                     </View>
 
             }
@@ -54,9 +65,9 @@ export default function LiveRoom({route, navigation}) {
             {/* Users */}
             <View style={styles.sixUsers}> 
                 <View style={styles.rowOfGuests}> 
-                    <LivePicUsername userInfo={'john_winston'} /> 
+                    <LivePicUsername userInfo={'jacques_d'} /> 
+                    <LivePicUsername userInfo={'rachel_f'} /> 
                     <LivePicUsername userInfo={'bentham'} /> 
-                    <LivePicUsername userInfo={'george_h'} /> 
                 </View>
 
                 <View style={styles.rowOfGuests}> 
@@ -64,6 +75,10 @@ export default function LiveRoom({route, navigation}) {
                     <LivePicUsername userInfo={'yokono'} /> 
                     <LivePicUsername userInfo={'mclinda'} /> 
                 </View>
+            </View>
+
+            <View style={{height: '3%'}}> 
+            {isFan ? <Text style={styles.liveText}> You are listening in. </Text>  : null} 
             </View>
 
 
@@ -79,21 +94,25 @@ export default function LiveRoom({route, navigation}) {
                     <Text style={styles.dateTimeText}> 1,969 </Text>
                 </View>
 
-                <TouchableOpacity 
-                    style={styles.iconTextContainer}
-                    onPress={() => setMuted(!isMuted)}
-                >
-                {isMuted ? 
-                        <View style={[styles.buttonView, {backgroundColor: keyStyles.LIGHT_GRAY}]}>
-                        <Feather name="mic" size={44} color="black" />
-                        </View>
-                    : 
-                        <View style={[styles.buttonView, {backgroundColor: keyStyles.LIGHT_GRAY}]}>
-                        <Feather name="mic-off" size={44} color="black" />
+                { !isFan ? 
+                    <TouchableOpacity 
+                        style={styles.iconTextContainer}
+                        onPress={() => setMuted(!isMuted)}
+                    >
+                    {isMuted ? 
+                            <View style={[styles.buttonView, {backgroundColor: keyStyles.LIGHT_GRAY}]}>
+                            <Feather name="mic" size={44} color="black" />
                             </View>
+                        : 
+                            <View style={[styles.buttonView, {backgroundColor: keyStyles.LIGHT_GRAY}]}>
+                            <Feather name="mic-off" size={44} color="black" />
+                                </View>
+                    }
+                        <Text style={styles.dateTimeText}>  </Text>
+                    </TouchableOpacity>
+
+                    : null
                 }
-                    <Text style={styles.dateTimeText}>  </Text>
-                </TouchableOpacity>
 
 
                 <View style={styles.iconTextContainer}>
@@ -109,7 +128,9 @@ export default function LiveRoom({route, navigation}) {
             : <View style={styles.configRow} />}
 
 
+            
             {/* Button at bottom */}
+            { !isFan ? 
             <ActionButton text= {isLive ? 'END ROOM' : 'BEGIN LIVE ROOM' } onPress
                     onPress = { () => {
                         setLive(!isLive);
@@ -118,6 +139,14 @@ export default function LiveRoom({route, navigation}) {
                     }}
                     context={null}
             />
+            : 
+            <ActionButton text="GO HOME" 
+                    onPress = { () => {
+                        navigation.goBack();
+                    }}
+                    context={null}
+            />
+            }
 
         </SafeAreaView>
     );
@@ -159,7 +188,7 @@ const styles = StyleSheet.create({
     },
     configRow: {
         flexDirection: 'row',
-        height: '25%',
+        height: '22%',
         width: '100%',
         justifyContent: 'space-around',
         alignItems: 'center',
