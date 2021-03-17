@@ -59,6 +59,7 @@ export default function SignUp({route, navigation, ...props}) {
     return(
         <SafeAreaView style={styles.container}> 
 
+            <View style={styles.contentContainer}> 
             <Text style={styles.header}> Sign up for Croissant! </Text>
 
             <TextInput
@@ -127,6 +128,7 @@ export default function SignUp({route, navigation, ...props}) {
                 <Text style={{color: 'red', textAlign: 'center'}}> {errorMessage ? "ERROR: " + getErrorMessage(errorMessage) : null} </Text>
             </View>
 
+            </View>
         </SafeAreaView>
     );
 }
@@ -145,7 +147,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     header: {
-        marginVertical: 10,
+        marginBottom: 10,
         fontSize: 24,
     },
     input: {
