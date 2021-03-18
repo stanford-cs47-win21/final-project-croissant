@@ -97,7 +97,7 @@ export function FanInvite({inviteInfo}) {
                 </View>
 
                 <View style={[styles.overlayTextContainer, keyStyles.shadowProps]}>    
-                    <Text style={[styles.messageText, {marginBottom: 8}]}> Are you sure you want to reject this invite? You won't be able to edit your response! </Text>
+                    <Text style={[styles.messageText, {marginBottom: 8}]}> Are you sure you want to reject this invite? You won't be able to edit your response. </Text>
                 </View>
 
                 {/* Accept or reject buttons */}
