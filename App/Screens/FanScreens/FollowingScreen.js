@@ -20,12 +20,29 @@ let BODY_TEXT_SIZE = 16;
 
 export default function FollowingScreen({route, navigation, ...props}) {
     // temp, modify after
+    let {followingRachel} = route.params;
     const creatorList = [
+        {
+            username: 'gordon_r', 
+            genre: 'COOKING',
+        },
+        {
+            username: 'gusteau', 
+            genre: 'COOKING',
+        },
+        {
+            username: 'marco', 
+            genre: 'COOKING',
+        },
+    ];
+
+    if (followingRachel) {
+        creatorList.push(
         {
             username: 'rachel_f', 
             genre: 'BAKING',
-        },
-    ];
+        });
+    }
 
     return(
         <SafeAreaView style={styles.container}> 
