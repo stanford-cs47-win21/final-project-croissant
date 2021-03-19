@@ -36,7 +36,7 @@ export default function ChooseFlow({navigation}) {
                     onPress = { () => navigation.navigate('SignUp')}
                 >
                         <Text style={{textDecorationLine: 'underline', marginTop: 15,
-                        textSize: keyStyles.BODY_TEXT_SIZE}}> Create an Account </Text>
+                        fontSize: keyStyles.BODY_TEXT_SIZE}}> Create an Account </Text>
                 </TouchableOpacity>
 
             </View>

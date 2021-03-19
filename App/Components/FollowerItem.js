@@ -17,31 +17,45 @@ import firebase from 'firebase';
 export function FollowerItem({username, genre=null, followButton=null, ...props}) {
     const navigation = useNavigation();
     const [followButtonPressed, setFollowedButtonPressed] = useState(false);
-    
 
-    // Determine should the rachel_f follower item be pressed?
+    // Determine whether the follower item should be pressed depending on which item it is
     useEffect( () => {
+        console.log("JUST RE RENDERED !!!!");
         const user = firebase.auth().currentUser;
         let userRef = firestore.doc('users/' + user.uid);
         const getUserDoc = async(userRef) => {
             let userDoc = await userRef.get();
-            if (userDoc.exists) setFollowedButtonPressed(userDoc.data().isFollowingRachel);
+            if (userDoc.exists && username === 'rachel_f' && userDoc.data().isFollowingRachel) {
+                setFollowedButtonPressed(true);
+            }
+            else if (userDoc.exists && username === 'gusteau' && userDoc.data().isFollowingGusteau) {
+                setFollowedButtonPressed(true);
+            }
         }
         getUserDoc(userRef);    
     }, [])
 
-
+    // Update firebase if the user presses follow or unfollow on button
     useEffect( () => {
         const user = firebase.auth().currentUser;
         let userRef = firestore.doc('users/' + user.uid);
         const updateUser = async (userRef) => {
-            await userRef.update({
-                isFollowingRachel: followButtonPressed,
-            });
+            if (username === 'rachel_f') {
+                await userRef.update({
+                    isFollowingRachel: followButtonPressed,
+                });
+            } else if (username === 'gusteau') {
+                await userRef.update({
+                    isFollowingGusteau: followButtonPressed,
+                });
+            } 
         }
         updateUser(userRef);
 
     }, [followButtonPressed])
+
+    console.log("1) RACHEL GREEN WHY IS SHE FOLLOWING? ", username, "follow button pressed ?" , followButtonPressed)
+
 
     return(
         <View style={styles.outer} onLayout={(event) => {var {x, y, width, height} = event.nativeEvent.layout;  console.log(height);}}>
@@ -56,15 +70,11 @@ export function FollowerItem({username, genre=null, followButton=null, ...props}
             <View style={styles.buttonView}> 
                 <TouchableOpacity
                     style={followButtonPressed ? styles.pressed : styles.unpressed}
-                    onPress={ () => {
-                        if (username==='rachel_f') {
-                            setFollowedButtonPressed(!followButtonPressed);
-                        } 
-                    }}
+                    onPress={() => {
+                        if (username === 'rachel_f' || username ==='gusteau') setFollowedButtonPressed(!followButtonPressed)}
+                    }
                 > 
-                    <Text> 
-                        {followButtonPressed ? 'FOLLOWING' : '+ FOLLOW '} 
-                    </Text>
+                    <Text> {followButtonPressed ? 'FOLLOWING' : '+ FOLLOW '} </Text>
                 </TouchableOpacity>
             </View>
 
