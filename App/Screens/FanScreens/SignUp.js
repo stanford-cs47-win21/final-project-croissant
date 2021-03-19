@@ -75,12 +75,20 @@ export default function SignUp({route, navigation, ...props}) {
                 value={signUpEmail}
                 onChangeText={(signUpEmail) => setSignUpEmail(signUpEmail)}
                 placeholder="Email" 
+                autoCapitalize={"none"}
+                autoCompleteType={"email"}
+                autoCorrect={false}
+                textContentType={"emailAddress"}
             />
             <TextInput
                 style={styles.input}
                 value={signUpUsername}
                 onChangeText={(signUpUsername) => setSignUpUsername(signUpUsername)}
                 placeholder="Username" 
+                autoCapitalize={"none"}
+                autoCompleteType={"email"}
+                autoCorrect={false}
+                textContentType={"username"}
             />
             <TextInput
                 style={styles.input}
@@ -88,6 +96,7 @@ export default function SignUp({route, navigation, ...props}) {
                 secureTextEntry={true}
                 onChangeText={(signUpPassword) => setSignUpPassword(signUpPassword)}
                 placeholder="Password" 
+                textContentType={"password"}
             />
 
             {/* Row of checkboxes */}
