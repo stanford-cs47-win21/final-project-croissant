@@ -14,57 +14,54 @@ import {StudioList} from '../../Components/StudioList';
 import firestore from '../../../firebase';
 import firebase from 'firebase';
 
+const fakeNewsfeedData = [
+    {
+        isInvite: true,
+        username: "rachel_f",
+        message: "I loved your suggestion to use jackfruit as a substitute and want to meet you in a panel!",
+        date: "Feb 24", // date
+        time: "10:00 AM PT", //time
+        isVisible: true,
+    },
+    {
+        username: "rachel_f",
+        status: "LIVE",
+        message: "What is the weirdest recipe you enjoy?",
+        timeLeft: "doesn't matter",
+        isVisible: true,
+    },
+    {
+        username: "gusteau",
+        status: "BRAINSTORMING",
+        message: "I'm looking to do more vegan recipes! Would love to hear about your personal favorites.",
+        timeLeft: "6 hours remaining",
+        isVisible: true,
+    },
+    {
+        username: "rachel_f",
+        status: "RANKING",
+        message: "How can I improve my videography skills?",
+        timeLeft: "4 hours remaining",
+        isVisible: true,
+    },
+    {
+        username: "gusteau",
+        status: "VIEW RESULTS",
+        message: "What should the theme of my new cookbook be?",
+        timeLeft: "0 hours remaining",
+        isVisible: true,
+    },
+    // Last object will render into the plus button, sort of jank
+    {
+        username: "PLUS",
+        isVisible: true,
+    },
+]
 
 export default function FanHome({route, navigation}) {
-    const [studios, setStudios] = useState([]);
+    const [studios, setStudios] = useState(fakeNewsfeedData);
     const [isFollowingRachel, setIsFollowingRachel] = useState(false);
     const [isFollowingGusteau, setIsFollowingGusteau] = useState(false);
-
-
-    const fakeNewsfeedData = [
-        {
-            isInvite: true,
-            username: "rachel_f",
-            message: "I loved your suggestion to use jackfruit as a substitute and want to meet you in a panel!",
-            date: "Feb 24", // date
-            time: "10:00 AM PT", //time
-            isVisible: true,
-        },
-        {
-            username: "rachel_f",
-            status: "LIVE",
-            message: "What is the weirdest recipe you enjoy?",
-            timeLeft: "doesn't matter",
-            isVisible: true,
-        },
-        {
-            username: "gusteau",
-            status: "BRAINSTORMING",
-            message: "I'm looking to do more vegan recipes! Would love to hear about your personal favorites.",
-            timeLeft: "6 hours remaining",
-            isVisible: true,
-        },
-        {
-            username: "rachel_f",
-            status: "RANKING",
-            message: "How can I improve my videography skills?",
-            timeLeft: "4 hours remaining",
-            isVisible: true,
-        },
-        {
-            username: "gusteau",
-            status: "VIEW RESULTS",
-            message: "What should the theme of my new cookbook be?",
-            timeLeft: "0 hours remaining",
-            isVisible: true,
-        },
-        // Last object will render into the plus button, sort of jank
-        {
-            username: "PLUS",
-            isVisible: true,
-        },
-    ]
-
 
      // get changes to user state from firebase
      const reloadUser = async () => {
@@ -91,7 +88,7 @@ export default function FanHome({route, navigation}) {
         let userRef = firestore.doc('users/' + user.uid);
         reloadUser();
 
-        // listen for changes to if user's following rachel
+        // listen for changes to if user's following rachel or gusteau
         let unsubscribe = userRef.onSnapshot(() => {
             reloadUser();
         });
@@ -141,53 +138,52 @@ export default function FanHome({route, navigation}) {
 
 
     // RACHEL decide how to adjust which studios should render in the home feed
-    const determineRachelStudios = () => {
-        console.log("STUDIOS pre rachel", studios);
-        let studiosCopy = studios; // [...studios]; 
+    // const determineRachelStudios = () => {
+    //     console.log("STUDIOS pre rachel", studios);
+    //     let studiosCopy = studios; // [...studios]; 
 
-        studiosCopy.forEach( (studio) => {
-            if (studio.username ==='rachel_f') studio.isVisible = isFollowingRachel;
-        });
-        console.log("Post rachel studios", studiosCopy);
-        return studiosCopy;
-    }
+    //     studiosCopy.forEach( (studio) => {
+    //         if (studio.username ==='rachel_f') studio.isVisible = isFollowingRachel;
+    //     });
+    //     console.log("Post rachel studios", studiosCopy);
+    //     return studiosCopy;
+    // }
     
     // GUSTEAU decide how to adjust which studios should render in the home feed
-    const determineGusteauStudios = () => {
-        console.log("STUDIOS pre gusteau", studios);
-        let studiosCopy = studios; // [...studios]; 
+    // const determineGusteauStudios = () => {
+    //     console.log("STUDIOS pre gusteau", studios);
+    //     let studiosCopy = studios; // [...studios]; 
 
-        studiosCopy.forEach( (studio) => {
-            if (studio.username ==='gusteau') studio.isVisible = isFollowingGusteau;
-        });
-        console.log("Post gusteau studios", studiosCopy);
-        return studiosCopy;
-    }
+    //     studiosCopy.forEach( (studio) => {
+    //         if (studio.username ==='gusteau') studio.isVisible = isFollowingGusteau;
+    //     });
+    //     console.log("Post gusteau studios", studiosCopy);
+    //     return studiosCopy;
+    // }
 
     // const determineStudios = () => {
+    // //=========== THIS VERSION OF CODE had weird firebase race conditions
+    //     if (isFollowingGusteau && isFollowingRachel) {
+    //         // all items should be set to isVisible=true
+    //         studiosCopy.forEach(studio => studio.isVisible=true);
+    //         console.log("studios copy both followed", studiosCopy);
+    //     }
+    //     else if (isFollowingGusteau) {
+    //         // only gusteau items should be set to isVisible=true
+    //         studiosCopy.forEach( (studio) => {
+    //             if (studio.username==='gusteau' || studio.username==='PLUS') studio.isVisible=true;
+    //             else studio.isVisible=false;
+    //         });
 
-    //=========== THIS VERSION OF CODE had weird firebase race conditions
-        // if (isFollowingGusteau && isFollowingRachel) {
-        //     // all items should be set to isVisible=true
-            // studiosCopy.forEach(studio => studio.isVisible=true);
-        //     console.log("studios copy both followed", studiosCopy);
-        // }
-        // else if (isFollowingGusteau) {
-        //     // only gusteau items should be set to isVisible=true
-        //     studiosCopy.forEach( (studio) => {
-        //         if (studio.username==='gusteau' || studio.username==='PLUS') studio.isVisible=true;
-        //         else studio.isVisible=false;
-        //     });
-
-        // } else if (isFollowingRachel) {
-        //     // only rachel items should be set to isVisible=true
-        //     studiosCopy.forEach( (studio) => {
-        //         if (studio.username==='rachel_f' || studio.username==='PLUS') studio.isVisible=true;
-        //         else studio.isVisible=false;
-        //     });
-        //     console.log("studios copy only RACHEL followed", studiosCopy);
-        // } 
-        // return studiosCopy;
+    //     } else if (isFollowingRachel) {
+    //         // only rachel items should be set to isVisible=true
+    //         studiosCopy.forEach( (studio) => {
+    //             if (studio.username==='rachel_f' || studio.username==='PLUS') studio.isVisible=true;
+    //             else studio.isVisible=false;
+    //         });
+    //         console.log("studios copy only RACHEL followed", studiosCopy);
+    //     } 
+    //     return studiosCopy;
 
 
         // //=========== THIS version OF CODE works but breaks the badge ranking turning grey because fakeNewsFeeddata is hard coded (no badge state carries over)
@@ -206,17 +202,31 @@ export default function FanHome({route, navigation}) {
         
     // }
 
-    // depends on changes in followingGusteau and following Rachel
     useEffect( () => {
-        console.log("Change in gusteau, calling determine studios");
-        setStudios(determineGusteauStudios()); // after this alters the studio list item's props, it should cause a re-render
-    }, [isFollowingGusteau])
+        console.log("STUDIOS pre gusteau", studios);
+        let studiosCopy = [...studios]; 
+        console.log("STUDIOS post", studiosCopy);
+
+        studiosCopy.forEach( (studio) => {
+            if (studio.username ==='gusteau') studio.isVisible = isFollowingGusteau;
+            else if (studio.username ==='rachel_f') studio.isVisible = isFollowingRachel;
+        });
+        console.log("Post gusteau studios", studiosCopy);
+        setStudios(studiosCopy);
+    }, [isFollowingGusteau, isFollowingRachel])
+
 
     // depends on changes in followingGusteau and following Rachel
-    useEffect( () => {
-        console.log("Change in rachel, calling determine studios");
-        setStudios(determineRachelStudios()); // after this alters the studio list item's props, it should cause a re-render
-    }, [isFollowingRachel])
+    // useEffect( () => {
+    //     console.log("Change in gusteau, calling determine studios");
+    //     setStudios(determineGusteauStudios()); // after this alters the studio list item's props, it should cause a re-render
+    // }, [isFollowingGusteau])
+
+    // // depends on changes in followingGusteau and following Rachel
+    // useEffect( () => {
+    //     console.log("Change in rachel, calling determine studios");
+    //     setStudios(determineRachelStudios()); // after this alters the studio list item's props, it should cause a re-render
+    // }, [isFollowingRachel])
 
     // console.log("State of studios", studios);
     return(
