@@ -34,12 +34,12 @@ export default function FindRachel({route, navigation}) {
             genre: 'BAKING',
         },
         {
-            username: 'rachel_green', 
-            genre: 'TV',
-        },
-        {
             username: 'rachel_f', 
             genre: 'BAKING',
+        },
+        {
+            username: 'rachel_green', 
+            genre: 'TV',
         },
     ];
 
@@ -69,6 +69,8 @@ export default function FindRachel({route, navigation}) {
                     }}
                     value={searchText}
                     onChangeText={ input => setSearchText(input)}
+                    autoCapitalize={"none"}
+                    autoCorrect={false}
                 /> 
             </View>
 
