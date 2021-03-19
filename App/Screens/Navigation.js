@@ -65,12 +65,12 @@ export default function Navigation() {
                 <Stack.Screen name='CreateRoom' component={CreateRoom} options={{headerBackTitle: 'Results'}}/>
                 <Stack.Screen name='Profile' component={Profile} options={{headerBackTitle: 'Studios'}}/>
                 <Stack.Screen name='LiveRoom' component={LiveRoom} options={{headerBackTitle: 'Studios'}}/>
-                <Stack.Screen name='FindRachel' component={FindRachel}/>
-                <Stack.Screen name='SignUp' component={SignUp}/>
+                <Stack.Screen name='FindRachel' component={FindRachel} options={{headerBackTitle: 'Studios'}}/>
+                <Stack.Screen name='SignUp' component={SignUp} options={{headerBackTitle: ''}}/>
                 <Stack.Screen name='FanRanking' component={FanRanking} options={{headerBackTitle: 'Studios'}}/>
                 <Stack.Screen name='FanProfile' component={FanProfile} options={{headerBackTitle: 'Studios'}}/>
                 <Stack.Screen name='Brainstorm' component={Brainstorm} options={{headerBackTitle: 'Studios'}}/>
-                <Stack.Screen name='Login' component={Login}/>
+                <Stack.Screen name='Login' component={Login} options={{headerBackTitle: ''}}/>
                 <Stack.Screen name='NotSelected' component={NotSelected} options={{headerBackTitle: 'Studios'}}/>
                 <Stack.Screen name='Leaderboard' component={Leaderboard} options={{headerBackTitle: 'Your Contribution'}}/>
                 <Stack.Screen name='YourContributions' component={YourContributions} options={{headerBackTitle: 'Profile'}}/>
