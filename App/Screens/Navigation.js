@@ -72,7 +72,7 @@ export default function Navigation() {
                 <Stack.Screen name='Brainstorm' component={Brainstorm} options={{headerBackTitle: 'Studios'}}/>
                 <Stack.Screen name='Login' component={Login} options={{headerBackTitle: ''}}/>
                 <Stack.Screen name='NotSelected' component={NotSelected} options={{headerBackTitle: 'Studios'}}/>
-                <Stack.Screen name='Leaderboard' component={Leaderboard} options={{headerBackTitle: 'Your Contribution'}}/>
+                <Stack.Screen name='Leaderboard' component={Leaderboard} options={{headerBackTitle: 'Stats'}}/>
                 <Stack.Screen name='YourContributions' component={YourContributions} options={{headerBackTitle: 'Profile'}}/>
                 <Stack.Screen name='FollowingScreen' component={FollowingScreen} options={{headerBackTitle: 'Profile'}}/>
 

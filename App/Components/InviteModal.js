@@ -81,6 +81,7 @@ export default function InviteModal(props) {
                         value={props.prompt}
                         onChangeText={ input => setPrompt(input)}
                         multiline={true}
+                        blurOnSubmit={true}
                     />
                 </View>
 

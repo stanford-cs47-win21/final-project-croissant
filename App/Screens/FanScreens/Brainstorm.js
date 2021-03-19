@@ -47,6 +47,7 @@ export default function Brainstorm({route, navigation, ...props}) {
                     value={prompt}
                     onChangeText={ input => setPrompt(input)}
                     multiline={true}
+                    blurOnSubmit={true}
                 /> 
             </View>
 
