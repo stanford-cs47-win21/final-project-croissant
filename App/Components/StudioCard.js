@@ -5,7 +5,8 @@ import { StyleSheet,
     TouchableOpacity,
     View,
     Image,
-    Dimensions
+    Dimensions,
+    Alert
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {PicAndUsername} from "./PicAndUsername";
@@ -79,6 +80,20 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
 
     const navigation = useNavigation();
 
+      const createTwoButtonAlert = () =>
+    Alert.alert(
+      "Are you sure you want to delete your studio?",
+      "This step is not reversible.",
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel"
+        },
+        { text: "Delete", onPress: () => setVisible(false) }
+      ]
+    );
+
     return(
         <TouchableOpacity 
             style={[styles.outer, keyStyles.shadowProps]}
@@ -140,7 +155,7 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
 
                                 <Text style={[styles.messageText, {marginBottom: 8}]}>However, if you want to delete the studio, click the button below. </Text>
                         </View>
-                            <ActionButton text="delete studio" onPress={toggleOverlay} style={keyStyles.shadowProps} grayButton={true}/>
+                            <ActionButton text="delete studio" onPress={createTwoButtonAlert} style={keyStyles.shadowProps} grayButton={true}/>
                             <ActionButton text="continue studio" onPress={toggleOverlay} style={keyStyles.shadowProps}/>
                     </Overlay>
 
