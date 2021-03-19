@@ -100,10 +100,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         padding: 15
     },
-<<<<<<< HEAD
-=======
-
->>>>>>> aead56e1299be13cbfe3f5743a29d9c8d029bd54
     pressed: {
         backgroundColor: '#FAC738',
         justifyContent: 'center',
