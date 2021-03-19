@@ -99,8 +99,11 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
             </View>
 
                 {status != "LIVE" && 
-                    <View style={[styles.bottomBox, {justifyContent: 'flex-start'}]}>
+                    <View style={[styles.bottomBox, {justifyContent: 'space-between'}]}>
                     <Text style={styles.timeText}> {timeLeft} </Text>
+                    <TouchableOpacity onPress={toggleOverlay}>
+                        <MaterialCommunityIcons name="dots-horizontal" size={24} color="#645f5c"/>
+                    </TouchableOpacity>
                     </View>
                 }
                     {status == "LIVE" && 
@@ -117,6 +120,11 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                         overlayStyle={styles.overlay}
                     >
 
+                        {/*
+                <TouchableOpacity style={styles.closeButton} onPress={toggleOverlay}>
+                    <MaterialCommunityIcons name="close" size={30} color="white"/>
+                </TouchableOpacity>
+                */}
                         <View style={styles.overlayRow}>
                             <Text style={styles.alertText}> Studio in Progress </Text>
                             {/* <AntDesign name="hourglass" size={24} color="black" /> */}
@@ -126,9 +134,11 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
 
                         <View style={[styles.overlayTextContainer, keyStyles.shadowProps]}>    
                             <Text style={[styles.messageText, {marginBottom: 8}]}>Your fans still have time to {status==='RANKING' ? 'rank' : 'brainstorm'} ideas. We'll let you know when the results are ready to view! </Text>
+
+                                <Text style={[styles.messageText, {marginBottom: 8}]}>However, if you want to delete the studio, click the button below. </Text>
                         </View>
-                        <ActionButton text="delete" onPress={toggleOverlay} style={keyStyles.shadowProps} grayButton={true}/>
-                        <ActionButton text="ok" onPress={toggleOverlay} style={keyStyles.shadowProps}/>
+                            <ActionButton text="delete studio" onPress={toggleOverlay} style={keyStyles.shadowProps} grayButton={true}/>
+                            <ActionButton text="continue studio" onPress={toggleOverlay} style={keyStyles.shadowProps}/>
                     </Overlay>
 
                     {/* FAN OVERLAY */}
@@ -227,7 +237,7 @@ const styles = StyleSheet.create({
     },
     timeText: {
         fontSize: 12,
-        color: "#645F5C",
+        color: "#645f5c",
         textTransform: 'uppercase'
     },
     messageText: {
@@ -264,5 +274,15 @@ const styles = StyleSheet.create({
     },
     closeButtonRowContainer: {
         width: '100%'
+    },
+    closeButton: {
+        position: 'absolute',
+        alignSelf: 'flex-end',
+        padding: 10
+    },
+    startButton: {
+        position: 'absolute',
+        alignSelf: 'flex-start',
+        padding: 10
     }
   });
