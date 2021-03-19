@@ -87,7 +87,7 @@ export default function FindRachel({route, navigation}) {
                         keyExtractor = { (item, index) => index.toString()}
                     />
                 : 
-                    <Text style={{fontSize: 18, color: keyStyles.DARK_GRAY}}> Try searching for rachel_f! </Text>
+                    <Text style={{fontSize: 18, color: keyStyles.DARK_GRAY}}> Try searching for rachel_f and gusteau! </Text>
                 }
 
             </View> 
