@@ -38,6 +38,11 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
         setFanOverlayVisible(!fanOverlayVisible);
     };
 
+    const [deleteConfirmVisible, setDeleteConfirmVisible] = useState(false);
+    const toggleDeleteConfirm = () => {
+        setDeleteConfirmVisible(!deleteConfirmVisible);
+    };
+
     const {username, status, message, timeLeft} = cardInfo; 
 
     const determineStatus = () => {
@@ -132,17 +137,25 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
 
                     {/* CREATOR OVERLAY This can be placed anywhere i guess */}
                     <Overlay 
+                        isVisible={deleteConfirmVisible} 
+                        onBackdropPress={null}
+                        animationType={'fade'}
+                        overlayStyle={styles.overlay}
+                    >
+
+
+                    </Overlay>
+
+                    {/* CREATOR OVERLAY This can be placed anywhere i guess */}
+                    <Overlay 
                         isVisible={visible} 
                         onBackdropPress={toggleOverlay}
                         animationType={'fade'}
                         overlayStyle={styles.overlay}
                     >
-
-                        {/*
-                <TouchableOpacity style={styles.closeButton} onPress={toggleOverlay}>
-                    <MaterialCommunityIcons name="close" size={30} color="white"/>
-                </TouchableOpacity>
-                */}
+                    
+                        {!deleteConfirmVisible ?
+                        <View style={{alignItems: 'center'}}>
                         <View style={styles.overlayRow}>
                             <Text style={styles.alertText}> Studio in Progress </Text>
                             {/* <AntDesign name="hourglass" size={24} color="black" /> */}
@@ -155,10 +168,17 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
 
                                 <Text style={[styles.messageText, {marginBottom: 8}]}>However, if you want to delete the studio, click the button below. </Text>
                         </View>
-                            <ActionButton text="delete studio" onPress={createTwoButtonAlert} style={keyStyles.shadowProps} grayButton={true}/>
+                            <ActionButton text="delete studio" onPress={toggleDeleteConfirm} style={keyStyles.shadowProps} grayButton={true}/>
                             <ActionButton text="continue studio" onPress={toggleOverlay} style={keyStyles.shadowProps}/>
+                            </View> :
+                            <View style={{alignItems: 'center'}}>
+                            <View style={styles.overlayRow}>
+                                <Text style={styles.alertText}> Are you sure you want to permanently delete the studio? </Text>
+                            </View>
+                            <ActionButton text="Yes" onPress={toggleOverlay} grayButton={true}/>
+                            <ActionButton text="No " onPress={toggleDeleteConfirm}/>
+                            </View>}
                     </Overlay>
-
                     {/* FAN OVERLAY */}
                     <Overlay 
                         isVisible={fanOverlayVisible} 
