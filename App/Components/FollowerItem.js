@@ -95,9 +95,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         padding: 15
     },
-    buttonView: {
-        width: '30%'
-    },
 
     pressed: {
         backgroundColor: '#FAC738',
