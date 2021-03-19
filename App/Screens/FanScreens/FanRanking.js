@@ -15,6 +15,8 @@ import {CommentCard} from "../../Components/CommentCard";
 import {DraggableCard} from "../../Components/DraggableCard";
 import {ActionButton} from "../../Components/ActionButton";
 import DraggableFlatList from 'react-native-draggable-flatlist';
+import {Overlay} from 'react-native-elements';
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
 export default function FanRanking({route, navigation, ...props}) {
     const {username, status, message, timeLeft} = route.params.cardInfo;
@@ -32,6 +34,12 @@ export default function FanRanking({route, navigation, ...props}) {
             ];
 
     const [data, setData] = useState(initialData);
+    //
+    //State info for invitation modal
+    const [visible, setVisible] = useState(false);
+    const toggleOverlay = () => {
+        setVisible(!visible);
+    };
 
     const renderItem = ({ item, index, drag, isActive }) => (
         <TouchableOpacity onLongPress={drag}>
@@ -63,8 +71,29 @@ export default function FanRanking({route, navigation, ...props}) {
           onDragEnd={({ data }) => setData(data)}
         />
         <ActionButton text="Submit"
-            onPress = {() => navigation.navigate('FanHome', {rankingStatus: 'RANKED'})}/>
+            onPress = {toggleOverlay}/>
 
+        <Overlay 
+            isVisible={visible} 
+            onBackdropPress={toggleOverlay}
+            animationType={'fade'}
+            overlayStyle={styles.overlay}
+        >
+
+        <TouchableOpacity style={styles.closeButton} onPress={toggleOverlay}>
+            <MaterialCommunityIcons name="close" size={24} color="white"/>
+        </TouchableOpacity>
+
+            <View style={styles.overlayRow}>
+                <Text style={styles.alertText}>Submit Ranking?</Text>
+                <MaterialCommunityIcons name="check" size={36} color="white"/>
+            </View>
+
+            <View style={[styles.overlayTextContainer, keyStyles.shadowProps]}>    
+                <Text style={[styles.messageText, {marginBottom: 8}]}> Ready to submit your ranking? These rankings are used to determine what feedback {username} sees. </Text>
+            </View>
+            <ActionButton text="SUBMIT" onPress = {() => {navigation.navigate('FanHome', {rankingStatus: 'RANKED'})}} style={keyStyles.shadowProps}/>
+        </Overlay>
         </SafeAreaView>
     );
 }
@@ -89,6 +118,42 @@ const styles = StyleSheet.create({
     bodyText: {
         fontSize: keyStyles.BODY_TEXT_SIZE,
         lineHeight: keyStyles.BODY_TEXT_SIZE * keyStyles.LINE_HEIGHT_MULT
-    }
+    },
+    overlayRow: {
+        width: '90%',
+        justifyContent: 'space-between',
+        alignContent: 'center',
+        flexDirection: 'column',
+        alignItems: 'center'
+    },
+    alertText: {
+        fontSize: 24,
+        fontFamily: 'Lato_700Bold',
+        color: 'white',
+    },
+    overlay: {
+        width: '90%', 
+        alignItems: 'center', 
+        borderRadius: 20, 
+        backgroundColor: keyStyles.SALMON_COLOR,
+    },
+    overlayTextContainer:{ 
+        width: '90%',
+        justifyContent: 'center', 
+        backgroundColor: 'white',
+        borderRadius: 20, 
+        alignContent: 'center',
+        padding: 15,
+        marginTop: 20
+    },
+    closeButton: {
+        position: 'absolute',
+        alignSelf: 'flex-end',
+        padding: 10
+    },
+    messageText: {
+        fontSize: keyStyles.BODY_TEXT_SIZE,
+        lineHeight: keyStyles.BODY_TEXT_SIZE * keyStyles.LINE_HEIGHT_MULT
+    },
 });
   

@@ -5,7 +5,8 @@ import { StyleSheet,
     TouchableOpacity,
     View,
     Image,
-    Dimensions
+    Dimensions,
+    Alert
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {PicAndUsername} from "./PicAndUsername";
@@ -36,6 +37,16 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
     const toggleFanOverlay = () => {
         setFanOverlayVisible(!fanOverlayVisible);
     };
+
+    const [deleteConfirmVisible, setDeleteConfirmVisible] = useState(false);
+    const toggleDeleteConfirm = () => {
+        setDeleteConfirmVisible(!deleteConfirmVisible);
+    };
+
+    const resetBoth = () => {
+        setVisible(false);
+        setDeleteConfirmVisible(false);
+    }
 
     const {username, status, message, timeLeft} = cardInfo; 
 
@@ -73,20 +84,31 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                 navigation.navigate('LiveRoom', {cardInfo});
             } else if (status === "VIEW RESULTS") {
                 navigation.navigate('StudioResults', {cardInfo});
-            } else if (status === "RANKING" | status === 'BRAINSTORMING') {
-                toggleOverlay();
             }
         }
     }
 
     const navigation = useNavigation();
 
+      const createTwoButtonAlert = () =>
+    Alert.alert(
+      "Are you sure you want to delete your studio?",
+      "This step is not reversible.",
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel"
+        },
+        { text: "Delete", onPress: () => setVisible(false) }
+      ]
+    );
+
     return(
         <TouchableOpacity 
             style={[styles.outer, keyStyles.shadowProps]}
             onPress = {determineFlow}
         > 
-
             <View style={styles.topRow}> 
                 <PicAndUsername userInfo={username} photoPerson="John"/>  
                 <View style={determineStatus()}> 
@@ -98,7 +120,16 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                 <Text style={styles.messageText}>{message}</Text> 
             </View>
 
-                {status != "LIVE" && 
+                {(status != "LIVE" && !fan && status != "VIEW RESULTS") && 
+                    <View style={[styles.bottomBox, {justifyContent: 'space-between'}]}>
+                    <Text style={styles.timeText}> {timeLeft} </Text>
+                    <TouchableOpacity onPress={toggleOverlay}>
+                        <MaterialCommunityIcons name="dots-horizontal" size={24} color="#645f5c"/>
+                    </TouchableOpacity>
+                    </View>
+                }
+
+                {(status != "LIVE" && (fan || status == "VIEW RESULTS")) && 
                     <View style={[styles.bottomBox, {justifyContent: 'flex-start'}]}>
                     <Text style={styles.timeText}> {timeLeft} </Text>
                     </View>
@@ -111,25 +142,46 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
 
                     {/* CREATOR OVERLAY This can be placed anywhere i guess */}
                     <Overlay 
+                        isVisible={deleteConfirmVisible} 
+                        onBackdropPress={null}
+                        animationType={'fade'}
+                        overlayStyle={styles.overlay}
+                    >
+
+
+                    </Overlay>
+
+                    {/* CREATOR OVERLAY This can be placed anywhere i guess */}
+                    <Overlay 
                         isVisible={visible} 
                         onBackdropPress={toggleOverlay}
                         animationType={'fade'}
                         overlayStyle={styles.overlay}
                     >
-
+                    
+                        {!deleteConfirmVisible ?
+                        <View style={{alignItems: 'center'}}>
                         <View style={styles.overlayRow}>
                             <Text style={styles.alertText}> Studio in Progress </Text>
-                            {/* <AntDesign name="hourglass" size={24} color="black" /> */}
                             <MaterialCommunityIcons name="progress-clock" size={36} color="white"/>
-                            {/* <Ionicons name="hourglass" size={24} color="black" /> */}
                         </View>
 
                         <View style={[styles.overlayTextContainer, keyStyles.shadowProps]}>    
                             <Text style={[styles.messageText, {marginBottom: 8}]}>Your fans still have time to {status==='RANKING' ? 'rank' : 'brainstorm'} ideas. We'll let you know when the results are ready to view! </Text>
-                        </View>
-                        <ActionButton text="ok" onPress={toggleOverlay} style={keyStyles.shadowProps}/>
-                    </Overlay>
 
+                                <Text style={[styles.messageText, {marginBottom: 8}]}>However, if you want to delete the studio, click the button below. </Text>
+                        </View>
+                            <ActionButton text="delete studio" onPress={toggleDeleteConfirm} style={keyStyles.shadowProps} grayButton={true}/>
+                            <ActionButton text="continue studio" onPress={toggleOverlay} style={keyStyles.shadowProps}/>
+                            </View> :
+                            <View style={{alignItems: 'center'}}>
+                            <View style={styles.overlayRow}>
+                                <Text style={styles.alertText}> Are you sure you want to permanently delete the studio? </Text>
+                            </View>
+                            <ActionButton text="Yes" onPress={resetBoth}/>
+                            <ActionButton text="No " onPress={toggleDeleteConfirm} grayButton={true}/>
+                            </View>}
+                    </Overlay>
                     {/* FAN OVERLAY */}
                     <Overlay 
                         isVisible={fanOverlayVisible} 
@@ -140,9 +192,7 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
 
                         <View style={styles.overlayRow}>
                             <Text style={styles.alertText}> {status==='RANKED' ? 'Rank' : 'Brainstorm'}ing Completed </Text>
-                            {/* <AntDesign name="hourglass" size={24} color="black" /> */}
                             <MaterialCommunityIcons name="check" size={36} color="white" />
-                            {/* <Ionicons name="hourglass" size={24} color="black" /> */}
                         </View>
 
                         <View style={[styles.overlayTextContainer, keyStyles.shadowProps]}>    
@@ -226,7 +276,7 @@ const styles = StyleSheet.create({
     },
     timeText: {
         fontSize: 12,
-        color: "#645F5C",
+        color: "#645f5c",
         textTransform: 'uppercase'
     },
     messageText: {
@@ -263,5 +313,15 @@ const styles = StyleSheet.create({
     },
     closeButtonRowContainer: {
         width: '100%'
+    },
+    closeButton: {
+        position: 'absolute',
+        alignSelf: 'flex-end',
+        padding: 10
+    },
+    startButton: {
+        position: 'absolute',
+        alignSelf: 'flex-start',
+        padding: 10
     }
   });

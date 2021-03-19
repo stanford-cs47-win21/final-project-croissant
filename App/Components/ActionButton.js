@@ -8,6 +8,7 @@ import { StyleSheet,
     Dimensions
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { keyStyles } from '../Styles/keyStyles';
 
 let HEIGHT_OVER_WIDTH = 70 / 318; // from Figma
 let WIDTH =  Dimensions.get('window').width * .75;
@@ -15,6 +16,15 @@ let WIDTH =  Dimensions.get('window').width * .75;
 export function ActionButton(props) {
     const navigation = useNavigation();
     return(
+        props.grayButton ?
+            <View style={styles.buttonContainer}> 
+                <TouchableOpacity
+                    style={styles.button1Gray} 
+                    onPress = {props.onPress} 
+                >
+                    <Text style={styles.button1text}> {props.text} </Text>
+                </TouchableOpacity>
+            </View> :
             <View style={styles.buttonContainer}> 
                 <TouchableOpacity
                     style={styles.button1} 
@@ -22,7 +32,7 @@ export function ActionButton(props) {
                 >
                     <Text style={styles.button1text}> {props.text} </Text>
                 </TouchableOpacity>
-            </View> 
+            </View>
     );
 }
 
@@ -32,7 +42,16 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         width: WIDTH,
         height: WIDTH * HEIGHT_OVER_WIDTH, 
-        backgroundColor: "#FAC738",
+        backgroundColor: keyStyles.PRIMARY_COLOR,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    button1Gray: {
+        margin: 10,
+        borderRadius: 20,
+        width: WIDTH,
+        height: WIDTH * HEIGHT_OVER_WIDTH, 
+        backgroundColor: keyStyles.LIGHT_GRAY,
         justifyContent: 'center',
         alignItems: 'center',
     },
