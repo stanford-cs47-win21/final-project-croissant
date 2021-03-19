@@ -7,7 +7,6 @@ import { StyleSheet,
     Image,
     TextInput,
     Keyboard,
-    // Picker
 } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 
@@ -49,7 +48,6 @@ export default function CreateStudio({navigation}) {
  
     return(
         <SafeAreaView style={styles.container}>
-  
             <View style={styles.headerContainer}>
             <Text style={styles.headerStyle}>Create a Studio</Text>
             </View>
@@ -68,6 +66,7 @@ export default function CreateStudio({navigation}) {
                         value={prompt}
                         onChangeText={ input => setPrompt(input)}
                         multiline={true}
+                        blurOnSubmit={true}
                     /> 
                 </View>
             </View>
@@ -179,7 +178,6 @@ export default function CreateStudio({navigation}) {
                             brainstormTimeDays: brainstormTimeDays,
                             brainstormTimeHours: brainstormTimeHours
             }}) }} />
-        
         </SafeAreaView>
     );
 }
