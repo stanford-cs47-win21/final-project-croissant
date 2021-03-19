@@ -14,10 +14,54 @@ import {StudioList} from '../../Components/StudioList';
 import firestore from '../../../firebase';
 import firebase from 'firebase';
 
+const fakeNewsfeedData = [
+    {
+        isInvite: true,
+        username: "rachel_f",
+        message: "I loved your suggestion to use jackfruit as a substitute and want to meet you in a panel!",
+        date: "Feb 24", // date
+        time: "10:00 AM PT", //time
+        isVisible: true,
+    },
+    {
+        username: "rachel_f",
+        status: "LIVE",
+        message: "What is the weirdest recipe you enjoy?",
+        timeLeft: "doesn't matter",
+        isVisible: true,
+    },
+    {
+        username: "gusteau",
+        status: "BRAINSTORMING",
+        message: "I'm looking to do more vegan recipes! Would love to hear about your personal favorites.",
+        timeLeft: "6 hours remaining",
+        isVisible: true,
+    },
+    {
+        username: "rachel_f",
+        status: "RANKING",
+        message: "How can I improve my videography skills?",
+        timeLeft: "4 hours remaining",
+        isVisible: true,
+    },
+    {
+        username: "gusteau",
+        status: "VIEW RESULTS",
+        message: "What should the theme of my new cookbook be?",
+        timeLeft: "0 hours remaining",
+        isVisible: true,
+    },
+    // Last object will render into the plus button, sort of jank
+    {
+        username: "PLUS",
+        isVisible: true,
+    },
+]
 
 export default function FanHome({route, navigation}) {
-    const [studios, setStudios] = useState([]);
+    const [studios, setStudios] = useState(fakeNewsfeedData);
     const [isFollowingRachel, setIsFollowingRachel] = useState(false);
+    const [isFollowingGusteau, setIsFollowingGusteau] = useState(false);
 
      // get changes to user state from firebase
      const reloadUser = async () => {
@@ -27,6 +71,7 @@ export default function FanHome({route, navigation}) {
             let userSnapshot = await userRef.get();  
             let userdata = userSnapshot.data();
             setIsFollowingRachel(userdata.isFollowingRachel);
+            setIsFollowingGusteau(userdata.isFollowingGusteau);
         } catch (error) {
             console.log(error);
         }
@@ -42,7 +87,7 @@ export default function FanHome({route, navigation}) {
         let userRef = firestore.doc('users/' + user.uid);
         reloadUser();
 
-        // listen for changes to if user's following rachel
+        // listen for changes to if user's following rachel or gusteau
         let unsubscribe = userRef.onSnapshot(() => {
             reloadUser();
         });
@@ -63,7 +108,6 @@ export default function FanHome({route, navigation}) {
     const updateRankingStatus = () => {
         let studiosCopy = [...studios]; 
         const rankingStudioIndex = studiosCopy.findIndex((studio => studio.status == 'RANKING'));
-        console.log("RANKING STUDIO INDEX ", rankingStudioIndex);
 
         if (rankingStudioIndex !== -1) {
             studiosCopy[rankingStudioIndex].status = "RANKED"; // ✓
@@ -88,55 +132,27 @@ export default function FanHome({route, navigation}) {
             setStudios(studiosCopy); 
         }
     }
-   
-    const fakeNewsfeedData = [
-        {
-            isInvite: true,
-            username: "rachel_f",
-            message: "I loved your suggestion to use jackfruit as a substitute and want to meet you in a panel!",
-            date: "Feb 24", // date
-            time: "10:00 AM PT", //time
-        },
-        {
-            username: "rachel_f",
-            status: "LIVE",
-            message: "What is the weirdest recipe you enjoy?",
-            timeLeft: "doesn't matter",
-        },
-        {
-            username: "gusteau",
-            status: "BRAINSTORMING",
-            message: "I'm looking to do more vegan recipes! Would love to hear about your personal favorites.",
-            timeLeft: "6 hours remaining",
-        },
-        {
-            username: "gordon_r",
-            status: "RANKING",
-            message: "How can I improve my videography skills?",
-            timeLeft: "4 hours remaining",
-        },
-        {
-            username: "marco",
-            status: "VIEW RESULTS",
-            message: "What should the theme of my new cookbook be?",
-            timeLeft: "0 hours remaining",
-        },
-        // Last object will render into the plus button, sort of jank
-        {
-            username: "IM THE PLUS BUTTON",
-        },
-    ]
 
-    console.log("State of studios", studios);
+    useEffect( () => {
+        let studiosCopy = [...studios]; 
+
+        studiosCopy.forEach( (studio) => {
+            if (studio.username ==='gusteau') studio.isVisible = isFollowingGusteau;
+            else if (studio.username ==='rachel_f') studio.isVisible = isFollowingRachel;
+        });
+        setStudios(studiosCopy);
+    }, [isFollowingGusteau, isFollowingRachel])
+
+
     return(
         <SafeAreaView style={styles.container}> 
             <Header fan={true}/>
 
             <View style={keyStyles.listView}> 
-                {isFollowingRachel ? 
+                {isFollowingRachel | isFollowingGusteau ? 
                     <StudioList studios={studios} fan={true}/>
                 :
-                    <Text> Press search </Text>
+                <Text style={{fontSize: 18, color: keyStyles.DARK_GRAY}}> Try searching for a creator! </Text>
                 }
             </View>
 

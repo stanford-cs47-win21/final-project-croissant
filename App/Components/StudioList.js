@@ -18,7 +18,12 @@ export function StudioList({fan=false, ...props}) {
 
     const renderStudioCard = ({index, item}) => {
         // remove the plus button altogether if fan
-        if (item.isInvite) {
+        
+        // for fan side, do not render !visible studios
+        if (fan && !item.isVisible) {
+            return null;
+        }
+        else if (item.isInvite) {
             return <FanInvite inviteInfo={item}/>
         } else 
         if (item.isAlert) {
@@ -27,7 +32,8 @@ export function StudioList({fan=false, ...props}) {
             return null;
         } else if (index === studios.length - 1) {
             return <PlusButton /> 
-        } else return <StudioCard cardInfo={item} fan={fan}/>
+        } 
+        else return <StudioCard cardInfo={item} fan={fan}/>
     } 
 
     return ( 

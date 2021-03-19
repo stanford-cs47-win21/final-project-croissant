@@ -39,7 +39,8 @@ export default function SignUp({route, navigation, ...props}) {
                         name: signUpName,
                         email: signUpEmail,
                         username: signUpUsername,
-                        isFollowingRachel: false
+                        isFollowingRachel: false,
+                        isFollowingGusteau: false,
                     });
                     navigation.navigate('FanHome');
                 }

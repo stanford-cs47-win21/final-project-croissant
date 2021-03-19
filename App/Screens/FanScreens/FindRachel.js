@@ -20,26 +20,34 @@ import firebase from 'firebase';
 
 export default function FindRachel({route, navigation}) {
     const [searchText, setSearchText] = useState("");
-    const [followedRachel, setFollowedRachel] = useState(false);
 
 
-    // temp, modify after
+    // TODO: remove rachel_green and see
     const creatorList = [
+        
         {
-            username: 'rachel_f', 
+            username: 'gusteau', 
+            genre: 'BAKING',
+        },
+        {
+            username: 'geee', 
             genre: 'BAKING',
         },
         {
             username: 'rachel_green', 
             genre: 'TV',
-        }
+        },
+        {
+            username: 'rachel_f', 
+            genre: 'BAKING',
+        },
     ];
 
     // Filter FlatList data by searchtext
     const searchCreatorList = () => {  
         if (searchText) {
             var filtered = creatorList.filter(function (creator) {
-                return (creator.username.toLowerCase().includes(searchText.toLowerCase()));
+                return (creator.username.toLowerCase().startsWith(searchText.toLowerCase()));
             });
             return filtered;
         } else {
@@ -58,8 +66,7 @@ export default function FindRachel({route, navigation}) {
                     style={styles.searchField}
                     onSubmitEditing={ () => {
                         searchCreatorList(); 
-                        setSearchText('');}
-                    }
+                    }}
                     value={searchText}
                     onChangeText={ input => setSearchText(input)}
                 /> 
@@ -74,23 +81,19 @@ export default function FindRachel({route, navigation}) {
                                 <FollowerItem
                                     username={item.username}
                                     genre={item.genre} 
-                                    setFollowedRachel={setFollowedRachel}
                                 />
                             );
                         }}
                         keyExtractor = { (item, index) => index.toString()}
                     />
                 : 
-                    <Text style={{fontSize: 18, color: keyStyles.DARK_GRAY}}> Try searching for rachel_f! </Text>
+                    <Text style={{fontSize: 18, color: keyStyles.DARK_GRAY}}> Try searching for rachel_f and gusteau! </Text>
                 }
 
             </View> 
             <ActionButton 
-                onPress={ () => {
-                    navigation.navigate('FanHome', {followedRachel: followedRachel})
-                }}
+                onPress={ () => {navigation.navigate('FanHome')}}
                 text="Go home"
-                
             />
 
         </SafeAreaView>

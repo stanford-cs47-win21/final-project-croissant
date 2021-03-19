@@ -25,6 +25,10 @@ export default function FollowingScreen({route, navigation, ...props}) {
             username: 'rachel_f', 
             genre: 'BAKING',
         },
+        {
+            username: 'gusteau', 
+            genre: 'COOKING',
+        },
     ];
 
     return(
@@ -37,7 +41,6 @@ export default function FollowingScreen({route, navigation, ...props}) {
                                 <FollowerItem
                                     username={item.username}
                                     genre={item.genre} 
-                                    setFollowedRachel={true}
                                 />
                             );
                         }}

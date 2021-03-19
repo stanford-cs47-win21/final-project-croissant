@@ -17,31 +17,50 @@ import firebase from 'firebase';
 export function FollowerItem({username, genre=null, followButton=null, ...props}) {
     const navigation = useNavigation();
     const [followButtonPressed, setFollowedButtonPressed] = useState(false);
-    
+    const [firebaseLoaded, setFirebaseLoaded] = useState(false);
 
-    // Determine should the rachel_f follower item be pressed?
+    // Determine whether the follower item should be pressed depending on which item it is
     useEffect( () => {
+        console.log("JUST RE RENDERED !!!!");
         const user = firebase.auth().currentUser;
         let userRef = firestore.doc('users/' + user.uid);
         const getUserDoc = async(userRef) => {
             let userDoc = await userRef.get();
-            if (userDoc.exists) setFollowedButtonPressed(userDoc.data().isFollowingRachel);
+            if (userDoc.exists && username === 'rachel_f' && userDoc.data().isFollowingRachel) {
+                setFollowedButtonPressed(true);
+            }
+            else if (userDoc.exists && username === 'gusteau' && userDoc.data().isFollowingGusteau) {
+                setFollowedButtonPressed(true);
+            }
+            setFirebaseLoaded(true);
         }
         getUserDoc(userRef);    
     }, [])
 
-
+    // Update firebase if the user presses follow or unfollow on button
     useEffect( () => {
-        const user = firebase.auth().currentUser;
-        let userRef = firestore.doc('users/' + user.uid);
-        const updateUser = async (userRef) => {
-            await userRef.update({
-                isFollowingRachel: followButtonPressed,
-            });
+        if (firebaseLoaded) {
+            const user = firebase.auth().currentUser;
+            let userRef = firestore.doc('users/' + user.uid);
+            const updateUser = async (userRef) => {
+                if (username === 'rachel_f') {
+                    await userRef.update({
+                        isFollowingRachel: followButtonPressed,
+                    });
+                } else if (username === 'gusteau') {
+                    await userRef.update({
+                        isFollowingGusteau: followButtonPressed,
+                    });
+                } 
+            }
+            updateUser(userRef);
         }
-        updateUser(userRef);
 
-    }, [followButtonPressed])
+    }, [followButtonPressed, firebaseLoaded])
+    // need firebaseLoaded here because if followButtonPressed before dataloaded, then code won't run even after dataloaded
+
+    console.log("1) RACHEL GREEN WHY IS SHE FOLLOWING? ", username, "follow button pressed ?" , followButtonPressed)
+
 
     return(
         <View style={styles.outer} onLayout={(event) => {var {x, y, width, height} = event.nativeEvent.layout;  console.log(height);}}>
@@ -56,15 +75,11 @@ export function FollowerItem({username, genre=null, followButton=null, ...props}
             <View style={styles.buttonView}> 
                 <TouchableOpacity
                     style={followButtonPressed ? styles.pressed : styles.unpressed}
-                    onPress={ () => {
-                        if (username==='rachel_f') {
-                            setFollowedButtonPressed(!followButtonPressed);
-                        } 
-                    }}
+                    onPress={() => {
+                        if (username === 'rachel_f' || username ==='gusteau') setFollowedButtonPressed(!followButtonPressed)}
+                    }
                 > 
-                    <Text> 
-                        {followButtonPressed ? 'FOLLOWING' : '+ FOLLOW '} 
-                    </Text>
+                    <Text> {followButtonPressed ? 'FOLLOWING' : '+ FOLLOW '} </Text>
                 </TouchableOpacity>
             </View>
 
@@ -85,10 +100,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         padding: 15
     },
-    buttonView: {
-        width: '30%'
-    },
-
     pressed: {
         backgroundColor: '#FAC738',
         justifyContent: 'center',

@@ -40,7 +40,7 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
     const {username, status, message, timeLeft} = cardInfo; 
 
     const determineStatus = () => {
-        console.log("ARE WE RE-RENDERING STATUS OF RANKED ?? " , status);
+        // console.log("ARE WE RE-RENDERING STATUS OF RANKED ?? " , status);
         if (status === "BRAINSTORMING") {
             return styles.badgeBrainstorm;
         } else if (status === "RANKING") {

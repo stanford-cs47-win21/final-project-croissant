@@ -23,6 +23,8 @@ export default function FanProfile({route, navigation}) {
     const [name, setName] = useState('');
     const [username, setUsername] = useState('');
     const [isFollowingRachel, setIsFollowingRachel] = useState(false);
+    const [isFollowingGusteau, setIsFollowingGusteau] = useState(false);
+
 
     // load user data
     useEffect( () => {
@@ -35,6 +37,7 @@ export default function FanProfile({route, navigation}) {
                 setName(userData.name);
                 setUsername(userData.username);
                 setIsFollowingRachel(userData.isFollowingRachel);
+                setIsFollowingGusteau(userData.isFollowingGusteau);
             }
         }
         getUserDoc(userRef);    
@@ -57,8 +60,10 @@ export default function FanProfile({route, navigation}) {
 
             <View style={styles.infoAbout}>  
                 <SalmonBadge leftText="Your Contributions" rightText="5" isButton={true} onPress={()=> {navigation.navigate("YourContributions", {username: username});}}/>
-                    <SalmonBadge leftText="Following" rightText={isFollowingRachel ? "1" : "0"} isButton={isFollowingRachel} 
-                        onPress={isFollowingRachel ? () => {navigation.navigate("FollowingScreen");} : null}/>
+                    <SalmonBadge leftText="Following" rightText={isFollowingRachel ? 
+                            (isFollowingGusteau ? "2" : "1")
+                         : (isFollowingGusteau ? "1" : "0")} isButton={isFollowingRachel || isFollowingGusteau} 
+                        onPress={(isFollowingRachel || isFollowingGusteau) ? () => {navigation.navigate("FollowingScreen");} : null}/>
 
                     <TouchableOpacity 
                         style={[styles.profItem, {backgroundColor: '#F2F2F2'}]}
