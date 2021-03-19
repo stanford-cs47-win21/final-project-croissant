@@ -80,7 +80,6 @@ export default function FanHome({route, navigation}) {
 
     // Initialize studios state upon component mounting
     useEffect( () => {
-        console.log("Initialize set studios to fake newsfeed data");
         setStudios(fakeNewsfeedData);
 
         // Display studios based on if Following Rachel
@@ -109,7 +108,6 @@ export default function FanHome({route, navigation}) {
     const updateRankingStatus = () => {
         let studiosCopy = [...studios]; 
         const rankingStudioIndex = studiosCopy.findIndex((studio => studio.status == 'RANKING'));
-        console.log("RANKING STUDIO INDEX ", rankingStudioIndex);
 
         if (rankingStudioIndex !== -1) {
             studiosCopy[rankingStudioIndex].status = "RANKED"; // ✓
@@ -134,101 +132,18 @@ export default function FanHome({route, navigation}) {
             setStudios(studiosCopy); 
         }
     }
-   
-
-
-    // RACHEL decide how to adjust which studios should render in the home feed
-    // const determineRachelStudios = () => {
-    //     console.log("STUDIOS pre rachel", studios);
-    //     let studiosCopy = studios; // [...studios]; 
-
-    //     studiosCopy.forEach( (studio) => {
-    //         if (studio.username ==='rachel_f') studio.isVisible = isFollowingRachel;
-    //     });
-    //     console.log("Post rachel studios", studiosCopy);
-    //     return studiosCopy;
-    // }
-    
-    // GUSTEAU decide how to adjust which studios should render in the home feed
-    // const determineGusteauStudios = () => {
-    //     console.log("STUDIOS pre gusteau", studios);
-    //     let studiosCopy = studios; // [...studios]; 
-
-    //     studiosCopy.forEach( (studio) => {
-    //         if (studio.username ==='gusteau') studio.isVisible = isFollowingGusteau;
-    //     });
-    //     console.log("Post gusteau studios", studiosCopy);
-    //     return studiosCopy;
-    // }
-
-    // const determineStudios = () => {
-    // //=========== THIS VERSION OF CODE had weird firebase race conditions
-    //     if (isFollowingGusteau && isFollowingRachel) {
-    //         // all items should be set to isVisible=true
-    //         studiosCopy.forEach(studio => studio.isVisible=true);
-    //         console.log("studios copy both followed", studiosCopy);
-    //     }
-    //     else if (isFollowingGusteau) {
-    //         // only gusteau items should be set to isVisible=true
-    //         studiosCopy.forEach( (studio) => {
-    //             if (studio.username==='gusteau' || studio.username==='PLUS') studio.isVisible=true;
-    //             else studio.isVisible=false;
-    //         });
-
-    //     } else if (isFollowingRachel) {
-    //         // only rachel items should be set to isVisible=true
-    //         studiosCopy.forEach( (studio) => {
-    //             if (studio.username==='rachel_f' || studio.username==='PLUS') studio.isVisible=true;
-    //             else studio.isVisible=false;
-    //         });
-    //         console.log("studios copy only RACHEL followed", studiosCopy);
-    //     } 
-    //     return studiosCopy;
-
-
-        // //=========== THIS version OF CODE works but breaks the badge ranking turning grey because fakeNewsFeeddata is hard coded (no badge state carries over)
-        // if (isFollowingGusteau && isFollowingRachel) return fakeNewsfeedData;
-        // else if (isFollowingGusteau) {
-        //     var filtered = fakeNewsfeedData.filter(function (item) {
-        //         return (item.username === 'gusteau' || item.username === 'PLUS');
-        //     });
-        //     return filtered;
-        // } else if (isFollowingRachel) {
-        //     var filtered = fakeNewsfeedData.filter(function (item) {
-        //         return (item.username === 'rachel_f'|| item.username === 'PLUS');
-        //     });
-        //     return filtered;
-        // } else return null;
-        
-    // }
 
     useEffect( () => {
-        console.log("STUDIOS pre gusteau", studios);
         let studiosCopy = [...studios]; 
-        console.log("STUDIOS post", studiosCopy);
 
         studiosCopy.forEach( (studio) => {
             if (studio.username ==='gusteau') studio.isVisible = isFollowingGusteau;
             else if (studio.username ==='rachel_f') studio.isVisible = isFollowingRachel;
         });
-        console.log("Post gusteau studios", studiosCopy);
         setStudios(studiosCopy);
     }, [isFollowingGusteau, isFollowingRachel])
 
 
-    // depends on changes in followingGusteau and following Rachel
-    // useEffect( () => {
-    //     console.log("Change in gusteau, calling determine studios");
-    //     setStudios(determineGusteauStudios()); // after this alters the studio list item's props, it should cause a re-render
-    // }, [isFollowingGusteau])
-
-    // // depends on changes in followingGusteau and following Rachel
-    // useEffect( () => {
-    //     console.log("Change in rachel, calling determine studios");
-    //     setStudios(determineRachelStudios()); // after this alters the studio list item's props, it should cause a re-render
-    // }, [isFollowingRachel])
-
-    // console.log("State of studios", studios);
     return(
         <SafeAreaView style={styles.container}> 
             <Header fan={true}/>

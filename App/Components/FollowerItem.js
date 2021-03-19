@@ -17,6 +17,7 @@ import firebase from 'firebase';
 export function FollowerItem({username, genre=null, followButton=null, ...props}) {
     const navigation = useNavigation();
     const [followButtonPressed, setFollowedButtonPressed] = useState(false);
+    const [firebaseLoaded, setFirebaseLoaded] = useState(false);
 
     // Determine whether the follower item should be pressed depending on which item it is
     useEffect( () => {
@@ -31,28 +32,32 @@ export function FollowerItem({username, genre=null, followButton=null, ...props}
             else if (userDoc.exists && username === 'gusteau' && userDoc.data().isFollowingGusteau) {
                 setFollowedButtonPressed(true);
             }
+            setFirebaseLoaded(true);
         }
         getUserDoc(userRef);    
     }, [])
 
     // Update firebase if the user presses follow or unfollow on button
     useEffect( () => {
-        const user = firebase.auth().currentUser;
-        let userRef = firestore.doc('users/' + user.uid);
-        const updateUser = async (userRef) => {
-            if (username === 'rachel_f') {
-                await userRef.update({
-                    isFollowingRachel: followButtonPressed,
-                });
-            } else if (username === 'gusteau') {
-                await userRef.update({
-                    isFollowingGusteau: followButtonPressed,
-                });
-            } 
+        if (firebaseLoaded) {
+            const user = firebase.auth().currentUser;
+            let userRef = firestore.doc('users/' + user.uid);
+            const updateUser = async (userRef) => {
+                if (username === 'rachel_f') {
+                    await userRef.update({
+                        isFollowingRachel: followButtonPressed,
+                    });
+                } else if (username === 'gusteau') {
+                    await userRef.update({
+                        isFollowingGusteau: followButtonPressed,
+                    });
+                } 
+            }
+            updateUser(userRef);
         }
-        updateUser(userRef);
 
-    }, [followButtonPressed])
+    }, [followButtonPressed, firebaseLoaded])
+    // need firebaseLoaded here because if followButtonPressed before dataloaded, then code won't run even after dataloaded
 
     console.log("1) RACHEL GREEN WHY IS SHE FOLLOWING? ", username, "follow button pressed ?" , followButtonPressed)
 
@@ -95,10 +100,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         padding: 15
     },
-    buttonView: {
-        width: '30%'
-    },
-
     pressed: {
         backgroundColor: '#FAC738',
         justifyContent: 'center',
