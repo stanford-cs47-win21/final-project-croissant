@@ -158,9 +158,7 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                         <View style={{alignItems: 'center'}}>
                         <View style={styles.overlayRow}>
                             <Text style={styles.alertText}> Studio in Progress </Text>
-                            {/* <AntDesign name="hourglass" size={24} color="black" /> */}
                             <MaterialCommunityIcons name="progress-clock" size={36} color="white"/>
-                            {/* <Ionicons name="hourglass" size={24} color="black" /> */}
                         </View>
 
                         <View style={[styles.overlayTextContainer, keyStyles.shadowProps]}>    
@@ -175,8 +173,8 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                             <View style={styles.overlayRow}>
                                 <Text style={styles.alertText}> Are you sure you want to permanently delete the studio? </Text>
                             </View>
-                            <ActionButton text="Yes" onPress={toggleOverlay} grayButton={true}/>
-                            <ActionButton text="No " onPress={toggleDeleteConfirm}/>
+                                <ActionButton text="Yes" onPress={() => {toggleOverlay; toggleDeleteConfirm}}/>
+                            <ActionButton text="No " onPress={toggleDeleteConfirm} grayButton={true}/>
                             </View>}
                     </Overlay>
                     {/* FAN OVERLAY */}
@@ -189,9 +187,7 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
 
                         <View style={styles.overlayRow}>
                             <Text style={styles.alertText}> {status==='RANKED' ? 'Rank' : 'Brainstorm'}ing Completed </Text>
-                            {/* <AntDesign name="hourglass" size={24} color="black" /> */}
                             <MaterialCommunityIcons name="check" size={36} color="white" />
-                            {/* <Ionicons name="hourglass" size={24} color="black" /> */}
                         </View>
 
                         <View style={[styles.overlayTextContainer, keyStyles.shadowProps]}>    
