@@ -34,12 +34,20 @@ export default function FanRanking({route, navigation, ...props}) {
             ];
 
     const [data, setData] = useState(initialData);
+    const [hide, setHide] = useState(false);
     //
-    //State info for invitation modal
+    //State info for confirmation modal
     const [visible, setVisible] = useState(false);
     const toggleOverlay = () => {
         setVisible(!visible);
     };
+
+
+    const navigateWithDelay = () => {
+        setHide(true);
+        navigation.navigate('FanHome', {rankingStatus: 'RANKED'});
+    }
+
 
     const renderItem = ({ item, index, drag, isActive }) => (
         <TouchableOpacity onLongPress={drag}>
@@ -73,6 +81,7 @@ export default function FanRanking({route, navigation, ...props}) {
         <ActionButton text="Submit"
             onPress = {toggleOverlay}/>
 
+        {!hide &&
         <Overlay 
             isVisible={visible} 
             onBackdropPress={toggleOverlay}
@@ -90,10 +99,10 @@ export default function FanRanking({route, navigation, ...props}) {
             </View>
 
             <View style={[styles.overlayTextContainer, keyStyles.shadowProps]}>    
-                <Text style={[styles.messageText, {marginBottom: 8}]}> Ready to submit your ranking? These rankings are used to determine what feedback {username} sees. </Text>
+                <Text style={[styles.messageText, {marginBottom: 8}]}>Ready to submit your ranking? These rankings are used to determine what feedback {username} sees. </Text>
             </View>
-            <ActionButton text="SUBMIT" onPress = {() => {navigation.navigate('FanHome', {rankingStatus: 'RANKED'})}} style={keyStyles.shadowProps}/>
-        </Overlay>
+            <ActionButton text="SUBMIT" onPress ={navigateWithDelay} style={keyStyles.shadowProps}/>
+        </Overlay>}
         </SafeAreaView>
     );
 }
