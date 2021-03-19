@@ -43,6 +43,11 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
         setDeleteConfirmVisible(!deleteConfirmVisible);
     };
 
+    const resetBoth = () => {
+        setVisible(false);
+        setDeleteConfirmVisible(false);
+    }
+
     const {username, status, message, timeLeft} = cardInfo; 
 
     const determineStatus = () => {
@@ -173,7 +178,7 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                             <View style={styles.overlayRow}>
                                 <Text style={styles.alertText}> Are you sure you want to permanently delete the studio? </Text>
                             </View>
-                                <ActionButton text="Yes" onPress={() => {toggleOverlay; toggleDeleteConfirm}}/>
+                            <ActionButton text="Yes" onPress={resetBoth}/>
                             <ActionButton text="No " onPress={toggleDeleteConfirm} grayButton={true}/>
                             </View>}
                     </Overlay>
