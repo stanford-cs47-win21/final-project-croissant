@@ -150,6 +150,10 @@ const styles = StyleSheet.create({
         position: 'absolute',
         alignSelf: 'flex-end',
         padding: 10
-    }
+    },
+    messageText: {
+        fontSize: keyStyles.BODY_TEXT_SIZE,
+        lineHeight: keyStyles.BODY_TEXT_SIZE * keyStyles.LINE_HEIGHT_MULT
+    },
 });
   
