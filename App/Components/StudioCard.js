@@ -73,8 +73,6 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                 navigation.navigate('LiveRoom', {cardInfo});
             } else if (status === "VIEW RESULTS") {
                 navigation.navigate('StudioResults', {cardInfo});
-            } else if (status === "RANKING" | status === 'BRAINSTORMING') {
-                toggleOverlay();
             }
         }
     }
@@ -86,7 +84,6 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
             style={[styles.outer, keyStyles.shadowProps]}
             onPress = {determineFlow}
         > 
-
             <View style={styles.topRow}> 
                 <PicAndUsername userInfo={username} photoPerson="John"/>  
                 <View style={determineStatus()}> 
@@ -98,12 +95,18 @@ export function StudioCard({cardInfo, staticCard = false, fan = false}) {
                 <Text style={styles.messageText}>{message}</Text> 
             </View>
 
-                {status != "LIVE" && 
+                {(status != "LIVE" && !fan && status != "VIEW RESULTS") && 
                     <View style={[styles.bottomBox, {justifyContent: 'space-between'}]}>
                     <Text style={styles.timeText}> {timeLeft} </Text>
                     <TouchableOpacity onPress={toggleOverlay}>
                         <MaterialCommunityIcons name="dots-horizontal" size={24} color="#645f5c"/>
                     </TouchableOpacity>
+                    </View>
+                }
+
+                {(status != "LIVE" && (fan || status == "VIEW RESULTS")) && 
+                    <View style={[styles.bottomBox, {justifyContent: 'flex-start'}]}>
+                    <Text style={styles.timeText}> {timeLeft} </Text>
                     </View>
                 }
                     {status == "LIVE" && 
